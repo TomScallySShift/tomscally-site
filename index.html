@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tom Scally — Bridging the Unknown</title>
+<meta name="description" content="Helping growth companies uncover what may be missing between internal effort and external momentum.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2744;
+  --navy-deep: #0f1a2e;
+  --navy-light: #243352;
+  --gold: #c5a55a;
+  --gold-soft: #d4b96e;
+  --gold-muted: rgba(197, 165, 90, 0.15);
+  --white: #ffffff;
+  --off-white: #f8f7f4;
+  --gray: #94949c;
+  --gray-light: #e8e7e3;
+  --text-dark: #1a2744;
+  --text-body: #3a3f4b;
+  --text-muted: #6b6f7b;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-body);
+  background: var(--white);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== UTILITY ===== */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+.gold-line {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes expandLine {
+  from { width: 0; }
+  to { width: 48px; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== HEADER / NAV ===== */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+}
+
+.top-bar.scrolled {
+  background: rgba(26, 39, 68, 0.97);
+  box-shadow: 0 1px 24px rgba(0,0,0,0.15);
+  padding: 0.8rem 2rem;
+  backdrop-filter: blur(12px);
+}
+
+.top-bar .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.top-bar .name span { color: var(--gold); }
+
+.top-bar .cta-nav {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(197, 165, 90, 0.4);
+  transition: all 0.3s ease;
+}
+
+.top-bar .cta-nav:hover {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  background: var(--navy-deep);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(197,165,90,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
+
+.hero-content {
+  animation: slideInLeft 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s both;
+}
+
+.hero-content .section-label {
+  animation: fadeIn 0.8s ease 0.6s both;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 520px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-deep);
+  background: var(--gold);
+  text-decoration: none;
+  padding: 1rem 2.25rem;
+  transition: all 0.35s ease;
+}
+
+.hero-cta:hover {
+  background: var(--gold-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(197, 165, 90, 0.3);
+}
+
+.hero-cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.hero-cta:hover svg { transform: translateX(4px); }
+
+.hero-tags {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  animation: fadeIn 1s ease 1s both;
+}
+
+.hero-tags span {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1.2s ease 0.5s both;
+}
+
+.hero-graphic {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.hero-graphic .ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(197,165,90,0.12);
+}
+
+.hero-graphic .ring-1 { inset: 0; animation: fadeIn 1.5s ease 0.8s both; }
+.hero-graphic .ring-2 { inset: 15%; border-color: rgba(197,165,90,0.08); animation: fadeIn 1.5s ease 1s both; }
+.hero-graphic .ring-3 { inset: 30%; border-color: rgba(197,165,90,0.2); animation: fadeIn 1.5s ease 1.2s both; }
+
+.hero-graphic .center-text {
+  position: absolute;
+  inset: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeUp 1s ease 1.4s both;
+}
+
+.hero-graphic .center-text .initials {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.hero-graphic .center-text .sub {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* ===== PROBLEM SECTION ===== */
+.problem {
+  padding: 7rem 0;
+  background: var(--white);
+}
+
+.problem .container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.problem h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.problem h2 em { color: var(--gold); font-style: normal; }
+
+.problem-text p {
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  color: var(--text-body);
+}
+
+.gap-signs {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.gap-signs li {
+  padding: 1rem 0 1rem 1.75rem;
+  border-bottom: 1px solid var(--gray-light);
+  position: relative;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.gap-signs li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.35rem;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+/* ===== WHAT I DO ===== */
+.what-i-do {
+  padding: 7rem 0;
+  background: var(--off-white);
+}
+
+.what-i-do h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.what-i-do > .container > p {
+  max-width: 680px;
+  font-size: 1rem;
+  color: var(--text-body);
+  margin-bottom: 3rem;
+}
+
+.questions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.q-card {
+  background: var(--white);
+  padding: 1.75rem;
+  border: 1px solid var(--gray-light);
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.q-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(197, 165, 90, 0.08);
+}
+
+.q-card .q-icon {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.q-card p {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+/* ===== HOW I HELP — 4 SERVICES ===== */
+.services {
+  padding: 7rem 0;
+  background: var(--navy-deep);
+  position: relative;
+}
+
+.services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+}
+
+.services h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.service-card {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  transition: background 0.4s ease;
+}
+
+.service-card:last-child { border-right: none; }
+
+.service-card:hover { background: rgba(197, 165, 90, 0.04); }
+
+.service-card .s-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(197, 165, 90, 0.2);
+  line-height: 1;
+  margin-bottom: 1.25rem;
+}
+
+.service-card h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* ===== SIGNAL SHIFT ===== */
+.signal-shift {
+  padding: 6rem 0;
+  background: var(--white);
+  border-top: 1px solid var(--gray-light);
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.signal-shift .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.ss-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+
+.ss-content p {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  margin-bottom: 1rem;
+}
+
+.ss-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: gap 0.3s ease;
+}
+
+.ss-link:hover { gap: 0.9rem; }
+
+.ss-visual {
+  background: var(--navy-deep);
+  padding: 3rem;
+  position: relative;
+}
+
+.ss-visual::before {
+  content: 'SIGNAL SHIFT';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(197,165,90,0.08);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.flow-diagram {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.flow-node {
+  flex: 1;
+  text-align: center;
+  padding: 1.25rem 0.75rem;
+  border: 1px solid rgba(197,165,90,0.2);
+}
+
+.flow-node .fn-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.flow-node .fn-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-top: 0.25rem;
+}
+
+.flow-node.highlight { border-color: var(--gold); background: rgba(197,165,90,0.08); }
+.flow-node.highlight .fn-title { color: var(--gold); }
+
+.flow-arrow {
+  color: var(--gold);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* ===== WHO I WORK WITH ===== */
+.audience {
+  padding: 7rem 0;
+  background: var(--off-white);
+}
+
+.audience h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.audience > .container > p {
+  max-width: 620px;
+  margin-bottom: 3rem;
+  color: var(--text-body);
+}
+
+.audience-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.audience-item {
+  padding: 1.25rem 1.5rem;
+  background: var(--white);
+  border-left: 3px solid var(--gold);
+  font-size: 0.95rem;
+  color: var(--text-body);
+}
+
+/* ===== BACKGROUND ===== */
+.background {
+  padding: 6rem 0;
+  background: var(--white);
+}
+
+.background .container {
+  max-width: 740px;
+}
+
+.background h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+.background p {
+  font-size: 1rem;
+  color: var(--text-body);
+  margin-bottom: 1rem;
+}
+
+/* ===== ENGAGEMENT TIERS ===== */
+.engagement {
+  padding: 7rem 0;
+  background: var(--navy-deep);
+  position: relative;
+}
+
+.engagement::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+}
+
+.engagement h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.tier-card {
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+
+.tier-card:hover { border-color: var(--gold); }
+
+.tier-card .tier-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.tier-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+.tier-card p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  padding: 7rem 0;
+  background: var(--white);
+  text-align: center;
+}
+
+.final-cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1.25rem;
+}
+
+.final-cta p {
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.final-cta .cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--navy);
+  text-decoration: none;
+  padding: 1.1rem 2.5rem;
+  transition: all 0.35s ease;
+}
+
+.final-cta .cta-btn:hover {
+  background: var(--navy-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(26, 39, 68, 0.3);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 2.5rem 0;
+  background: var(--navy-deep);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer .f-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--white);
+  font-weight: 600;
+}
+
+footer .f-links {
+  display: flex;
+  gap: 2rem;
+}
+
+footer .f-links a {
+  font-size: 0.8rem;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer .f-links a:hover { color: var(--gold); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-card { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .service-card:nth-child(2) { border-right: none; }
+}
+
+@media (max-width: 768px) {
+  .hero .container { grid-template-columns: 1fr; gap: 2rem; padding-top: 7rem; }
+  .hero-visual { order: -1; }
+  .hero-graphic { max-width: 280px; }
+  .problem .container { grid-template-columns: 1fr; gap: 2rem; }
+  .signal-shift .container { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card { border-right: none; }
+  .tiers { grid-template-columns: 1fr; }
+  .questions-grid { grid-template-columns: 1fr; }
+  footer .container { flex-direction: column; gap: 1rem; text-align: center; }
+  .top-bar .cta-nav { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-bar">
+  <a href="#" class="name">Tom <span>Scally</span></a>
+  <a href="mailto:tom@tomscally.com" class="cta-nav">Start a Conversation</a>
+</nav>
+
+<!-- 1. HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="section-label">Fractional BD &amp; Strategic Partnerships</span>
+      <h1>Helping Growth Companies <em>Bridge the Unknown</em></h1>
+      <p class="hero-desc">I help growth companies uncover what may be missing between internal effort and external momentum &mdash; then identify the positioning, partnerships, credibility signals, and business conversations that can move opportunity forward.</p>
+      <a href="mailto:tom@tomscally.com" class="hero-cta">
+        Start a Conversation
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <div class="hero-tags">
+        <span>Positioning</span>
+        <span>Partnerships</span>
+        <span>Relationship-Led Growth</span>
+        <span>Signal Shift</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-graphic">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <div class="center-text">
+          <div class="initials">TS</div>
+          <div class="sub">Bridging the Unknown</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PROBLEM -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="problem-left reveal">
+      <span class="section-label">The Challenge</span>
+      <div class="gold-line"></div>
+      <h2>The problem I solve: <em>external growth gaps.</em></h2>
+    </div>
+    <div class="problem-text reveal">
+      <p>Most growth companies already have smart people, a real product, a clear internal belief, and plenty of activity in motion.</p>
+      <p>But growth can still stall when the outside market is not responding the way the company expects. That is the gap I focus on.</p>
+      <p>I help identify where external momentum may be breaking down &mdash; in positioning, partner strategy, credibility, outreach angles, market perception, or the way the company is showing up to prospects, investors, advisors, and strategic partners.</p>
+      <ul class="gap-signs">
+        <li>Partnership conversations do not move forward.</li>
+        <li>Investor or advisor interest stalls.</li>
+        <li>Sales conversations create activity but not traction.</li>
+        <li>Announcements generate visibility but not credibility.</li>
+        <li>Internal confidence exists, but the market is not converting it into opportunity.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3. WHAT I DO -->
+<section class="what-i-do" id="what">
+  <div class="container">
+    <span class="section-label reveal">What I Do</span>
+    <div class="gold-line reveal"></div>
+    <h2 class="reveal">I bridge the unknown and turn it into a BD path.</h2>
+    <p class="reveal">When momentum feels inconsistent, the issue is not always obvious. The problem may be an unseen gap between the company's internal view and the way the market is actually interpreting the story.</p>
+    <div class="questions-grid">
+      <div class="q-card reveal">
+        <div class="q-icon">?</div>
+        <p>Who should we be building relationships with?</p>
+      </div>
+      <div class="q-card reveal">
+        <div class="q-icon">?</div>
+        <p>What part of the story is not opening doors?</p>
+      </div>
+      <div class="q-card reveal">
+        <div class="q-icon">?</div>
+        <p>Where are we credible &mdash; and where are we not yet?</p>
+      </div>
+      <div class="q-card reveal">
+        <div class="q-icon">?</div>
+        <p>Which partnership channels are being missed?</p>
+      </div>
+      <div class="q-card reveal">
+        <div class="q-icon">?</div>
+        <p>What market signals should guide the next move?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. HOW I HELP (4 Services) -->
+<section class="services" id="services">
+  <div class="container">
+    <span class="section-label" style="text-align:center; display:block;">How I Help</span>
+    <h2>Four ways I create momentum.</h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="s-num">01</div>
+        <h3>Strategic Partner Mapping</h3>
+        <p>Identify the companies, advisors, platforms, referral sources, and relationship channels worth pursuing.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num">02</div>
+        <h3>BD Positioning</h3>
+        <p>Shape the message so outreach feels relevant, credible, and tied to a real business reason.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num">03</div>
+        <h3>Relationship Development</h3>
+        <p>Support warm introductions, targeted outreach, follow-up, and meeting creation.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num">04</div>
+        <h3>Market Momentum Advisory</h3>
+        <p>Help leadership teams see what is stuck, where opportunity exists, and what next move can create traction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. SIGNAL SHIFT -->
+<section class="signal-shift" id="signal-shift">
+  <div class="container">
+    <div class="ss-content reveal">
+      <span class="section-label">Diagnostic Tool</span>
+      <div class="gold-line"></div>
+      <h2>Signal Shift is one tool I use to bridge the unknown.</h2>
+      <p>Signal Shift shows whether a company's message, announcement, or external visibility is actually creating credibility, authority, and momentum &mdash; or whether the market is interpreting it differently than expected.</p>
+      <p>It supports my fractional BD and strategic partnership work by helping companies understand what the market is actually hearing before they make the next move.</p>
+      <a href="https://www.getsignalshift.com/" class="ss-link" target="_blank">
+        View Signal Shift
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+    <div class="ss-visual reveal">
+      <div class="flow-diagram">
+        <div class="flow-node">
+          <div class="fn-label">Stage 1</div>
+          <div class="fn-title">Internal Effort</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-node highlight">
+          <div class="fn-label">Stage 2</div>
+          <div class="fn-title">Unknown Gap</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-node">
+          <div class="fn-label">Stage 3</div>
+          <div class="fn-title">External Momentum</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. WHO I WORK WITH -->
+<section class="audience" id="audience">
+  <div class="container">
+    <span class="section-label reveal">Best Fit</span>
+    <div class="gold-line reveal"></div>
+    <h2 class="reveal">Companies with enough traction to need sharper external direction.</h2>
+    <p class="reveal">I work best with growth companies and market-facing firms that already have a product, activity, and ambition &mdash; but need a clearer outside read.</p>
+    <div class="audience-list">
+      <div class="audience-item reveal">Growth companies trying to create stronger market traction</div>
+      <div class="audience-item reveal">Founder-led B2B companies that need better partner and market conversations</div>
+      <div class="audience-item reveal">PR, IR, and communications firms looking to strengthen advisory value</div>
+      <div class="audience-item reveal">Media, distribution, and data companies seeking partnership growth</div>
+      <div class="audience-item reveal">Advisors helping clients improve positioning, credibility, or investor readiness</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. BACKGROUND -->
+<section class="background" id="background">
+  <div class="container">
+    <span class="section-label reveal">Background</span>
+    <div class="gold-line reveal"></div>
+    <h2 class="reveal">Real-world momentum building.</h2>
+    <p class="reveal">At NewsDirect, I helped build momentum through strategic relationships, partnership development, and market-facing conversations that opened new opportunities.</p>
+    <p class="reveal">My broader background in business development, partnerships, positioning, and blind-spot work shapes how I help companies today: identifying what may be missing between internal effort and external momentum, then turning that insight into clearer business development direction.</p>
+  </div>
+</section>
+
+<!-- 8. ENGAGEMENT TIERS -->
+<section class="engagement" id="work-together">
+  <div class="container">
+    <span class="section-label" style="text-align:center; display:block;">Work Together</span>
+    <h2>Simple ways to start bridging the unknown.</h2>
+    <div class="tiers">
+      <div class="tier-card reveal">
+        <div class="tier-label">Starting Point</div>
+        <h3>External Growth Gap Readout</h3>
+        <p>A focused review of where momentum may be blocked, which external signals matter, and what the next 30-day move should be.</p>
+      </div>
+      <div class="tier-card reveal">
+        <div class="tier-label">Short-Term</div>
+        <h3>Fractional BD Sprint</h3>
+        <p>A short-term engagement to identify targets, sharpen the outreach angle, and begin opening the right business conversations.</p>
+      </div>
+      <div class="tier-card reveal">
+        <div class="tier-label">Ongoing</div>
+        <h3>Strategic Partnership Support</h3>
+        <p>Fractional support for companies that need consistent relationship development, partner strategy, and market momentum.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. FINAL CTA -->
+<section class="final-cta" id="contact">
+  <div class="container">
+    <span class="section-label reveal">Let's Talk</span>
+    <div class="gold-line reveal" style="margin: 0 auto 1.5rem;"></div>
+    <h2 class="reveal">Need to bridge the unknown before the next move?</h2>
+    <p class="reveal">If your company is trying to create momentum, sharpen positioning, or open strategic relationships, let's talk.</p>
+    <a href="mailto:tom@tomscally.com" class="cta-btn reveal">
+      Start a Conversation
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="f-name">Tom Scally</div>
+    <div class="f-links">
+      <a href="mailto:tom@tomscally.com">tom@tomscally.com</a>
+      <a href="https://linkedin.com/in/thomasscally" target="_blank">LinkedIn</a>
+      <a href="https://www.getsignalshift.com/" target="_blank">Signal Shift</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll-triggered reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+const topBar = document.querySelector('.top-bar');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  topBar.classList.toggle('scrolled', y > 60);
+  lastScroll = y;
+}, { passive: true });
+</script>
+
+</body>
+</html>
