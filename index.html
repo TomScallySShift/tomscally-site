@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tom Scally — Bridging the Unknown</title>
-<meta name="description" content="Fractional BD and strategic partnerships for growth companies. I help uncover what's missing between internal effort and external momentum.">
+<title>Tom Scally | Fractional BD & Strategic Partnerships</title>
+<meta name="description" content="Fractional BD and strategic partnerships for growth companies. I clarify what is landing externally, what is not, and which move may make sense next.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -119,21 +119,6 @@ nav .nav-cta:hover { background: var(--gold-soft); }
   display: flex; justify-content: center; align-items: center;
   animation: fadeUp 1s ease 0.4s both;
 }
-.photo-frame {
-  width: 320px; height: 380px; position: relative;
-  border: 1px solid rgba(201,168,76,0.15);
-  display: flex; align-items: center; justify-content: center;
-  background: var(--navy-mid);
-}
-.photo-frame::before {
-  content: ''; position: absolute; inset: -8px; border: 1px solid rgba(201,168,76,0.08);
-}
-.photo-placeholder {
-  text-align: center; color: rgba(255,255,255,0.2);
-  font-family: 'Playfair Display', serif;
-}
-.photo-placeholder .initials { font-size: 4rem; font-weight: 800; color: var(--gold); line-height: 1; }
-.photo-placeholder .sub { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 0.5rem; color: rgba(255,255,255,0.25); }
 
 /* === LOGO STRIP === */
 .logos {
@@ -197,14 +182,6 @@ nav .nav-cta:hover { background: var(--gold-soft); }
 .signal p { font-size: 0.92rem; margin-bottom: 0.75rem; }
 .ss-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); text-decoration: none; margin-top: 0.75rem; transition: gap 0.3s; }
 .ss-link:hover { gap: 0.8rem; }
-.flow-box { background: var(--navy); padding: 2.5rem; }
-.flow { display: flex; align-items: center; gap: 0.75rem; }
-.flow-node { flex: 1; text-align: center; padding: 1rem 0.5rem; border: 1px solid rgba(201,168,76,0.15); }
-.flow-node.hl { border-color: var(--gold); background: var(--gold-glow); }
-.flow-node .fn-sm { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-.flow-node .fn-lg { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-top: 0.2rem; }
-.flow-node.hl .fn-lg { color: var(--gold); }
-.flow-arr { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
 
 /* === AUDIENCE === */
 .audience { padding: 6rem 0; background: var(--off-white); }
@@ -279,7 +256,6 @@ footer .f-links a:hover { color: var(--gold); }
 @media (max-width: 768px) {
   .hero .container { grid-template-columns: 1fr; gap: 2rem; padding-top: 6rem; }
   .hero-photo { order: -1; }
-  .photo-frame { width: 240px; height: 280px; }
   .problem .container { grid-template-columns: 1fr; gap: 2rem; }
   .signal .container { grid-template-columns: 1fr; }
   .method-steps { grid-template-columns: 1fr; }
@@ -291,6 +267,64 @@ footer .f-links a:hover { color: var(--gold); }
   .sticky-cta { display: block; }
   .logos .logo-grid { gap: 1.5rem; }
 }
+
+/* === AESTHETIC POLISH (palette unchanged) === */
+/* Hero: soft radial gold glow + keep content above it */
+.hero::before {
+  content: ''; position: absolute; top: -20%; right: -10%;
+  width: 70vh; height: 70vh; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.14) 0%, rgba(201,168,76,0.05) 38%, transparent 68%);
+  pointer-events: none; z-index: 0;
+}
+.hero .container { position: relative; z-index: 1; }
+
+/* Gold gradient on the accented headline word */
+.hero h1 em {
+  background: linear-gradient(120deg, #e6d49a 0%, #c9a84c 55%, #d8be73 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+
+/* Depth on dark sections: subtle vignette + faint top sheen */
+.method, .tiers-section { overflow: hidden; }
+.method::after, .tiers-section::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background: radial-gradient(120% 80% at 50% -10%, rgba(201,168,76,0.06) 0%, transparent 55%);
+}
+.method .container, .tiers-section .container { position: relative; z-index: 1; }
+
+/* Refined gold rule into a soft gradient */
+.gold-rule { background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.25)); }
+
+/* Micro-lift on cards */
+.q-card, .tier { transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
+.q-card:hover { transform: translateY(-3px); }
+.tier:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.18); }
+.step { transition: background 0.3s, transform 0.3s; }
+.step:hover { transform: translateY(-3px); }
+
+/* Gold band: crisp top/bottom definition */
+.pressure-band { box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(12,27,46,0.15); }
+
+/* Slightly tighter, more elegant hero headline */
+.hero h1 { letter-spacing: -0.015em; }
+.serif { letter-spacing: -0.01em; }
+
+/* Hero portrait (cutout on gold halo, blazer reads against navy) */
+.tom-portrait { position: relative; display: flex; justify-content: center; align-items: flex-end; width: 100%; }
+.tom-portrait::before {
+  content: ''; position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%);
+  width: 116%; height: 92%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.26) 0%, rgba(201,168,76,0.10) 42%, transparent 68%);
+  z-index: 0; pointer-events: none;
+}
+.tom-portrait img {
+  position: relative; z-index: 1; width: 100%; max-width: 440px; height: auto; display: block;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.42));
+}
+@media (max-width: 768px) {
+  .tom-portrait img { max-width: 290px; }
+}
 </style>
 </head>
 <body>
@@ -299,9 +333,6 @@ footer .f-links a:hover { color: var(--gold); }
 <nav>
   <a href="#" class="logo">Tom <span>Scally</span></a>
   <div class="nav-right">
-    <a href="https://linkedin.com/in/thomasscally" target="_blank" class="nav-link" title="LinkedIn">
-      <svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
-    </a>
     <a href="mailto:tom@tomscally.com" class="nav-link">Email</a>
     <a href="https://calendly.com/tom-scally" target="_blank" class="nav-cta">Book a Meeting</a>
   </div>
@@ -317,9 +348,9 @@ footer .f-links a:hover { color: var(--gold); }
   <div class="container">
     <div class="hero-text">
       <span class="section-tag">Fractional BD &amp; Strategic Partnerships</span>
-      <h1>Helping Growth Companies <em>Bridge the Unknown</em></h1>
-      <p class="hero-sub">I help growth companies uncover what may be missing between internal effort and external momentum, then identify the positioning, partnerships, credibility signals, and business conversations that can move opportunity forward.</p>
-      <p class="hero-sub" style="font-size:0.9rem; font-style:italic; color:rgba(255,255,255,0.4); margin-top:-0.5rem;">My work sits at the intersection of fractional business development, strategic partnerships, external positioning, and market perception.</p>
+      <h1>Clarifying the Gap Between External Effort, Credibility &amp; <em>Momentum</em></h1>
+      <p class="hero-sub">Companies often have the product, team, outreach, distribution, partnerships, and internal confidence already in place. But when the outside response does not match the effort, pressure builds around the next move.</p>
+      <p class="hero-sub" style="font-size:0.9rem; font-style:italic; color:rgba(255,255,255,0.4); margin-top:-0.5rem;">My work clarifies what is landing, what is not, and which business development, partnership, positioning, or distribution-supported move may make sense next.</p>
       <div class="hero-btns">
         <a href="https://calendly.com/tom-scally" target="_blank" class="btn-primary">
           Book a Meeting <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -329,22 +360,28 @@ footer .f-links a:hover { color: var(--gold); }
         </a>
       </div>
       <div class="hero-tags">
-        <span>Positioning</span><span>Partnerships</span><span>Relationship-Led Growth</span><span>Signal Shift</span>
+        <span>Positioning</span><span>Partnerships</span><span>Distribution Support</span><span>Relationship-Led Growth</span><span>Signal Shift</span>
       </div>
     </div>
     <div class="hero-photo">
-      <div class="photo-frame">
-        <!-- Replace with: <img src="tom-photo.jpg" alt="Tom Scally" style="width:100%;height:100%;object-fit:cover;"> -->
-        <div class="photo-placeholder">
-          <div class="initials">TS</div>
-          <div class="sub">Photo Coming Soon</div>
-        </div>
+      <div class="tom-portrait">
+        <img src="tom.png" alt="Tom Scally, Fractional BD and Strategic Partnerships">
       </div>
     </div>
   </div>
 </section>
 
-<!-- LOGO STRIP — uncomment when Tom provides client/media logos
+<!-- PRESSURE BAND (primary CTA, gold) -->
+<section class="pressure-band" style="background:linear-gradient(135deg, #c9a84c 0%, #d8be73 100%); padding:3.5rem 0; position:relative;">
+  <div class="container" style="text-align:center; max-width:780px;">
+    <h2 class="serif r" style="color:var(--navy); font-size:clamp(1.5rem,2.6vw,2.1rem); font-weight:800; margin-bottom:0.85rem;">Pressure before the next move?</h2>
+    <p class="r" style="color:rgba(12,27,46,0.82); margin-bottom:0.4rem; font-size:0.98rem;">Thinking about hiring an IR firm, spending more on visibility, or pushing harder on partnerships?</p>
+    <p class="r" style="color:rgba(12,27,46,0.82); margin-bottom:1.85rem; font-size:0.98rem;">Before you do, it may be worth getting an outside read on whether your story, credibility, and competitive position are ready to support that move.</p>
+    <a href="https://calendly.com/tom-scally" target="_blank" class="btn-dark r">Discuss a Signal Shift Snapshot <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  </div>
+</section>
+
+<!-- LOGO STRIP, uncomment when Tom provides client/media logos
 <section class="logos">
   <div class="container">
     <div class="label">Previously At / Working With</div>
@@ -358,23 +395,18 @@ footer .f-links a:hover { color: var(--gold); }
 <section class="problem">
   <div class="container">
     <div class="r">
-      <span class="section-tag">The Challenge</span>
-      <div class="gold-rule" style="margin:0.75rem 0 1rem;"></div>
-      <h2>The problem I solve: external growth gaps.</h2>
+      <div class="gold-rule" style="margin:0 0 1.25rem;"></div>
+      <h2 style="font-size:1.55rem; line-height:1.35;">Companies can be active in the market and still not get the response they expected.</h2>
     </div>
     <div class="r">
-      <p>Most growth companies already have smart people, a real product, a clear internal belief, and plenty of activity in motion.</p>
-      <p>But growth can still stall when the outside market is not responding the way the company expects.</p>
-      <p><strong style="color:var(--gold);">That is the gap I focus on.</strong></p>
-      <p>I help identify where external momentum may be breaking down, in positioning, partner strategy, credibility, outreach angles, market perception, or the way the company is showing up to prospects, investors, advisors, and strategic partners.</p>
-      <p>The goal is not to tell your team what they already know. The goal is to surface what may be missing from the outside view, so the next business development move is clearer, sharper, and more likely to create opportunity.</p>
-      <p><strong style="color:var(--gold);">Common signs of the gap:</strong></p>
+      <p>They may be sending news, pursuing partners, spending on visibility, or preparing for investor outreach, but the next move is not always clear.</p>
+      <p>That is where my work fits: understanding what is landing, what is not, and what should be considered before more time, money, or credibility is spent.</p>
       <ul class="problem-list">
-        <li>Partnership conversations do not move forward.</li>
-        <li>Investor or advisor interest stalls.</li>
-        <li>Sales conversations create activity but not traction.</li>
-        <li>Announcements generate visibility but not credibility.</li>
-        <li>The company has internal confidence, but the market is not converting that confidence into opportunity.</li>
+        <li>Partnership conversations may not move forward.</li>
+        <li>Investor or advisor interest may stall.</li>
+        <li>Sales conversations may create activity but not traction.</li>
+        <li>Announcements may generate visibility but not credibility.</li>
+        <li>The company may have strong internal confidence, while the market is not converting that confidence into opportunity.</li>
       </ul>
     </div>
   </div>
@@ -383,15 +415,16 @@ footer .f-links a:hover { color: var(--gold); }
 <!-- WHAT I DO (Questions) -->
 <section class="questions">
   <div class="container">
-    <span class="section-tag r">What I Do</span>
-    <div class="gold-rule r" style="margin:0.75rem 0 1rem;"></div>
-    <h2 class="r">I bridge the unknown and turn it into a BD path.</h2>
+    <h2 class="r" style="margin-bottom:0;">What Gets Clearer</h2>
+    <div class="gold-rule r" style="margin:0.75rem 0 1.25rem;"></div>
+    <p class="r" style="font-size:1.05rem; color:var(--text-body); max-width:780px; margin-bottom:1.75rem; line-height:1.7;">A sharper outside read on how current external activity is being received, how the company is showing up against competitors, and what may be worth considering before the next move.</p>
+    <p class="r" style="margin:0 0 1.5rem; color:var(--text-muted); font-weight:600; letter-spacing:0.04em;">Areas of clarity:</p>
     <div class="q-grid">
-      <div class="q-card r"><p>Who should we be building relationships with?</p></div>
-      <div class="q-card r"><p>What part of the story is not opening doors?</p></div>
-      <div class="q-card r"><p>Where are we credible, and where are we not yet?</p></div>
-      <div class="q-card r"><p>Which partnership channels are being missed?</p></div>
-      <div class="q-card r"><p>What market signals should guide the next move?</p></div>
+      <div class="q-card r"><p>What appears to be landing externally.</p></div>
+      <div class="q-card r"><p>Where credibility may be forming or lagging.</p></div>
+      <div class="q-card r"><p>How the company is showing up against competitors.</p></div>
+      <div class="q-card r"><p>Which relationships or channels may deserve more focus.</p></div>
+      <div class="q-card r"><p>What BD, partnership, positioning, or distribution-supported move may make sense next.</p></div>
     </div>
   </div>
 </section>
@@ -399,29 +432,28 @@ footer .f-links a:hover { color: var(--gold); }
 <!-- HOW I HELP (4 Services) -->
 <section class="method">
   <div class="container">
-    <span class="section-tag r">How I Help</span>
-    <h2 class="r">Four ways I create momentum.</h2>
-    <p class="r">My work sits at the intersection of fractional business development, strategic partnerships, external positioning, and market perception.</p>
+    <h2 class="r">How the Work Supports Momentum</h2>
+    <p class="r">External momentum usually comes from a clearer view of where to focus, what to say, who to pursue, and which signals matter.</p>
     <div class="method-steps">
       <div class="step r">
         <div class="step-num">01</div>
         <h3>Strategic Partner Mapping</h3>
-        <p>Identify the companies, advisors, platforms, and relationship channels worth pursuing.</p>
+        <p>Identify the companies, advisors, platforms, and relationship channels that may be most relevant to the next opportunity.</p>
       </div>
       <div class="step r">
         <div class="step-num">02</div>
         <h3>BD Positioning</h3>
-        <p>Shape the message so outreach feels relevant, credible, and tied to a real business reason.</p>
+        <p>Sharpen the outreach angle so conversations feel relevant, credible, and tied to a real business reason.</p>
       </div>
       <div class="step r">
         <div class="step-num">03</div>
         <h3>Relationship Development</h3>
-        <p>Support warm introductions, targeted outreach, follow-up, and meeting creation.</p>
+        <p>Support warm introductions, targeted outreach, follow-up, and meeting creation where there is a clear strategic fit.</p>
       </div>
       <div class="step r">
         <div class="step-num">04</div>
         <h3>Market Momentum Advisory</h3>
-        <p>Help leadership see what's stuck, where opportunity exists, and what creates traction.</p>
+        <p>Clarify what is landing externally, where credibility may need strengthening, and what partnership, positioning, or distribution-supported move may make sense next.</p>
       </div>
     </div>
   </div>
@@ -429,26 +461,21 @@ footer .f-links a:hover { color: var(--gold); }
 
 <!-- SIGNAL SHIFT -->
 <section class="signal">
-  <div class="container">
+  <div class="container" style="display:block; max-width:780px; margin:0 auto;">
     <div class="r">
-      <span class="section-tag">Diagnostic Tool</span>
+      <span class="section-tag">Signal Shift</span>
       <div class="gold-rule" style="margin:0.75rem 0 1rem;"></div>
-      <h2>Signal Shift is one tool I use to bridge the unknown.</h2>
-      <p>Signal Shift shows whether a company's message, announcement, or external visibility is actually creating credibility, authority, and momentum, or whether the market is interpreting it differently than expected.</p>
-      <p>It supports my fractional BD and strategic partnership work by helping companies understand what the market is actually hearing before they make the next move. Signal Shift is not the whole business. It is one diagnostic layer I use to help companies see where momentum is forming, where credibility is weak, and which conversations are worth pursuing next.</p>
-      <a href="https://www.getsignalshift.com/" class="ss-link" target="_blank">
-        View Signal Shift <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </a>
-    </div>
-    <div class="r">
-      <div class="flow-box">
-        <div class="flow">
-          <div class="flow-node"><div class="fn-sm">Stage 1</div><div class="fn-lg">Internal Effort</div></div>
-          <div class="flow-arr">&rarr;</div>
-          <div class="flow-node hl"><div class="fn-sm">Stage 2</div><div class="fn-lg">Unknown Gap</div></div>
-          <div class="flow-arr">&rarr;</div>
-          <div class="flow-node"><div class="fn-sm">Stage 3</div><div class="fn-lg">External Momentum</div></div>
-        </div>
+      <h2>A short diagnostic read on what the market actually heard, and how it compares.</h2>
+      <p>Signal Shift shows whether a company's announcement, message, or external visibility is creating credibility, authority, and momentum, or simply generating more activity.</p>
+      <p>It also looks at how the company is showing up against competitors, including share of voice, authority mix, original coverage versus syndication, message clarity, and where credibility appears stronger or weaker in the market.</p>
+      <p>Used alongside fractional BD and strategic partnership work, Signal Shift helps make external response and competitive positioning more visible before the next move is made.</p>
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.25rem;">
+        <a href="https://calendly.com/tom-scally" class="btn-dark" target="_blank">
+          Discuss a Signal Shift Snapshot <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="signal-shift-bitcoin-ocean.pdf" class="btn-primary" target="_blank">
+          Discover Signal Shift <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -459,15 +486,8 @@ footer .f-links a:hover { color: var(--gold); }
   <div class="container">
     <span class="section-tag r">Best Fit</span>
     <div class="gold-rule r" style="margin:0.75rem 0 1rem;"></div>
-    <h2 class="r">Companies with enough traction to need sharper external direction.</h2>
-    <p class="r">I work best with growth companies and market-facing firms that already have a product, activity, and ambition, but need a clearer outside read on what is helping, what is not, and where the next opportunity may come from.</p>
-    <div class="aud-list">
-      <div class="aud-item r">Growth companies trying to create stronger market traction</div>
-      <div class="aud-item r">Founder-led B2B companies that need better partner conversations</div>
-      <div class="aud-item r">PR, IR, and communications firms strengthening advisory value</div>
-      <div class="aud-item r">Media and data companies seeking partnership growth</div>
-      <div class="aud-item r">Advisors helping clients improve positioning or investor readiness</div>
-    </div>
+    <h2 class="r">Companies with external activity already in motion.</h2>
+    <p class="r" style="max-width:680px;">The best fit is a growth company, advisor, or market-facing firm that already has product, outreach, distribution, partnerships, or visibility in place, but wants a clearer read on what is landing externally, what may be missed, and where the next opportunity may be forming.</p>
   </div>
 </section>
 
@@ -478,30 +498,27 @@ footer .f-links a:hover { color: var(--gold); }
     <div class="gold-rule r" style="margin:0.75rem 0 1rem;"></div>
     <h2 class="r">Real-world momentum building.</h2>
     <p class="r">At NewsDirect, I helped build momentum through strategic relationships, partnership development, and market-facing conversations that opened new opportunities.</p>
-    <p class="r">My broader background in business development, partnerships, positioning, and blind-spot work shapes how I help companies today: identifying what may be missing between internal effort and external momentum, then turning that insight into clearer business development direction.</p>
+    <p class="r">That experience, combined with a broader background in positioning, partnerships, and pattern recognition, shapes how I evaluate external response: what may be landing, what may be missed, and what signals are worth considering before the next move.</p>
   </div>
 </section>
 
 <!-- ENGAGEMENT TIERS -->
 <section class="tiers-section">
   <div class="container">
-    <span class="section-tag" style="text-align:center;display:block;">Work Together</span>
-    <h2>Simple ways to start.</h2>
-    <div class="tiers">
+    <span class="section-tag" style="text-align:center;display:block;">Ways to Work Together</span>
+    <h2 style="margin-bottom:0.6rem;">Practical starting points for clearer momentum.</h2>
+    <div class="tiers" style="margin-top:2.5rem;">
       <div class="tier r">
-        <div class="t-tag">Starting Point</div>
-        <h3>External Growth Gap Readout</h3>
-        <p>A focused review of where momentum may be blocked, which signals matter, and what the next 30-day move should be.</p>
+        <h3>Signal Shift Snapshot</h3>
+        <p>A short diagnostic read on whether recent external activity, a release, announcement, campaign, or investor-facing message, is creating credibility, authority, and momentum, or simply visibility.</p>
       </div>
       <div class="tier r">
-        <div class="t-tag">Short-Term</div>
         <h3>Fractional BD Sprint</h3>
-        <p>Identify targets, sharpen the outreach angle, and begin opening the right business conversations.</p>
+        <p>A short-term engagement to identify priority targets, sharpen the outreach angle, and begin opening the right business conversations.</p>
       </div>
       <div class="tier r">
-        <div class="t-tag">Ongoing</div>
         <h3>Strategic Partnership Support</h3>
-        <p>Fractional support for consistent relationship development, partner strategy, and market momentum.</p>
+        <p>Ongoing fractional support for relationship development, partner strategy, market positioning, and momentum-building opportunities.</p>
       </div>
     </div>
   </div>
@@ -510,10 +527,9 @@ footer .f-links a:hover { color: var(--gold); }
 <!-- FINAL CTA -->
 <section class="final">
   <div class="container">
-    <span class="section-tag r">Let's Talk</span>
-    <div class="gold-rule r" style="margin:0.75rem auto 1rem;"></div>
-    <h2 class="r">Need to bridge the unknown before the next move?</h2>
-    <p class="r">If your company is trying to create momentum, sharpen positioning, or open strategic relationships, let us talk.</p>
+    <div class="gold-rule r" style="margin:0 auto 1.25rem;"></div>
+    <h2 class="r">Pressure around the next move?</h2>
+    <p class="r">External activity is already in motion. Let's clarify what is landing, where momentum may be unclear, and what business development or partnership move may make sense next.</p>
     <div class="final-btns r">
       <a href="https://calendly.com/tom-scally" target="_blank" class="btn-dark">
         Book a Meeting <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -530,9 +546,8 @@ footer .f-links a:hover { color: var(--gold); }
   <div class="container">
     <div class="f-name">Tom Scally</div>
     <div class="f-links">
-      <a href="mailto:tom@tomscally.com">tom@tomscally.com</a>
-      <a href="https://linkedin.com/in/thomasscally" target="_blank">LinkedIn</a>
-      <a href="https://www.getsignalshift.com/" target="_blank">Signal Shift</a>
+      <a href="https://calendly.com/tom-scally" target="_blank">Book a Meeting</a>
+      <a href="mailto:tom@tomscally.com">Send an Email</a>
     </div>
   </div>
 </footer>
