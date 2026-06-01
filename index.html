@@ -175,11 +175,13 @@ nav .nav-cta:hover { background: var(--gold-soft); }
 .q-card .q-mark { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800; color: var(--gold); margin-bottom: 0.5rem; }
 .q-card p { font-size: 1.1rem; font-weight: 500; color: var(--text-dark); line-height: 1.5; }
 
-/* === SIGNAL SHIFT === */
-.signal { padding: 5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.signal .container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-.signal h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 2.4vw, 2rem); font-weight: 700; color: var(--text-dark); margin: 0.75rem 0 1rem; line-height: 1.25; }
-.signal p { font-size: 0.92rem; margin-bottom: 0.75rem; }
+/* === SIGNAL SHIFT (navy spotlight) === */
+.signal { padding: 5.5rem 0; background: var(--navy); position: relative; overflow: hidden; }
+.signal::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.signal::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(120% 80% at 50% -10%, rgba(201,168,76,0.07) 0%, transparent 55%); }
+.signal .container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+.signal h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 2.4vw, 2rem); font-weight: 700; color: var(--white); margin: 0.75rem 0 1rem; line-height: 1.25; }
+.signal p { font-size: 0.92rem; margin-bottom: 0.75rem; color: rgba(255,255,255,0.58); }
 .ss-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); text-decoration: none; margin-top: 0.75rem; transition: gap 0.3s; }
 .ss-link:hover { gap: 0.8rem; }
 
@@ -412,19 +414,41 @@ footer .f-links a:hover { color: var(--gold); }
   </div>
 </section>
 
+<!-- SIGNAL SHIFT -->
+<section class="signal">
+  <div class="container" style="display:block; max-width:780px; margin:0 auto;">
+    <div class="r">
+      <span class="section-tag">Signal Shift</span>
+      <div class="gold-rule" style="margin:0.75rem 0 1rem;"></div>
+      <h2>A short diagnostic read on what the market actually heard, and how it compares.</h2>
+      <p>Signal Shift shows whether a company's announcement, message, or external visibility is creating credibility, authority, and momentum, or simply generating more activity.</p>
+      <p>It also looks at how the company is showing up against competitors, including share of voice, authority mix, original coverage versus syndication, message clarity, and where credibility appears stronger or weaker in the market.</p>
+      <p>Used alongside fractional BD and strategic partnership work, Signal Shift helps make external response and competitive positioning more visible before the next move is made.</p>
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.25rem;">
+        <a href="https://calendly.com/tom-lifecoaching/call" class="btn-primary" target="_blank">
+          Discuss a Signal Shift Snapshot <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="signal-shift-bitcoin-ocean.pdf" class="btn-outline" target="_blank">
+          Discover Signal Shift <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WHAT I DO (Questions) -->
 <section class="questions">
   <div class="container">
     <h2 class="r" style="margin-bottom:0;">What Gets Clearer</h2>
     <div class="gold-rule r" style="margin:0.75rem 0 1.25rem;"></div>
-    <p class="r" style="font-size:1.05rem; color:var(--text-body); max-width:780px; margin-bottom:1.75rem; line-height:1.7;">A sharper outside read on how current external activity is being received, how the company is showing up against competitors, and what may be worth considering before the next move.</p>
+    <p class="r" style="font-size:1.05rem; color:var(--text-body); max-width:780px; margin-bottom:1.75rem; line-height:1.7;">A clearer view of how current external activity is being received, where credibility is forming or lagging, and how the company is showing up against competitors.</p>
     <p class="r" style="margin:0 0 1.5rem; color:var(--text-muted); font-weight:600; letter-spacing:0.04em;">Areas of clarity:</p>
     <div class="q-grid">
       <div class="q-card r"><p>What appears to be landing externally.</p></div>
-      <div class="q-card r"><p>Where credibility may be forming or lagging.</p></div>
+      <div class="q-card r"><p>Where credibility is forming, lagging, or getting diluted.</p></div>
       <div class="q-card r"><p>How the company is showing up against competitors.</p></div>
-      <div class="q-card r"><p>Which relationships or channels may deserve more focus.</p></div>
-      <div class="q-card r"><p>What BD, partnership, positioning, or distribution-supported move may make sense next.</p></div>
+      <div class="q-card r"><p>Where market response may not match internal expectations.</p></div>
+      <div class="q-card r"><p>What should be understood before the next move is made.</p></div>
     </div>
   </div>
 </section>
@@ -432,8 +456,8 @@ footer .f-links a:hover { color: var(--gold); }
 <!-- HOW I HELP (4 Services) -->
 <section class="method">
   <div class="container">
-    <h2 class="r">How the Work Supports Momentum</h2>
-    <p class="r">External momentum usually comes from a clearer view of where to focus, what to say, who to pursue, and which signals matter.</p>
+    <h2 class="r">Where Clarity Can Create Movement</h2>
+    <p class="r">Once the external picture is clearer, the work can support sharper decisions around focus, message, relationships, and outreach.</p>
     <div class="method-steps">
       <div class="step r">
         <div class="step-num">01</div>
@@ -454,28 +478,6 @@ footer .f-links a:hover { color: var(--gold); }
         <div class="step-num">04</div>
         <h3>Market Momentum Advisory</h3>
         <p>Clarify what is landing externally, where credibility may need strengthening, and what partnership, positioning, or distribution-supported move may make sense next.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SIGNAL SHIFT -->
-<section class="signal">
-  <div class="container" style="display:block; max-width:780px; margin:0 auto;">
-    <div class="r">
-      <span class="section-tag">Signal Shift</span>
-      <div class="gold-rule" style="margin:0.75rem 0 1rem;"></div>
-      <h2>A short diagnostic read on what the market actually heard, and how it compares.</h2>
-      <p>Signal Shift shows whether a company's announcement, message, or external visibility is creating credibility, authority, and momentum, or simply generating more activity.</p>
-      <p>It also looks at how the company is showing up against competitors, including share of voice, authority mix, original coverage versus syndication, message clarity, and where credibility appears stronger or weaker in the market.</p>
-      <p>Used alongside fractional BD and strategic partnership work, Signal Shift helps make external response and competitive positioning more visible before the next move is made.</p>
-      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.25rem;">
-        <a href="https://calendly.com/tom-lifecoaching/call" class="btn-dark" target="_blank">
-          Discuss a Signal Shift Snapshot <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-        <a href="signal-shift-bitcoin-ocean.pdf" class="btn-primary" target="_blank">
-          Discover Signal Shift <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
       </div>
     </div>
   </div>
