@@ -94,6 +94,7 @@ nav .nav-cta:hover { background: var(--gold-soft); }
 }
 .hero h1 em { font-style: italic; color: var(--gold); }
 .hero-sub { font-size: 1.02rem; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 2rem; max-width: 500px; }
+.hero-goldsub { font-family: 'Playfair Display', serif; font-style: italic; color: var(--gold); font-size: clamp(1.05rem, 1.8vw, 1.35rem); line-height: 1.4; margin: 0.5rem 0 1.5rem; max-width: 520px; }
 .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.6rem;
@@ -328,17 +329,6 @@ footer .f-links a:hover { color: var(--gold); }
   .tom-portrait img { max-width: 290px; }
 }
 
-/* Email copy toast */
-#email-toast {
-  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
-  background: var(--navy); color: #fff; padding: 0.7rem 1.2rem; border-radius: 4px;
-  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.01em;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.28); border: 1px solid var(--gold);
-  opacity: 0; pointer-events: none; z-index: 1000;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-#email-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-@media (max-width: 768px) { #email-toast { bottom: 80px; } }
 </style>
 </head>
 <body>
@@ -347,7 +337,6 @@ footer .f-links a:hover { color: var(--gold); }
 <nav>
   <a href="#" class="logo">Tom <span>Scally</span></a>
   <div class="nav-right">
-    <a href="mailto:tom@tomscally.com" class="nav-link">Email</a>
     <a href="https://calendly.com/tom-lifecoaching/call" target="_blank" class="nav-cta">Book a Meeting</a>
   </div>
 </nav>
@@ -362,15 +351,13 @@ footer .f-links a:hover { color: var(--gold); }
   <div class="container">
     <div class="hero-text">
       <span class="section-tag">Fractional BD &amp; Strategic Partnerships</span>
-      <h1>When External Effort Isn't Creating the Expected <em>Momentum</em></h1>
+      <h1>Clarity for the next move when the path forward isn't obvious.</h1>
+      <p class="hero-goldsub">When external effort isn't creating the expected momentum</p>
       <p class="hero-sub">Companies often have the product, team, outreach, distribution, partnerships, and internal confidence already in place. But when the outside response does not match the effort, pressure builds around the next move.</p>
       <p class="hero-sub" style="font-size:0.9rem; font-style:italic; color:rgba(255,255,255,0.4); margin-top:-0.5rem;">My work clarifies what is landing, what is not, and which business development, partnership, positioning, or distribution-supported move may make sense next.</p>
       <div class="hero-btns">
         <a href="https://calendly.com/tom-lifecoaching/call" target="_blank" class="btn-primary">
           Book a Meeting <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-        <a href="mailto:tom@tomscally.com" class="btn-outline">
-          Send an email <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
       </div>
       <div class="hero-tags">
@@ -545,9 +532,6 @@ footer .f-links a:hover { color: var(--gold); }
       <a href="https://calendly.com/tom-lifecoaching/call" target="_blank" class="btn-dark">
         Book a Meeting <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
       </a>
-      <a href="mailto:tom@tomscally.com" class="btn-dark-outline">
-        Send an email <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </a>
     </div>
   </div>
 </section>
@@ -558,33 +542,15 @@ footer .f-links a:hover { color: var(--gold); }
     <div class="f-name">Tom Scally</div>
     <div class="f-links">
       <a href="https://calendly.com/tom-lifecoaching/call" target="_blank">Book a Meeting</a>
-      <a href="mailto:tom@tomscally.com">Send an Email</a>
     </div>
   </div>
 </footer>
-
-<div id="email-toast"></div>
 
 <script>
 const obs = new IntersectionObserver(e => e.forEach(el => { if(el.isIntersecting) el.target.classList.add('v'); }), {threshold:0.12, rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.r').forEach(el => obs.observe(el));
 const n = document.querySelector('nav');
 window.addEventListener('scroll', () => n.classList.toggle('scrolled', scrollY > 50), {passive:true});
-
-// Email buttons: keep mailto for those with a default client, but always copy the address + confirm
-document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
-  a.addEventListener('click', () => {
-    const email = a.getAttribute('href').replace('mailto:', '').split('?')[0];
-    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(email).catch(() => {}); }
-    const t = document.getElementById('email-toast');
-    if (t) {
-      t.textContent = 'Email copied: ' + email;
-      t.classList.add('show');
-      clearTimeout(window.__emailToastTimer);
-      window.__emailToastTimer = setTimeout(() => t.classList.remove('show'), 2600);
-    }
-  });
-});
 </script>
 </body>
 </html>
