@@ -327,6 +327,18 @@ footer .f-links a:hover { color: var(--gold); }
 @media (max-width: 768px) {
   .tom-portrait img { max-width: 290px; }
 }
+
+/* Email copy toast */
+#email-toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--navy); color: #fff; padding: 0.7rem 1.2rem; border-radius: 4px;
+  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.01em;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.28); border: 1px solid var(--gold);
+  opacity: 0; pointer-events: none; z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#email-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+@media (max-width: 768px) { #email-toast { bottom: 80px; } }
 </style>
 </head>
 <body>
@@ -350,7 +362,7 @@ footer .f-links a:hover { color: var(--gold); }
   <div class="container">
     <div class="hero-text">
       <span class="section-tag">Fractional BD &amp; Strategic Partnerships</span>
-      <h1>Clarifying the Gap Between External Effort, Credibility &amp; <em>Momentum</em></h1>
+      <h1>When External Effort Isn't Creating the Expected <em>Momentum</em></h1>
       <p class="hero-sub">Companies often have the product, team, outreach, distribution, partnerships, and internal confidence already in place. But when the outside response does not match the effort, pressure builds around the next move.</p>
       <p class="hero-sub" style="font-size:0.9rem; font-style:italic; color:rgba(255,255,255,0.4); margin-top:-0.5rem;">My work clarifies what is landing, what is not, and which business development, partnership, positioning, or distribution-supported move may make sense next.</p>
       <div class="hero-btns">
@@ -425,11 +437,8 @@ footer .f-links a:hover { color: var(--gold); }
       <p>It also looks at how the company is showing up against competitors, including share of voice, authority mix, original coverage versus syndication, message clarity, and where credibility appears stronger or weaker in the market.</p>
       <p>Used alongside fractional BD and strategic partnership work, Signal Shift helps make external response and competitive positioning more visible before the next move is made.</p>
       <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.25rem;">
-        <a href="https://calendly.com/tom-lifecoaching/call" class="btn-primary" target="_blank">
-          Discuss a Signal Shift Snapshot <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
         <a href="signal-shift-bitcoin-ocean.pdf" class="btn-outline" target="_blank">
-          Discover Signal Shift <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          View a Sample Snapshot <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
       </div>
     </div>
@@ -554,11 +563,28 @@ footer .f-links a:hover { color: var(--gold); }
   </div>
 </footer>
 
+<div id="email-toast"></div>
+
 <script>
 const obs = new IntersectionObserver(e => e.forEach(el => { if(el.isIntersecting) el.target.classList.add('v'); }), {threshold:0.12, rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.r').forEach(el => obs.observe(el));
 const n = document.querySelector('nav');
 window.addEventListener('scroll', () => n.classList.toggle('scrolled', scrollY > 50), {passive:true});
+
+// Email buttons: keep mailto for those with a default client, but always copy the address + confirm
+document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
+  a.addEventListener('click', () => {
+    const email = a.getAttribute('href').replace('mailto:', '').split('?')[0];
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(email).catch(() => {}); }
+    const t = document.getElementById('email-toast');
+    if (t) {
+      t.textContent = 'Email copied: ' + email;
+      t.classList.add('show');
+      clearTimeout(window.__emailToastTimer);
+      window.__emailToastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+    }
+  });
+});
 </script>
 </body>
 </html>
