@@ -137,13 +137,14 @@ nav .nav-cta:hover { background: var(--gold-soft); }
 }
 
 /* === PROBLEM === */
-.problem { padding: 6rem 0; }
+.problem { padding: 6rem 0; background: var(--navy); }
 .problem .container { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 4rem; align-items: start; }
-.problem h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 2.8vw, 2.4rem); font-weight: 700; color: var(--text-dark); line-height: 1.2; margin: 0.75rem 0 1rem; }
+.problem h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 2.8vw, 2.4rem); font-weight: 700; color: var(--white); line-height: 1.2; margin: 0.75rem 0 1rem; }
+.problem p { color: rgba(255,255,255,0.72); }
 .problem-list { list-style: none; margin-top: 1.5rem; }
 .problem-list li {
-  padding: 0.9rem 0 0.9rem 1.5rem; border-bottom: 1px solid var(--border);
-  font-size: 0.92rem; color: var(--text-muted); position: relative;
+  padding: 0.9rem 0 0.9rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.12);
+  font-size: 0.92rem; color: rgba(255,255,255,0.62); position: relative;
 }
 .problem-list li::before { content: ''; position: absolute; left: 0; top: 1.15rem; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
 
@@ -398,7 +399,8 @@ footer .f-links a:hover { color: var(--gold); }
 <section class="problem">
   <div class="container">
     <div class="r">
-      <div class="gold-rule" style="margin:0 0 1.25rem;"></div>
+      <span class="section-tag">Challenge</span>
+      <div class="gold-rule" style="margin:0.75rem 0 1.25rem;"></div>
       <h2 style="font-size:1.55rem; line-height:1.35;">Companies can be active in the market and still not get the response they expected.</h2>
     </div>
     <div class="r">
