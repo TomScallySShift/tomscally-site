@@ -89,8 +89,9 @@ nav .nav-cta:hover { background: var(--gold-soft); }
 
 .hero-text .section-tag { animation: fadeUp 0.7s ease 0.5s both; }
 .hero h1 {
-  font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.8vw, 1.95rem);
   font-weight: 800; color: var(--white); line-height: 1.15; margin: 0.75rem 0 1.25rem;
+  white-space: nowrap;
 }
 .hero h1 em { font-style: italic; color: var(--gold); }
 .hero-sub { font-size: 1.02rem; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 2rem; max-width: 500px; }
@@ -260,6 +261,7 @@ footer .f-links a:hover { color: var(--gold); }
 @media (max-width: 768px) {
   .hero .container { grid-template-columns: 1fr; gap: 2rem; padding-top: 6rem; }
   .hero-photo { order: -1; }
+  .hero h1 { white-space: normal; font-size: clamp(1.8rem, 7vw, 2.3rem); }
   .hero-text .section-tag { letter-spacing: 0.1em; font-size: 0.6rem; white-space: nowrap; }
   .problem .container { grid-template-columns: 1fr; gap: 2rem; }
   .signal .container { grid-template-columns: 1fr; }
@@ -355,18 +357,15 @@ footer .f-links a:hover { color: var(--gold); }
       <h1>External Read. <em>Before the Next Move.</em></h1>
       <p class="serif" style="color:var(--white); font-size:1.3rem; font-weight:600; margin:0.9rem 0 0.1rem;">Tom Scally</p>
       <span class="section-tag" style="display:block; margin:0 0 1.4rem;">Signal Shift</span>
-      <p class="hero-goldsub">Most companies don't have a clear read on how their market activity is actually being received.</p>
+      <p class="hero-goldsub">Companies already active in the market often don't have a clear read on how they're actually being received.</p>
       <p class="hero-sub">Companies may be pursuing partners, sharing news, increasing visibility, or preparing for investor outreach. But when the external response does not match the effort, the next move becomes unclear.</p>
-      <p class="hero-sub">I provide a clear external read on what is landing, what is being missed, and what that means, through Signal Shift, before more time, money, or credibility is committed.</p>
+      <p class="hero-sub">Through Signal Shift, I provide a clear external read on what is landing, what is being missed, and what that means before more time, money, or credibility is committed.</p>
       <div class="hero-btns">
         <a href="https://calendly.com/tscally/call" target="_blank" class="btn-primary">
           Get a Clear Read <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
       </div>
       <p class="hero-sub" style="font-size:0.85rem; font-style:italic; color:rgba(255,255,255,0.4); margin-top:-1rem;">A fast external view of what is resonating, what is being missed, and what it means before you go further.</p>
-      <div class="hero-tags">
-        <span>Positioning</span><span>Partnerships</span><span>Distribution Support</span><span>Relationship-Led Growth</span><span>Signal Shift</span>
-      </div>
     </div>
     <div class="hero-photo">
       <div class="tom-portrait">
@@ -432,8 +431,7 @@ footer .f-links a:hover { color: var(--gold); }
 <section class="bg-section">
   <div class="container">
     <span class="section-tag r">Experience Behind the Read</span>
-    <div class="gold-rule r" style="margin:0.75rem 0 1rem;"></div>
-    <h2 class="r">Experience behind the read.</h2>
+    <div class="gold-rule r" style="margin:0.75rem 0 1.25rem;"></div>
     <p class="r">At NewsDirect, I worked across strategic partnerships, business development, market positioning, and visibility initiatives that contributed to more than $1 million in revenue.</p>
     <p class="r">That experience shapes how I read external response: what is creating traction, where opportunities may be stalling, and which signals deserve attention before the next move.</p>
   </div>
@@ -467,13 +465,13 @@ footer .f-links a:hover { color: var(--gold); }
     <h2 class="r">Designed for companies already active in the market.</h2>
     <p class="r" style="max-width:700px;">Best suited for growth-stage, pre-IPO, public, and market-facing companies with active visibility, partnerships, or investor outreach underway that need a clearer read on whether those efforts are creating credibility and opportunity.</p>
     <p class="r" style="max-width:700px; margin-top:1rem;">It can also support advisors, IR firms, PR firms, and other market-facing partners that want an independent view of how a client or portfolio company is showing up.</p>
-    <p class="r" style="max-width:700px; margin-top:1rem; font-style:italic; color:var(--text-muted);">Some teams just need clarity. Others need direction. Some need execution.</p>
   </div>
 </section>
 
 <!-- ENGAGEMENT TIERS -->
 <section class="tiers-section">
   <div class="container">
+    <p class="r" style="text-align:center; font-style:italic; color:rgba(255,255,255,0.62); font-size:1.05rem; margin-bottom:1.4rem;">Some teams just need clarity. Others need direction. Some need execution.</p>
     <span class="section-tag" style="text-align:center;display:block;">Ways to Work Together</span>
     <h2 style="margin-bottom:0.6rem;">A practical path from visibility diagnosis to growth alignment to business development execution.</h2>
     <div class="tiers" style="margin-top:2.5rem;">
