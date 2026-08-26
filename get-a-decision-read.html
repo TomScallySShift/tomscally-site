@@ -263,14 +263,17 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
 .choix label{display:flex; align-items:flex-start; gap:.7rem; cursor:pointer;
   font-size:var(--t-body); color:var(--ink-2)}
 .choix input{margin-top:.4rem; accent-color:var(--gold); width:1rem; height:1rem}
-.trio{display:grid; grid-template-columns:repeat(auto-fit,minmax(12rem,1fr)); gap:1.25rem}
+.trio{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.25rem}
+.trio > div:last-child{grid-column:1 / -1}
+@media (max-width:640px){.trio{grid-template-columns:1fr}}
 .trio label{display:block; font-family:"DM Sans",sans-serif; font-size:var(--t-label);
   font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--or-encre);
   margin-bottom:.5rem}
-.envoi{margin-top:2.5rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.5rem}
+.envoi{margin-top:2.5rem; display:block; text-align:center}
+.envoi button.cta{display:block; width:100%; text-align:center}
 button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weight:700;
   letter-spacing:.08em; text-transform:uppercase; padding:1.05rem 2rem}
-.envoi__note{font-size:var(--t-note); color:var(--ink-3); display:block; white-space:nowrap}
+.envoi__note{font-size:var(--t-note); color:var(--ink-3); display:block; margin-top:1.15rem}
 .merci{margin-top:1.75rem; padding:1.15rem 1.25rem; border-left:2px solid var(--gold);
   background:#fff; font-size:var(--t-note); color:var(--ink-2); display:none}
 .merci.vu{display:block}
@@ -286,24 +289,19 @@ button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weig
 </head>
 <body>
 <nav class="barre"><a class="barre__nom" href="/">Tom Scally <span>Signal Shift</span></a><div class="barre__liens"><a href="/about-tom.html">About Tom</a><a href="/faq.html">FAQ</a><a class="barre__btn" href="/get-a-decision-read.html" aria-current="page">Get a Decision Read</a></div></nav>
-<section class="bande bande--navy">
+<section class="bande bande--navy" style="padding-bottom:clamp(2.25rem,4vw,3.25rem)">
   <div class="dedans prose">
     <span class="etiq">Get a Decision Read</span>
-    <h1 style="font-size:clamp(2.25rem,5.4vw,3.5rem)">Tell us the decision.</h1>
+    <h1 style="font-size:clamp(2rem,4.6vw,3rem)">What decision are you considering?</h1>
   </div>
 </section>
 
-<section class="bande bande--creme">
+<section class="bande bande--creme" style="padding-top:clamp(2.25rem,4vw,3.25rem)">
   <div class="dedans" style="max-width:44rem">
     <p class="confid"><span aria-hidden="true">&#128274;</span> Everything below stays
       between us. Nothing here is shared, published, or used as a case study without your
       explicit sign-off.</p>
     <form id="intake" novalidate>
-      <div class="q">
-        <label for="q1">What decision are you considering?</label>
-        <input type="text" id="q1" name="What decision are you considering?"
-               placeholder="In one line">
-      </div>
       <div class="q">
         <span class="titre">Which decision lane best describes it?</span>
 <div class="choix"><label><input type="radio" name="Which decision lane best describes it?" value="Market &amp; Launch"><span>Market &amp; Launch<small>Brand / communications push, product or feature launch</small></span></label><label><input type="radio" name="Which decision lane best describes it?" value="Capital &amp; Investor Narrative"><span>Capital &amp; Investor Narrative<small>Fundraise or investor narrative</small></span></label><label><input type="radio" name="Which decision lane best describes it?" value="Partnerships &amp; Commercial Growth"><span>Partnerships &amp; Commercial Growth<small>Major partnership or commercial initiative</small></span></label></div>
