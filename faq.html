@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About Tom Scally | Signal Shift</title>
-<meta name="description" content="Executive coaching, business development, strategic partnerships and market positioning. Why Tom Scally built Signal Shift: an independent outside-in read before leadership commits.">
+<title>FAQ | Signal Shift</title>
+<meta name="description" content="Questions frequentes sur Signal Shift: ce que contient un Decision Snapshot, ce qui le distingue du conseil et de l'etude de marche, les delais et la confidentialite.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
@@ -208,6 +208,32 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
   padding:2rem var(--pad); text-align:center; font-size:var(--t-note); color:var(--sur-navy-3)}
 .pied span{display:block; max-width:46em; margin:0 auto}
 .pied b{color:var(--gold); font-weight:600}
+.confid{display:flex; gap:.6rem; align-items:flex-start; margin:0 0 2rem;
+  padding:.85rem 1rem; background:rgba(13,27,42,.045);
+  border-left:2px solid var(--gold); color:var(--ink-soft); font-size:.9rem;
+  line-height:1.6}
+.choix span small{display:block; margin-top:.2rem; font-size:.78rem; font-weight:400;
+  color:var(--ink-soft); line-height:1.45}
+.faq-mini{margin-top:3rem; border-top:1px solid rgba(13,27,42,.12); padding-top:1.6rem}
+.faq-mini details{border-bottom:1px solid rgba(13,27,42,.12)}
+.faq-mini summary{cursor:pointer; padding:.95rem 0; font-weight:700; color:var(--navy);
+  font-size:.95rem; list-style:none; display:flex; justify-content:space-between;
+  gap:1rem; align-items:center}
+.faq-mini summary::-webkit-details-marker{display:none}
+.faq-mini summary::after{content:"+"; color:var(--gold); font-weight:700;
+  font-size:1.15rem; line-height:1}
+.faq-mini details[open] summary::after{content:"\2212"}
+.faq-mini p{margin:0 0 1.1rem; color:var(--ink-soft); font-size:.94rem; line-height:1.7}
+.faq-liste details{border-bottom:1px solid rgba(13,27,42,.12)}
+.faq-liste summary{cursor:pointer; padding:1.15rem 0; font-weight:700; color:var(--navy);
+  font-size:1.02rem; line-height:1.45; list-style:none; display:flex;
+  justify-content:space-between; gap:1.2rem; align-items:flex-start}
+.faq-liste summary::-webkit-details-marker{display:none}
+.faq-liste summary::after{content:"+"; color:var(--gold); font-weight:700;
+  font-size:1.3rem; line-height:1.2; flex:none}
+.faq-liste details[open] summary::after{content:"\2212"}
+.faq-liste p{margin:0 0 1.4rem; color:var(--ink-soft); font-size:.98rem; line-height:1.75;
+  max-width:62ch}
 </style>
 <style>
 /* --- LA BARRE DE NAVIGATION (25/08, demande de Tom: deux entrees, pas plus).
@@ -226,21 +252,38 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
 .barre__liens a[aria-current="page"]{color:var(--gold); border-bottom-color:var(--gold)}
 </style>
 
-
 <style>
-/* --- LE HAUT DE SA PAGE: ses mots a gauche, sa photo a droite, comme sur la page de vente
-   pour que les deux ecrans se reconnaissent. Sous 960 px la photo passe dessous. */
-.at-haut{display:grid; grid-template-columns:1fr minmax(240px,380px); gap:clamp(2rem,5vw,4rem);
-  align-items:end}
-@media(max-width:959px){.at-haut{grid-template-columns:1fr}
-  .at-haut .portrait{order:-1; justify-content:flex-start}}
-.portrait{position:relative; display:flex; justify-content:center; align-items:flex-end}
-.portrait::before{content:""; position:absolute; bottom:4%; left:50%;
-  transform:translateX(-50%); width:min(100%,340px); aspect-ratio:1; border-radius:50%;
-  background:radial-gradient(circle,rgba(201,168,76,.20) 0%,rgba(201,168,76,0) 68%)}
-.portrait img{position:relative; z-index:1; width:100%; max-width:380px; height:auto;
-  display:block}
-@media(max-width:959px){.portrait img{max-width:260px}}
+/* --- LA PRISE DE BRIEF. Une question par bloc, jamais deux colonnes: on repond en
+   descendant, et chaque reponse se relit d'un coup d'oeil avant d'envoyer. */
+.q{border-top:1px solid var(--bord); padding:2rem 0}
+.q:first-of-type{border-top:0; padding-top:0}
+.q > label,.q .titre{display:block; font-family:"Playfair Display",Georgia,serif;
+  font-size:1.25rem; font-weight:600; color:var(--ink); margin:0 0 1rem; line-height:1.3}
+/* UN CHAMP BLANC SUR UN FOND CREME NE SE VOIT PAS (Paul, 25/08: *"des boites blanches
+   dans un fond blanc, c'est super bizarre"*). Le fond de page est a #faf9f6 et le champ a
+   #ffffff: deux points d'ecart, l'oeil ne trouve pas le bord. On lui donne le trait des
+   TITRES, en deux pixels: le champ devient un objet, pas une nuance. */
+.q input[type=text],.q input[type=email],.q textarea{width:100%; font:inherit;
+  color:var(--ink); background:#fff; border:2px solid var(--ink); border-radius:2px;
+  padding:.85rem 1rem}
+.q textarea{min-height:8rem; resize:vertical}
+.q input:focus,.q textarea:focus{outline:2px solid var(--gold); outline-offset:2px;
+  border-color:var(--gold)}
+.choix{display:flex; flex-direction:column; gap:.65rem}
+.choix label{display:flex; align-items:flex-start; gap:.7rem; cursor:pointer;
+  font-size:var(--t-body); color:var(--ink-2)}
+.choix input{margin-top:.4rem; accent-color:var(--gold); width:1rem; height:1rem}
+.trio{display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1.25rem}
+.trio label{display:block; font-family:"DM Sans",sans-serif; font-size:var(--t-label);
+  font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--or-encre);
+  margin-bottom:.5rem}
+.envoi{margin-top:2.5rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.5rem}
+button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase; padding:1.05rem 2rem}
+.prix{font-size:var(--t-note); color:var(--ink-3)}
+.merci{margin-top:1.75rem; padding:1.15rem 1.25rem; border-left:2px solid var(--gold);
+  background:#fff; font-size:var(--t-note); color:var(--ink-2); display:none}
+.merci.vu{display:block}
 </style>
 
 <style>
@@ -252,102 +295,60 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
 </style>
 </head>
 <body>
-<nav class="barre"><a class="barre__nom" href="/">Tom Scally <span>Signal Shift</span></a><div class="barre__liens"><a href="/about-tom.html" aria-current="page">About Tom</a><a href="/faq.html">FAQ</a><a class="barre__btn" href="/get-a-decision-read.html">Get a Decision Read</a></div></nav>
+<nav class="barre"><a class="barre__nom" href="/">Tom Scally <span>Signal Shift</span></a><div class="barre__liens"><a href="/about-tom.html">About Tom</a><a href="/faq.html" aria-current="page">FAQ</a><a class="barre__btn" href="/get-a-decision-read.html">Get a Decision Read</a></div></nav>
 
 <section class="bande bande--navy">
-  <div class="dedans at-haut">
-    <div class="prose">
-      <span class="etiq">About Tom Scally</span>
-      <h1 style="font-size:clamp(2.25rem,5.4vw,3.5rem)">Seeing what others may be too close
-        to see.</h1>
-      <p class="lead" style="margin-top:1.75rem">Founder of Signal Shift. Executive coaching,
-        business development, strategic partnerships, market positioning.</p>
-      <div class="boutons">
-        <a class="cta cta--plein" href="/get-a-decision-read.html">Get a Decision Read →</a>
-      </div>
-    </div>
-    <div class="portrait">
-      <img src="tom.png" alt="Tom Scally, founder of Signal Shift" width="620" height="774">
-    </div>
-  </div></div>
+  <div class="dedans prose">
+    <span class="etiq">FAQ</span>
+    <h1 style="font-size:clamp(2.25rem,5.4vw,3.5rem)">Questions we get asked.</h1>
+  </div>
 </section>
 
 <section class="bande bande--creme">
-  <div class="dedans"><div class="prose">
-    <p class="lead">My career has taken me through executive coaching, business development,
-      strategic partnerships, market positioning, communications, and growth.</p>
-    <p>On the surface, those may look like different disciplines. But the work has
-      consistently come back to the same thing:</p>
-    <p><strong>Helping people and companies see what they may be missing before it costs
-      them time, money, or opportunity.</strong></p>
-    <p>As an executive coach, that meant helping leaders step outside their own perspective,
-      challenge assumptions, and make clearer decisions.</p>
-    <p>In business development and strategic partnerships, it meant identifying opportunities
-      others hadn't pursued, finding ways into markets and relationships, and helping turn
-      those openings into revenue.</p>
-    <p>In market positioning and communications, it meant looking beyond activity to
-      understand whether the market was actually responding, and whether a company's message,
-      visibility, and strategy were creating commercial momentum.</p>
-    <p>Across all of it, I kept seeing the same problem.</p>
-    <p class="lead" style="margin-top:2rem">The closer you are to a decision, the harder it
-      can be to see it from the outside.</p>
-    <p>Leadership teams have information outsiders don't. They know their customers,
-      financials, products, people, history, and strategy.</p>
-    <p>That's an enormous advantage.</p>
-    <p>It can also create blind spots.</p>
-    <p>A strategy can make complete sense internally while the market is moving in another
-      direction. A company can continue investing in something because the original
-      assumptions haven't been independently challenged. An opportunity can sit in plain
-      sight because everyone is focused on executing the existing plan.</p>
-    <p>And sometimes the most valuable decision isn't what to do next.</p>
-    <p><strong>It's recognizing what not to do.</strong></p>
-  </div></div>
-</section>
-
-<section class="bande bande--sable">
-  <div class="dedans"><div class="prose">
-    <span class="etiq">Why I Built Signal Shift</span>
-    <h2>Another source of evidence in the room.</h2>
-    <p style="margin-top:1.75rem">Signal Shift grew out of that experience.</p>
-    <p>It provides an independent, outside-in read before leadership commits significant
-      time, money, credibility, or momentum to an important commercial decision.</p>
-    <p>The objective isn't to replace leadership judgment or pretend that every business
-      decision can be reduced to an algorithm.</p>
-    <p>It's to bring another source of evidence into the room.</p>
-    <p>Signal Shift looks outside the company, at the market, competitors, audiences,
-      positioning, timing, proof and other relevant signals, and asks a straightforward
-      question:</p>
-    <blockquote style="font-size:1.35rem; font-style:italic; margin:2rem 0; padding-left:1.25rem;
-      border-left:2px solid var(--gold)">Does what is happening outside the company support
-      what we believe inside it?</blockquote>
-    <p>Sometimes the evidence supports the move.</p>
-    <p>Sometimes it suggests an adjustment.</p>
-    <p>And sometimes it reveals a reason to reconsider the move altogether.</p>
-    <p>That's why every Decision Read ultimately points toward one of three conclusions:</p>
-    <p><strong>Proceed. Adjust. Reconsider.</strong></p>
-  </div></div>
-</section>
-
-<section class="bande bande--navy">
-  <div class="dedans"><div class="prose">
-    <span class="etiq">The Human Decision Layer</span>
-    <h2>Outside evidence. Commercial judgment. Better decisions.</h2>
-    <p style="margin-top:1.75rem">Technology can gather and analyze more information than
-      ever before. That's valuable.</p>
-    <p>But evidence still has to be interpreted in the context of a real company making a
-      real decision.</p>
-    <p>My role is to combine that outside evidence with commercial judgment developed across
-      years of helping leaders, building relationships, creating revenue opportunities,
-      evaluating market positioning, and seeing where strategies stall.</p>
-    <p>I don't make the decision for leadership.</p>
-    <p><strong>I help make sure leadership has seen what it needs to see before making
-      it.</strong></p>
-    <p class="note" style="margin-top:2.5rem">Tom Scally<br>Founder, Signal Shift</p>
-    <div class="boutons">
+  <div class="dedans" style="max-width:48rem">
+    <div class="faq-liste">
+      <details open>
+        <summary>Why can't I just ask ChatGPT whether my strategy will work?</summary>
+        <p>You can, and it's useful for reasoning through what you already believe. What it won't do is independently check whether that belief holds up against what's actually happening outside your company right now — competitors, timing, market conditions. Signal Shift does that check, and someone stands behind the answer.</p>
+      </details>
+      <details>
+        <summary>What information do you need from us?</summary>
+        <p>To start: what the decision is, which lane it falls under, your timeline, and what's at stake. For the full Snapshot, a short conversation to make sure the evidence gathered is actually relevant to your specific situation — not a long questionnaire.</p>
+      </details>
+      <details>
+        <summary>How is this different from consulting or market research?</summary>
+        <p>Consulting typically helps shape the strategy. Market research gives you information to interpret. Signal Shift starts with a decision you're already considering, tests it against outside evidence, and gives you a direct read: Proceed, Adjust, or Reconsider — with the reasoning shown.</p>
+      </details>
+      <details>
+        <summary>Are you predicting whether our decision will succeed?</summary>
+        <p>No. We don't produce a probability or a score we can't defend. The Snapshot tells you how well-supported the decision is right now, based on real evidence — not what will happen in the future.</p>
+      </details>
+      <details>
+        <summary>What does the $1,000 Decision Snapshot actually include?</summary>
+        <p>A written read on one specific decision: what the evidence supports, what's uncertain, what's exposed if a key assumption is wrong, and a Proceed / Adjust / Reconsider recommendation with the reasoning behind it.</p>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <p>3–5 business days after the intake conversation.</p>
+      </details>
+      <details>
+        <summary>What information remains confidential?</summary>
+        <p>Everything you share stays between us. Nothing is published, referenced, or used as a case study without your explicit sign-off first.</p>
+      </details>
+      <details>
+        <summary>What happens after the Snapshot?</summary>
+        <p>You get the written read directly. If it points to Adjust or Reconsider, that's yours to act on however you choose — there's no obligation to go further. If you want to talk through the implications directly, that's the Decision Working Session, a separate step.</p>
+      </details>
+    </div>
+    <div class="boutons" style="margin-top:2.6rem">
       <a class="cta cta--plein" href="/get-a-decision-read.html">Get a Decision Read →</a>
     </div>
-  </div></div>
+  </div>
 </section>
+
+<p class="pied">
+<span>Outside evidence. Commercial judgment. Better decisions. — <b style="white-space:nowrap">Tom Scally</b></span>
+</p>
 
 </body>
 </html>

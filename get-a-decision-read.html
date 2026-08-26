@@ -208,6 +208,22 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
   padding:2rem var(--pad); text-align:center; font-size:var(--t-note); color:var(--sur-navy-3)}
 .pied span{display:block; max-width:46em; margin:0 auto}
 .pied b{color:var(--gold); font-weight:600}
+.confid{display:flex; gap:.6rem; align-items:flex-start; margin:0 0 2rem;
+  padding:.85rem 1rem; background:rgba(13,27,42,.045);
+  border-left:2px solid var(--gold); color:var(--ink-soft); font-size:.9rem;
+  line-height:1.6}
+.choix span small{display:block; margin-top:.2rem; font-size:.78rem; font-weight:400;
+  color:var(--ink-soft); line-height:1.45}
+.faq-mini{margin-top:3rem; border-top:1px solid rgba(13,27,42,.12); padding-top:1.6rem}
+.faq-mini details{border-bottom:1px solid rgba(13,27,42,.12)}
+.faq-mini summary{cursor:pointer; padding:.95rem 0; font-weight:700; color:var(--navy);
+  font-size:.95rem; list-style:none; display:flex; justify-content:space-between;
+  gap:1rem; align-items:center}
+.faq-mini summary::-webkit-details-marker{display:none}
+.faq-mini summary::after{content:"+"; color:var(--gold); font-weight:700;
+  font-size:1.15rem; line-height:1}
+.faq-mini details[open] summary::after{content:"\2212"}
+.faq-mini p{margin:0 0 1.1rem; color:var(--ink-soft); font-size:.94rem; line-height:1.7}
 </style>
 <style>
 /* --- LA BARRE DE NAVIGATION (25/08, demande de Tom: deux entrees, pas plus).
@@ -247,14 +263,14 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
 .choix label{display:flex; align-items:flex-start; gap:.7rem; cursor:pointer;
   font-size:var(--t-body); color:var(--ink-2)}
 .choix input{margin-top:.4rem; accent-color:var(--gold); width:1rem; height:1rem}
-.trio{display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1.25rem}
+.trio{display:grid; grid-template-columns:repeat(auto-fit,minmax(12rem,1fr)); gap:1.25rem}
 .trio label{display:block; font-family:"DM Sans",sans-serif; font-size:var(--t-label);
   font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--or-encre);
   margin-bottom:.5rem}
 .envoi{margin-top:2.5rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.5rem}
 button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weight:700;
   letter-spacing:.08em; text-transform:uppercase; padding:1.05rem 2rem}
-.prix{font-size:var(--t-note); color:var(--ink-3)}
+.envoi__note{font-size:var(--t-note); color:var(--ink-3); display:block; white-space:nowrap}
 .merci{margin-top:1.75rem; padding:1.15rem 1.25rem; border-left:2px solid var(--gold);
   background:#fff; font-size:var(--t-note); color:var(--ink-2); display:none}
 .merci.vu{display:block}
@@ -269,18 +285,19 @@ button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weig
 </style>
 </head>
 <body>
-<nav class="barre"><a class="barre__nom" href="/">Tom Scally <span>Signal Shift</span></a><div class="barre__liens"><a href="/about-tom.html">About Tom</a><a class="barre__btn" href="/get-a-decision-read.html" aria-current="page">Get a Decision Read</a></div></nav>
+<nav class="barre"><a class="barre__nom" href="/">Tom Scally <span>Signal Shift</span></a><div class="barre__liens"><a href="/about-tom.html">About Tom</a><a href="/faq.html">FAQ</a><a class="barre__btn" href="/get-a-decision-read.html" aria-current="page">Get a Decision Read</a></div></nav>
 <section class="bande bande--navy">
   <div class="dedans prose">
     <span class="etiq">Get a Decision Read</span>
     <h1 style="font-size:clamp(2.25rem,5.4vw,3.5rem)">Tell us the decision.</h1>
-    <p class="lead" style="margin-top:1.5rem">A short intake, then Tom reviews it himself and
-      comes back to you on whether a Decision Read is the right instrument for this move.</p>
   </div>
 </section>
 
 <section class="bande bande--creme">
   <div class="dedans" style="max-width:44rem">
+    <p class="confid"><span aria-hidden="true">&#128274;</span> Everything below stays
+      between us. Nothing here is shared, published, or used as a case study without your
+      explicit sign-off.</p>
     <form id="intake" novalidate>
       <div class="q">
         <label for="q1">What decision are you considering?</label>
@@ -289,11 +306,11 @@ button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weig
       </div>
       <div class="q">
         <span class="titre">Which decision lane best describes it?</span>
-<div class="choix"><label><input type="radio" name="Which decision lane best describes it?" value="Market &amp; Launch"><span>Market &amp; Launch</span></label><label><input type="radio" name="Which decision lane best describes it?" value="Capital &amp; Investor Narrative"><span>Capital &amp; Investor Narrative</span></label><label><input type="radio" name="Which decision lane best describes it?" value="Partnerships &amp; Commercial Growth"><span>Partnerships &amp; Commercial Growth</span></label></div>
+<div class="choix"><label><input type="radio" name="Which decision lane best describes it?" value="Market &amp; Launch"><span>Market &amp; Launch<small>Brand / communications push, product or feature launch</small></span></label><label><input type="radio" name="Which decision lane best describes it?" value="Capital &amp; Investor Narrative"><span>Capital &amp; Investor Narrative<small>Fundraise or investor narrative</small></span></label><label><input type="radio" name="Which decision lane best describes it?" value="Partnerships &amp; Commercial Growth"><span>Partnerships &amp; Commercial Growth<small>Major partnership or commercial initiative</small></span></label></div>
       </div>
       <div class="q">
-        <label for="q3">Briefly describe the decision.</label>
-        <textarea id="q3" name="Briefly describe the decision."></textarea>
+        <label for="q3">Briefly describe the decision</label>
+        <textarea id="q3" name="Briefly describe the decision"></textarea>
       </div>
       <div class="q">
         <span class="titre">When do you expect to make it?</span>
@@ -304,6 +321,7 @@ button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weig
 <div class="choix"><label><input type="radio" name="What's potentially at stake?" value="Under $25K"><span>Under $25K</span></label><label><input type="radio" name="What's potentially at stake?" value="$25K&ndash;$100K"><span>$25K&ndash;$100K</span></label><label><input type="radio" name="What's potentially at stake?" value="$100K&ndash;$500K"><span>$100K&ndash;$500K</span></label><label><input type="radio" name="What's potentially at stake?" value="$500K+"><span>$500K+</span></label><label><input type="radio" name="What's potentially at stake?" value="Primarily credibility/reputation rather than direct spend"><span>Primarily credibility/reputation rather than direct spend</span></label></div>
       </div>
       <div class="q">
+        <span class="titre">Your details</span>
         <div class="trio">
           <div><label for="nom">Name</label>
             <input type="text" id="nom" name="Name"></div>
@@ -314,11 +332,32 @@ button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weig
         </div>
       </div>
       <div class="envoi">
-        <button class="cta cta--plein" type="submit">Submit for review</button>
-        <span class="prix">Decision Snapshots start at $1,000.</span>
+        <button class="cta cta--plein" type="submit">SUBMIT FOR REVIEW</button>
+        <span class="envoi__note">Decision Snapshots start at $1,000.</span>
       </div>
       <div class="merci" id="merci"></div>
     </form>
+
+    <div class="faq-mini">
+      <details>
+        <summary>What information remains confidential?</summary>
+        <p>Everything you share stays between us. Nothing is published, referenced, or
+          used as a case study without your explicit sign-off first.</p>
+      </details>
+      <details>
+        <summary>What does the $1,000 Decision Snapshot actually include?</summary>
+        <p>A written read on one specific decision: what the evidence supports, what's
+          uncertain, what's exposed if a key assumption is wrong, and a Proceed / Adjust /
+          Reconsider recommendation with the reasoning behind it.</p>
+      </details>
+      <details>
+        <summary>What happens after the Snapshot?</summary>
+        <p>You get the written read directly. If it points to Adjust or Reconsider, that's
+          yours to act on however you choose — there's no obligation to go further. If you
+          want to talk through the implications directly, that's the Decision Working
+          Session, a separate step.</p>
+      </details>
+    </div>
   </div>
 </section>
 
