@@ -358,40 +358,80 @@ button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weig
 </section>
 
 <script>
-/* L'ENVOI SANS SERVEUR, ET SANS PROMESSE EN L'AIR (25/08).
-   La page est servie par GitHub Pages: il n'y a personne pour recevoir un formulaire. On
-   ne fait donc pas semblant. Au clic, on compose le message, on le met dans le
-   presse-papier ET on ouvre le courrier prerempli: si le visiteur n'a pas de client mail
-   par defaut, le piege deja vecu sur ce site en juin, il lui reste le texte copie et
-   l'adresse a l'ecran. */
+/* LE FORMULAIRE ARRIVE CHEZ NOUS, ET LE COURRIER PREREMPLI RESTE LE FILET (27/08).
+
+   La page est servie par GitHub Pages: personne n'y recoit un envoi. On poste donc vers
+   notre serveur, qui RANGE la demande puis l'envoie a Tom. Si ce serveur ne repond pas,
+   on retombe sur le geste d'avant - presse-papier plus courrier prerempli - au lieu de
+   perdre la demande: une porte qui tombe ne doit pas coûter un client. */
 (function () {
   var f = document.getElementById('intake');
   var m = document.getElementById('merci');
+  var bouton = f.querySelector('button[type=submit], button:not([type])');
   var ADRESSE = 'tom@tomscally.com';
-  f.addEventListener('submit', function (ev) {
-    ev.preventDefault();
-    var lignes = [];
+  var PORTE = 'https://vps-d2211dd3.vps.ovh.net/formulaire';
+
+  function reponses() {
+    var champs = {};
     f.querySelectorAll('input[type=text],input[type=email],textarea').forEach(function (el) {
-      if (el.value.trim()) { lignes.push(el.name + '\n' + el.value.trim()); }
+      if (el.value.trim()) { champs[el.name] = el.value.trim(); }
     });
-    var vus = {};
     f.querySelectorAll('input[type=radio]:checked').forEach(function (el) {
-      if (!vus[el.name]) { vus[el.name] = 1; lignes.push(el.name + '\n' + el.value); }
+      if (!champs[el.name]) { champs[el.name] = el.value; }
     });
-    if (!lignes.length) {
-      m.textContent = 'Add at least the decision and your email, then submit again.';
-      m.classList.add('vu');
-      return;
-    }
-    var texte = lignes.join('\n\n');
+    return champs;
+  }
+
+  function dire(html) { m.innerHTML = html; m.classList.add('vu'); }
+
+  function repli(champs) {
+    var texte = Object.keys(champs).map(function (k) {
+      return k + '\n' + champs[k];
+    }).join('\n\n');
     if (navigator.clipboard) { navigator.clipboard.writeText(texte).catch(function () {}); }
     window.location.href = 'mailto:' + ADRESSE
       + '?subject=' + encodeURIComponent('Decision Read request')
       + '&body=' + encodeURIComponent(texte);
-    m.innerHTML = 'Your answers are copied to your clipboard, and a message to <strong>'
-      + ADRESSE + '</strong> should be opening. If nothing opened, paste them into an email '
-      + 'to that address and Tom will come back to you.';
-    m.classList.add('vu');
+    dire('Your answers are copied to your clipboard, and a message to <strong>'
+      + ADRESSE + '</strong> should be opening. If nothing opened, paste them into an '
+      + 'email to that address and Tom will come back to you.');
+  }
+
+  f.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var champs = reponses();
+    if (!Object.keys(champs).length) {
+      dire('Add at least the decision and your email, then submit again.');
+      return;
+    }
+    if (bouton) { bouton.disabled = true; bouton.dataset.mot = bouton.textContent;
+                  bouton.textContent = 'Sending...'; }
+    var fini = false;
+    var minuteur = setTimeout(function () {
+      if (!fini) { fini = true; rendre(); repli(champs); }
+    }, 8000);
+    function rendre() {
+      clearTimeout(minuteur);
+      if (bouton) { bouton.disabled = false;
+                    bouton.textContent = bouton.dataset.mot || 'Submit'; }
+    }
+    fetch(PORTE, {
+      method: 'POST',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify({cible: 'tom', champs: champs})
+    }).then(function (r) {
+      return r.ok ? r.json() : Promise.reject(new Error('refus'));
+    }).then(function (x) {
+      if (fini) { return; }
+      fini = true; rendre();
+      if (!x || !x.ok) { return repli(champs); }
+      f.reset();
+      dire('Thank you. Your request has reached Tom, and he will come back to you '
+        + 'directly at the email address you gave.');
+    }).catch(function () {
+      if (fini) { return; }
+      fini = true; rendre(); repli(champs);
+    });
   });
 })();
 </script>
