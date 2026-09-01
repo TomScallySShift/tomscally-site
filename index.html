@@ -130,6 +130,22 @@ h3{font-size:1.1875rem; font-weight:600; letter-spacing:0}
 .souligne{border-left:2px solid var(--gold); padding-left:1.5rem; margin-top:2.75rem;
   max-width:var(--mesure); font-size:var(--t-lead); line-height:1.55; color:var(--ink)}
 
+/* La chaine des quatre temps (demande de Tom, 31/08). Son fichier la rendait en
+   police a chasse fixe avec des couleurs qu'on n'a pas: ici c'est la meme suite,
+   dans la typographie de la page. L'or ne sert que dans sa version encree, la seule
+   qui passe le contraste sur fond creme. */
+.chaine{margin-top:2.5rem; background:#fff; border:1px solid var(--bord); border-radius:3px;
+  padding:clamp(1.5rem,2.6vw,2.25rem); max-width:var(--mesure)}
+.chaine ol{list-style:none; margin:0; padding:0}
+.chaine li{font-family:"DM Sans",sans-serif; font-size:var(--t-label); font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--ink); line-height:1.5}
+.chaine li + li{margin-top:.5rem}
+.chaine li::before{content:"\2193"; display:block; color:var(--gold); font-weight:400;
+  letter-spacing:0; font-size:1rem; line-height:1.6; margin:.35rem 0}
+.chaine li:first-child::before{content:none}
+.chaine .temps--preuve{color:var(--or-encre)}
+.chaine .temps--expose{color:var(--navy-light)}
+
 /* ============================ AVANT / APRES ============================ */
 .volet h3{font-size:1.5rem; font-family:"Playfair Display",serif; font-weight:700;
   line-height:1.2; margin:.35rem 0 .9rem}
@@ -324,6 +340,14 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
     <p class="souligne">Signal Shift tests whether current external evidence supports
       internal confidence — before significant resources are committed, and again after, to
       see whether the market responded as expected.</p>
+    <div class="chaine">
+      <ol>
+        <li>See what's missing</li>
+        <li class="temps--preuve">Test it against outside evidence</li>
+        <li class="temps--expose">Understand what's exposed</li>
+        <li>Make a more informed decision</li>
+      </ol>
+    </div>
   </div>
 </section>
 

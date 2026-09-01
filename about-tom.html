@@ -129,6 +129,27 @@ h3{font-size:1.1875rem; font-weight:600; letter-spacing:0}
 .souligne{border-left:2px solid var(--gold); padding-left:1.5rem; margin-top:2.75rem;
   max-width:var(--mesure); font-size:var(--t-lead); line-height:1.55; color:var(--ink)}
 
+/* La chaine des quatre temps, telle que Tom l'a ecrite. Chez lui elle est en police a
+   chasse fixe sur fond sombre; ici c'est la meme suite dans la typographie du site. */
+.chaine{margin-top:2.5rem; background:#fff; border:1px solid var(--bord); border-radius:3px;
+  padding:clamp(1.5rem,2.6vw,2.25rem); max-width:var(--mesure)}
+.bande--navy .chaine{background:rgba(255,255,255,.05); border-color:var(--bord-navy)}
+.chaine ol{list-style:none; margin:0; padding:0}
+.chaine li{line-height:1.5}
+.chaine li + li{margin-top:.5rem}
+.chaine b{display:block; font-family:"DM Sans",sans-serif; font-size:var(--t-label);
+  font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--ink)}
+.chaine span{display:block; font-size:var(--t-note); color:var(--ink-3); margin-top:.2rem}
+.bande--navy .chaine b{color:var(--sur-navy)}
+.bande--navy .chaine span{color:var(--sur-navy-2)}
+.chaine li::before{content:"\2193"; display:block; color:var(--gold); font-size:1rem;
+  line-height:1.6; margin:.35rem 0}
+.chaine li:first-child::before{content:none}
+.chaine .temps--produit b{color:var(--or-encre)}
+.chaine .temps--moment b{color:var(--navy-light)}
+.bande--navy .chaine .temps--produit b{color:var(--gold)}
+.bande--navy .chaine .temps--moment b{color:var(--sur-navy)}
+
 /* ============================ AVANT / APRES ============================ */
 .volet h3{font-size:1.5rem; font-family:"Playfair Display",serif; font-weight:700;
   line-height:1.2; margin:.35rem 0 .9rem}
@@ -257,13 +278,13 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
 <section class="bande bande--navy">
   <div class="dedans at-haut">
     <div class="prose">
-      <span class="etiq">About Tom Scally</span>
-      <h1 style="font-size:clamp(2.25rem,5.4vw,3.5rem)">Seeing what others may be too close
-        to see.</h1>
-      <p class="lead" style="margin-top:1.75rem">Founder of Signal Shift. Executive coaching,
-        business development, strategic partnerships, market positioning.</p>
+      <span class="etiq">About</span>
+      <h1 style="font-size:clamp(2.25rem,5.4vw,3.5rem)">Tom Scally</h1>
+      <p class="lead" style="margin-top:1.75rem">Tom Scally works with leadership teams at
+        the intersection of market positioning, strategic partnerships, business
+        development, and commercial growth.</p>
       <div class="boutons">
-        <a class="cta cta--plein" href="/get-a-decision-read.html">Get a Decision Read →</a>
+        <a class="cta cta--plein" href="/get-a-decision-read.html">Get a Decision Read &rarr;</a>
       </div>
     </div>
     <div class="portrait">
@@ -274,77 +295,58 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
 
 <section class="bande bande--creme">
   <div class="dedans"><div class="prose">
-    <p class="lead">My career has taken me through executive coaching, business development,
-      strategic partnerships, market positioning, communications, and growth.</p>
-    <p>On the surface, those may look like different disciplines. But the work has
-      consistently come back to the same thing:</p>
-    <p><strong>Helping people and companies see what they may be missing before it costs
-      them time, money, or opportunity.</strong></p>
-    <p>As an executive coach, that meant helping leaders step outside their own perspective,
-      challenge assumptions, and make clearer decisions.</p>
-    <p>In business development and strategic partnerships, it meant identifying opportunities
-      others hadn't pursued, finding ways into markets and relationships, and helping turn
-      those openings into revenue.</p>
-    <p>In market positioning and communications, it meant looking beyond activity to
-      understand whether the market was actually responding, and whether a company's message,
-      visibility, and strategy were creating commercial momentum.</p>
-    <p>Across all of it, I kept seeing the same problem.</p>
-    <p class="lead" style="margin-top:2rem">The closer you are to a decision, the harder it
-      can be to see it from the outside.</p>
-    <p>Leadership teams have information outsiders don't. They know their customers,
-      financials, products, people, history, and strategy.</p>
-    <p>That's an enormous advantage.</p>
-    <p>It can also create blind spots.</p>
-    <p>A strategy can make complete sense internally while the market is moving in another
-      direction. A company can continue investing in something because the original
-      assumptions haven't been independently challenged. An opportunity can sit in plain
-      sight because everyone is focused on executing the existing plan.</p>
-    <p>And sometimes the most valuable decision isn't what to do next.</p>
-    <p><strong>It's recognizing what not to do.</strong></p>
+    <p class="lead">What that comes down to, in practice: spotting patterns, blind spots,
+      and missed opportunities that are hard to see from inside the decision &mdash; and the
+      commercial judgment to know what to do about them.</p>
+    <div class="chaine">
+      <ol>
+        <li><b>Tom Scally</b><span>patterns, blind spots, missed opportunities, commercial judgment</span></li>
+        <li class="temps--produit"><b>Signal Shift</b><span>the structured, evidence-backed product</span></li>
+        <li class="temps--moment"><b>Before the next move</b><span>the moment it matters</span></li>
+        <li><b>A more informed decision</b><span>the outcome</span></li>
+      </ol>
+    </div>
   </div></div>
 </section>
 
 <section class="bande bande--sable">
   <div class="dedans"><div class="prose">
-    <span class="etiq">Why I Built Signal Shift</span>
-    <h2>Another source of evidence in the room.</h2>
-    <p style="margin-top:1.75rem">Signal Shift grew out of that experience.</p>
-    <p>It provides an independent, outside-in read before leadership commits significant
-      time, money, credibility, or momentum to an important commercial decision.</p>
-    <p>The objective isn't to replace leadership judgment or pretend that every business
-      decision can be reduced to an algorithm.</p>
-    <p>It's to bring another source of evidence into the room.</p>
-    <p>Signal Shift looks outside the company, at the market, competitors, audiences,
-      positioning, timing, proof and other relevant signals, and asks a straightforward
-      question:</p>
-    <blockquote style="font-size:1.35rem; font-style:italic; margin:2rem 0; padding-left:1.25rem;
-      border-left:2px solid var(--gold)">Does what is happening outside the company support
-      what we believe inside it?</blockquote>
-    <p>Sometimes the evidence supports the move.</p>
-    <p>Sometimes it suggests an adjustment.</p>
-    <p>And sometimes it reveals a reason to reconsider the move altogether.</p>
-    <p>That's why every Decision Read ultimately points toward one of three conclusions:</p>
-    <p><strong>Proceed. Adjust. Reconsider.</strong></p>
+    <p>Signal Shift grew out of a recurring problem Tom saw across those areas: companies
+      often have substantial internal knowledge and conviction, but lack an independent way
+      to test whether the outside market supports the same assumptions before significant
+      resources are committed.</p>
+    <p>His role in Signal Shift is the human decision layer &mdash; combining outside
+      evidence with commercial judgment to help leadership determine whether to Proceed,
+      Adjust, or Reconsider before the next move.</p>
+    <p>Signal Shift is the diagnosis &mdash; what's supported, what's exposed, what's
+      missing. When a blind spot turns out to be an opportunity, Tom's broader experience in
+      partnerships, business development, and positioning is what helps turn that into a
+      next step, not just an observation.</p>
+    <blockquote style="font-size:1.35rem; font-style:italic; margin:2.5rem 0 0;
+      padding-left:1.25rem; border-left:2px solid var(--gold)">The system provides the
+      evidence. Experience provides the judgment. Leadership makes the decision.</blockquote>
+  </div></div>
+</section>
+
+<section class="bande bande--creme">
+  <div class="dedans"><div class="prose">
+    <span class="etiq">Background</span>
+    <p class="lead" style="margin-top:1.25rem">25+ years across business development,
+      strategic partnerships, communications, market positioning, executive coaching, and
+      growth.</p>
+    <p>Experience includes founding and operating a consulting business, eight years in
+      business development, five years coaching leaders, and four years leading strategic
+      partnership work with NewsDirect.</p>
   </div></div>
 </section>
 
 <section class="bande bande--navy">
   <div class="dedans"><div class="prose">
-    <span class="etiq">The Human Decision Layer</span>
+    <span class="etiq">Before your next move</span>
     <h2>Outside evidence. Commercial judgment. Better decisions.</h2>
-    <p style="margin-top:1.75rem">Technology can gather and analyze more information than
-      ever before. That's valuable.</p>
-    <p>But evidence still has to be interpreted in the context of a real company making a
-      real decision.</p>
-    <p>My role is to combine that outside evidence with commercial judgment developed across
-      years of helping leaders, building relationships, creating revenue opportunities,
-      evaluating market positioning, and seeing where strategies stall.</p>
-    <p>I don't make the decision for leadership.</p>
-    <p><strong>I help make sure leadership has seen what it needs to see before making
-      it.</strong></p>
     <p class="note" style="margin-top:2.5rem">Tom Scally<br>Founder, Signal Shift</p>
     <div class="boutons">
-      <a class="cta cta--plein" href="/get-a-decision-read.html">Get a Decision Read →</a>
+      <a class="cta cta--plein" href="/get-a-decision-read.html">Get a Decision Read &rarr;</a>
     </div>
   </div></div>
 </section>
