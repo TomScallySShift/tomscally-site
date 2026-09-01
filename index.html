@@ -147,6 +147,12 @@ h3{font-size:1.1875rem; font-weight:600; letter-spacing:0}
 .chaine .temps--expose{color:var(--navy-light)}
 
 /* ============================ AVANT / APRES ============================ */
+/* LES DEUX TRIPTYQUES SUR LA MEME LIGNE (demande de Tom, 01/09). Deux colonnes de
+   hauteurs differentes posent leur verdict a deux hauteurs differentes. On rend chaque
+   volet flexible, la liste absorbe le vide, et le verdict tombe au bas de sa colonne. */
+.volet{display:flex; flex-direction:column}
+.volet .liste{flex:1 1 auto}
+.volet .verdict{margin-top:auto; padding-top:1.75rem}
 .volet h3{font-size:1.5rem; font-family:"Playfair Display",serif; font-weight:700;
   line-height:1.2; margin:.35rem 0 .9rem}
 .volet .etiq{margin-bottom:.35rem}
@@ -370,11 +376,6 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
           <li>Where the plan may be losing traction</li>
           <li>What's economically exposed if a key assumption is wrong</li>
         </ul>
-        <p class="voies__prose">This applies wherever leadership has committed — or is about
-          to commit — real time, money, or credibility to a decision the market will
-          ultimately judge: a brand or communications push, product or feature launch,
-          fundraise or investor narrative, partnership strategy, or commercial growth
-          initiative.</p>
         <div class="verdict verdict--nu">
           <ul>
             <li>Proceed</li>
@@ -406,6 +407,9 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
         </div>
       </div>
     </div>
+    <p class="voies__prose" style="margin-top:1.75rem">This applies wherever leadership is
+      committing real time, money, or credibility to a move the market will ultimately
+      judge — from launches and positioning to fundraising, partnerships, and growth.</p>
     <p class="note prose" style="margin-top:2.75rem">We won't hand you a precise
       probability we can't defend, or a score dressed up as more scientific than it is. If
       we can't show our reasoning, we don't give you the number.</p>
