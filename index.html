@@ -1,451 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signal Shift — Before the Next Move</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal Shift — Before the Next Move | Tom Scally</title>
 <link rel="canonical" href="https://tomscally.com/">
 <meta name="description" content="Independent, evidence-based review for decisions with real capital, credibility or momentum riding on them — before you commit, and again after.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#10141A;
-    --panel:#171D26;
-    --panel-2:#1C2330;
-    --hairline:#2A323D;
-    --text:#E9E6DE;
-    --muted:#8B93A1;
-    --brass:#C9A227;
-    --brass-dim:#8A7325;
-    --teal:#3FA7A3;
-    --max:840px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
-  }
-  body{
-    margin:0;
-    background:var(--ink);
-    color:var(--text);
-    font-family:'IBM Plex Sans', sans-serif;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
-  a{color:var(--brass);}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+/* ============================================================================
+   SIGNAL SHIFT — BEFORE THE NEXT MOVE
+   Jetons repris de tomscally.com pour que la page soit du MEME site, pas une
+   piece rapportee: marine, or, creme, Playfair Display + DM Sans.
 
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--brass);
-    margin:0 0 14px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .eyebrow::before{
-    content:"";
-    width:22px; height:1px;
-    background:var(--brass-dim);
-    display:inline-block;
-  }
-  h1,h2,h3{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    letter-spacing:-0.01em;
-    margin:0 0 0.5em;
-  }
-  h1{font-size:clamp(38px,6vw,62px); line-height:1.06; font-weight:600;}
-  h2{font-size:clamp(26px,3.4vw,34px); line-height:1.18;}
-  p{margin:0 0 1em; color:var(--text);}
-  .muted{color:var(--muted);}
-  .lede{font-size:19px; color:var(--muted); max-width:56ch;}
+   TROIS REGLES DE MISE EN TEXTE, tenues partout:
+     1. la mesure ne depasse jamais 34em (~64 signes). La version precedente
+        courait jusqu'a 121 signes par ligne, l'oeil y perd sa ligne;
+     2. QUATRE tailles de corps, pas huit. 11 px etiquette, 17 px courant,
+        20 px chapeau, 15 px note;
+     3. TROIS encres, pas une seule. Le gris unique de la version precedente
+        aplatissait vingt-cinq paragraphes sur vingt-six.
+   ========================================================================= */
+:root{
+  --navy:#0c1b2e; --navy-mid:#162a45; --navy-light:#1e3655;
+  --gold:#c9a84c; --gold-soft:#d4b96e;
+  --cream:#faf9f6; --off-white:#f7efca;
+  --ink:#0c1b2e; --ink-2:#3a3f4b; --ink-3:#5c6175;
+  --sur-navy:#e9eef5; --sur-navy-2:#9fb0c6; --sur-navy-3:#8398b3;
+  --bord:#e4e3df; --bord-navy:rgba(201,168,76,.22);
+  /* L'OR EST UNE ENCRE DE FOND SOMBRE. Pose sur la creme a 12 px il tombe a un rapport
+     de contraste de 2, mesure a la sonde: illisible. Sur fond clair on prend sa version
+     encrée, qui garde la couleur et passe les seuils. */
+  --or-encre:#7a5c0c;
 
-  section{padding:96px 0;}
-  .hairline{border-top:1px solid var(--hairline);}
+  --t-label:.72rem; --t-note:.9375rem; --t-body:1.0625rem; --t-lead:1.25rem;
+  --mesure:34em;
+  --pad:clamp(1.5rem,6vw,7rem);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--cream); color:var(--ink-2);
+  font:400 var(--t-body)/1.68 "DM Sans",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,blockquote{font-family:"Playfair Display",Georgia,serif;color:var(--ink);
+  font-weight:700; line-height:1.12; letter-spacing:-.01em; margin:0}
+p{margin:0 0 1.15em}
+p:last-child{margin-bottom:0}
+strong{color:var(--ink); font-weight:600}
+a{color:inherit}
 
-  /* ---- Hero ---- */
-  .hero{padding:120px 0 80px; position:relative;}
-  .hero-cta-row{display:flex; gap:18px; flex-wrap:wrap; align-items:center; margin-top:34px;}
-  .btn-primary{
-    display:inline-flex; align-items:center; gap:10px;
-    background:var(--brass); color:var(--ink);
-    font-weight:600; text-decoration:none;
-    padding:14px 26px; border-radius:2px;
-    font-family:'IBM Plex Sans', sans-serif;
-    border:1px solid var(--brass);
-    transition:background 0.15s ease, transform 0.15s ease;
-  }
-  .btn-primary:hover{background:#DDB233; transform:translateY(-1px);}
-  .btn-ghost{
-    color:var(--muted); text-decoration:none;
-    font-size:15px; border-bottom:1px solid var(--hairline);
-    padding-bottom:2px;
-  }
-  .btn-ghost:hover{color:var(--text); border-color:var(--muted);}
+/* --- LA BANDE, unite de rythme de la page. Elles alternent, comme sur le site. */
+.bande{padding:clamp(3.75rem,9vw,7.5rem) var(--pad)}
+.bande--navy{background:var(--navy); color:var(--sur-navy-2)}
+.bande--navy h1,.bande--navy h2,.bande--navy h3,.bande--navy blockquote{color:#fff}
+.bande--navy strong{color:#fff}
+.bande--creme{background:var(--cream)}
+.bande--sable{background:var(--off-white)}
+.dedans{max-width:76rem; margin:0 auto}
+.prose{max-width:var(--mesure)}
+.lead{font-size:var(--t-lead); line-height:1.55; color:var(--ink-2)}
+.bande--navy .lead{color:var(--sur-navy)}
+.note{font-size:var(--t-note); color:var(--ink-3); line-height:1.6}
+.bande--navy .note{color:var(--sur-navy-3)}
 
-  .waveform-box{margin-top:64px;}
-  .waveform-caption{
-    display:flex; justify-content:space-between;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px; color:var(--muted); letter-spacing:0.05em;
-    margin-top:10px; text-transform:uppercase;
-  }
-  .waveform-caption span:last-child{color:var(--teal);}
+/* --- L'ETIQUETTE DE SECTION. Une seule taille, une seule graisse, partout. */
+.etiq{display:block; font-size:var(--t-label); font-weight:700; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--or-encre); margin:0 0 1.25rem}
+.etiq::before{content:""; display:inline-block; width:1.75rem; height:1px;
+  background:var(--gold); vertical-align:.28em; margin-right:.6rem}
+.bande--navy .etiq{color:var(--gold)}
 
-  #shiftline{
-    stroke-dasharray: 1400;
-    stroke-dashoffset: 1400;
-    animation: draw 2.2s ease-out forwards 0.2s;
-  }
-  #teal-seg{
-    stroke-dasharray: 700;
-    stroke-dashoffset: 700;
-    animation: draw 1.6s ease-out forwards 1.1s;
-  }
-  @keyframes draw{ to { stroke-dashoffset: 0; } }
-  @media (prefers-reduced-motion: reduce){
-    #shiftline,#teal-seg{stroke-dashoffset:0; animation:none;}
-  }
+h1{font-size:clamp(2.75rem,7.2vw,4.75rem)}
+h2{font-size:clamp(1.85rem,3.6vw,2.85rem)}
+h3{font-size:1.1875rem; font-weight:600; letter-spacing:0}
 
-  /* ---- Premise ---- */
-  .premise-grid{
-    display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:32px;
-  }
-  .premise-card{
-    background:var(--panel); border:1px solid var(--hairline);
-    padding:26px 28px; border-radius:3px;
-  }
-  .premise-card h3{font-size:18px; margin-bottom:10px; color:var(--text); font-weight:500;}
-  .premise-card p{color:var(--muted); font-size:15px; margin:0;}
-  .gap-note{
-    margin-top:28px; font-family:'IBM Plex Mono', monospace; font-size:13px;
-    color:var(--muted); border-left:2px solid var(--teal); padding-left:16px;
-  }
+/* --- LES BOUTONS. Deux niveaux, jamais trois. */
+.cta{display:inline-flex; align-items:center; gap:.55rem; font-family:"DM Sans",sans-serif;
+  font-size:.9375rem; font-weight:700; letter-spacing:.02em; text-decoration:none;
+  padding:.95rem 1.6rem; border-radius:2px; transition:transform .16s, background .16s}
+.cta--plein{background:var(--gold); color:var(--navy)}
+.cta--plein:hover{background:var(--gold-soft); transform:translateY(-1px)}
+.cta--nu{color:var(--sur-navy); border-bottom:1px solid var(--bord-navy);
+  padding:.35rem 0; border-radius:0}
+.cta--nu:hover{color:var(--gold)}
+.boutons{display:flex; flex-wrap:wrap; align-items:center; gap:1.75rem; margin-top:2.5rem}
 
-  /* ---- Before / After ---- */
-  .split{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
-  .split-col h2{font-size:24px;}
-  ul.evidence{list-style:none; padding:0; margin:20px 0 0;}
-  ul.evidence li{
-    padding:9px 0 9px 22px; position:relative;
-    color:var(--muted); font-size:15px;
-    border-bottom:1px solid var(--hairline);
-  }
-  ul.evidence li:last-child{border-bottom:none;}
-  ul.evidence li::before{
-    content:"—"; position:absolute; left:0; color:var(--brass-dim);
-  }
-  .verdict-row{display:flex; gap:10px; margin-top:26px; flex-wrap:wrap;}
-  .chip{
-    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.08em;
-    text-transform:uppercase; padding:8px 14px; border:1px solid var(--hairline);
-    border-radius:20px; color:var(--muted);
-  }
-  .disclaimer{
-    margin-top:24px; font-size:13.5px; color:var(--muted);
-    font-style:italic; border-top:1px solid var(--hairline); padding-top:18px;
-  }
+/* ============================ OUVERTURE ============================ */
+.hero{position:relative; overflow:hidden}
+.hero .dedans{display:grid; gap:clamp(2.5rem,5vw,4.5rem)}
+.hero__haut{display:grid; gap:clamp(2rem,4vw,3.5rem); align-items:center}
+@media(min-width:960px){.hero__haut{grid-template-columns:1.15fr .85fr}}
+.hero__mot{max-width:36rem}
+/* LE PORTRAIT, REPRIS DE SA PAGE D'ACCUEIL: meme halo, meme ombre portee. Une page qui
+   vend un jugement HUMAIN montre l'humain; sans lui, la moitie droite de l'ouverture
+   etait un aplat de marine. */
+.portrait{position:relative; display:flex; justify-content:center; align-items:flex-end}
+.portrait::before{content:""; position:absolute; bottom:4%; left:50%;
+  transform:translateX(-50%); width:116%; height:92%; border-radius:50%;
+  background:radial-gradient(circle, rgba(201,168,76,.26) 0%, rgba(201,168,76,.10) 42%,
+  transparent 68%); z-index:0; pointer-events:none}
+.portrait img{position:relative; z-index:1; width:100%; max-width:380px; height:auto;
+  display:block; filter:drop-shadow(0 24px 48px rgba(0,0,0,.42))}
+@media(max-width:959px){.portrait img{max-width:280px}}
+.hero h1 .rupture{display:block; color:var(--gold)}
+/* LE TRACE. Une ligne plate qui se casse: c'est le sujet de la page, il merite
+   la moitie de l'ouverture et pas une frise decorative de 90 px. */
+.trace{position:relative}
+.trace svg{display:block; width:100%; height:clamp(150px,20vw,260px)}
+.trace__leg{display:flex; justify-content:space-between; gap:1rem; margin-top:1rem;
+  font-size:var(--t-label); font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--sur-navy-3)}
+.trace__leg span:last-child{color:var(--gold)}
+.trace path{stroke-dasharray:1400; stroke-dashoffset:1400; animation:tracer 2.4s .3s ease-out forwards}
+@keyframes tracer{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.trace path{animation:none; stroke-dashoffset:0}}
 
-  /* ---- Exhibit / case study ---- */
-  .exhibit{
-    background:var(--panel); border:1px solid var(--hairline);
-    padding:44px; border-radius:3px; margin-top:32px;
-  }
-  .exhibit-stats{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
-    background:var(--hairline); margin:30px 0; border:1px solid var(--hairline);
-  }
-  .stat{background:var(--panel-2); padding:22px 20px;}
-  .stat .num{
-    font-family:'IBM Plex Mono', monospace; font-size:28px; color:var(--teal);
-    display:block; margin-bottom:6px;
-  }
-  .stat .label{font-size:12.5px; color:var(--muted); line-height:1.4;}
-  .exhibit p{color:var(--muted); font-size:15.5px;}
-  .exhibit p strong{color:var(--text); font-weight:500;}
-  .exhibit-foot{
-    font-size:13px; color:var(--muted); font-style:italic;
-    margin-top:22px; border-top:1px solid var(--hairline); padding-top:16px;
-  }
-  .quickproof{
-    margin-top:22px; padding-top:22px; border-top:1px dashed var(--hairline);
-    font-size:14.5px; color:var(--muted);
-  }
-  .quickproof strong{color:var(--text);}
-  .urgency-note{
-    margin-top:26px; padding:20px 22px; background:var(--panel);
-    border-left:2px solid var(--teal); border-radius:2px;
-    font-size:15px; color:var(--text);
-  }
-  .urgency-note strong{color:var(--teal);}
+/* ============================ DEUX COLONNES ============================ */
+.duo{display:grid; gap:clamp(1.25rem,3vw,2rem); margin-top:2.75rem}
+@media(min-width:820px){.duo{grid-template-columns:1fr 1fr}}
+.carte{background:#fff; border:1px solid var(--bord); border-radius:3px;
+  padding:clamp(1.5rem,2.6vw,2.25rem)}
+.bande--sable .carte{background:#fff}
+.carte h3{margin-bottom:.7rem}
+.carte p{font-size:var(--t-body); color:var(--ink-2)}
+.souligne{border-left:2px solid var(--gold); padding-left:1.5rem; margin-top:2.75rem;
+  max-width:var(--mesure); font-size:var(--t-lead); line-height:1.55; color:var(--ink)}
 
-  /* ---- Human layer ---- */
-  .humanlayer{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
-  .humanlayer blockquote{
-    font-family:'Fraunces', serif; font-size:22px; font-weight:500;
-    line-height:1.4; margin:0; color:var(--text); font-style:italic;
-  }
+/* La chaine des quatre temps (demande de Tom, 31/08). Son fichier la rendait en
+   police a chasse fixe avec des couleurs qu'on n'a pas: ici c'est la meme suite,
+   dans la typographie de la page. L'or ne sert que dans sa version encree, la seule
+   qui passe le contraste sur fond creme. */
+.chaine{margin-top:2.5rem; background:#fff; border:1px solid var(--bord); border-radius:3px;
+  padding:clamp(1.5rem,2.6vw,2.25rem); max-width:var(--mesure)}
+.chaine ol{list-style:none; margin:0; padding:0}
+.chaine li{font-family:"DM Sans",sans-serif; font-size:var(--t-label); font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--ink); line-height:1.5}
+.chaine li + li{margin-top:.5rem}
+.chaine li::before{content:"\2193"; display:block; color:var(--gold); font-weight:400;
+  letter-spacing:0; font-size:1rem; line-height:1.6; margin:.35rem 0}
+.chaine li:first-child::before{content:none}
+.chaine .temps--preuve{color:var(--or-encre)}
+.chaine .temps--expose{color:var(--navy-light)}
 
-  /* ---- Pricing ---- */
-  .tiers{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:36px;}
-  .tier{
-    background:var(--panel); border:1px solid var(--hairline); padding:30px 26px;
-    border-radius:3px; display:flex; flex-direction:column;
-  }
-  .tier.featured{border-color:var(--brass-dim);}
-  .tier h3{font-size:17px; margin-bottom:4px; font-weight:500;}
-  .tier .price{
-    font-family:'IBM Plex Mono', monospace; color:var(--brass);
-    font-size:20px; margin-bottom:16px; display:block;
-  }
-  .tier p{color:var(--muted); font-size:14.5px; flex-grow:1;}
+/* ============================ AVANT / APRES ============================ */
+/* LES DEUX TRIPTYQUES SUR LA MEME LIGNE (demande de Tom, 01/09). Deux colonnes de
+   hauteurs differentes posent leur verdict a deux hauteurs differentes. On rend chaque
+   volet flexible, la liste absorbe le vide, et le verdict tombe au bas de sa colonne. */
+.volet{display:flex; flex-direction:column}
+.volet .liste{flex:1 1 auto}
+.volet .verdict{margin-top:auto; padding-top:1.75rem}
+.volet h3{font-size:1.5rem; font-family:"Playfair Display",serif; font-weight:700;
+  line-height:1.2; margin:.35rem 0 .9rem}
+.volet .etiq{margin-bottom:.35rem}
+.liste{list-style:none; margin:1.5rem 0 0; padding:0}
+.liste li{position:relative; padding:.7rem 0 .7rem 1.6rem; border-top:1px solid var(--bord);
+  font-size:var(--t-body); color:var(--ink-2)}
+.liste li::before{content:"—"; position:absolute; left:0; color:var(--gold)}
+/* LES TROIS VERDICTS NE SONT PAS DES BOUTONS.
+   Premiere version: trois pastilles arrondies, la premiere pleine en or. Elles avaient
+   exactement la forme de l'appel a l'action juste au-dessus, et elles ne cliquent pas.
+   Un element qui a la forme d'une commande et n'en est pas une ment au lecteur. Ici c'est
+   du VOCABULAIRE: les trois issues possibles d'un Outside Read. Donc ni fond, ni coin
+   arrondi, ni contour: une legende, lue comme une legende. */
+.portee{margin-top:1.5rem; padding-left:1.5rem; border-left:2px solid var(--gold)}
+.portee p{font-size:var(--t-note); color:var(--ink-3); margin-bottom:.6rem}
+.portee ul{list-style:none; margin:0; padding:0}
+.portee li{position:relative; padding:.2rem 0 .2rem 1.35rem; font-size:var(--t-body);
+  color:var(--ink)}
+.portee li::before{content:"—"; position:absolute; left:0; color:var(--gold)}
+.verdict{margin-top:1.75rem}
+.verdict .quoi{display:block; font-size:var(--t-note); color:var(--ink-3);
+  margin-bottom:.7rem}
+.verdict ul{display:flex; flex-wrap:wrap; gap:0; list-style:none; margin:0; padding:0;
+  border-top:1px solid var(--bord)}
+.verdict li{flex:1 1 7rem; padding:.85rem 0 0; border-top:2px solid transparent;
+  margin-top:-1px; font-family:"Playfair Display",serif; font-size:1.0625rem;
+  font-weight:600; color:var(--ink)}
+.verdict li:nth-child(1){border-top-color:var(--gold)}
+.verdict li:nth-child(2){border-top-color:#b9b4a4}
+.verdict li:nth-child(3){border-top-color:#cfcabb}
+.verdict li span{display:block; font-family:"DM Sans",sans-serif; font-size:var(--t-note);
+  font-weight:400; color:var(--ink-3); margin-top:.2rem}
+.trace__leg span:last-child{color:var(--gold)}
 
-  /* ---- Closing ---- */
-  .closing{text-align:center; padding:110px 0;}
-  .closing h2{font-size:clamp(28px,4vw,40px);}
-  footer{
-    padding:40px 0 60px; text-align:center;
-    color:var(--muted); font-size:13px;
-    font-family:'IBM Plex Mono', monospace; letter-spacing:0.04em;
-  }
+/* ============================ LE CAS ============================ */
+.stats{display:grid; gap:1px; background:var(--bord-navy); border:1px solid var(--bord-navy);
+  margin:clamp(2.5rem,5vw,3.5rem) 0}
+@media(min-width:760px){.stats{grid-template-columns:repeat(3,1fr)}}
+.stat{background:var(--navy); padding:clamp(1.75rem,3vw,2.5rem)}
+.stat b{display:block; font-family:"Playfair Display",serif; font-weight:700;
+  font-size:clamp(2.5rem,5vw,3.5rem); line-height:1; color:var(--gold); letter-spacing:-.02em}
+.stat span{display:block; margin-top:.9rem; font-size:var(--t-note); line-height:1.5;
+  color:var(--sur-navy-2)}
+.trouve{border-left:2px solid var(--gold); padding-left:1.5rem; margin:2.25rem 0;
+  max-width:var(--mesure)}
+.trouve b{color:#fff}
+.contre{background:var(--navy-mid); border:1px solid var(--bord-navy); border-radius:3px;
+  padding:clamp(1.5rem,3vw,2rem); margin-top:2.5rem; max-width:38rem}
+.contre p{font-size:var(--t-body); color:var(--sur-navy-2)}
+.contre b{color:var(--gold)}
 
-  @media (max-width:760px){
-    .premise-grid,.split,.humanlayer{grid-template-columns:1fr; gap:28px;}
-    .exhibit-stats{grid-template-columns:1fr;}
-    .tiers{grid-template-columns:1fr;}
-    section{padding:64px 0;}
-    .exhibit{padding:28px 22px;}
-  }
+/* ============================ CITATION ============================ */
+blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:400;
+  line-height:1.34; margin:0; max-width:30rem}
+.duo--cit{align-items:start}
 
-  .reveal{opacity:0; transform:translateY(14px); transition:opacity 0.6s ease, transform 0.6s ease;}
-  .reveal.in{opacity:1; transform:translateY(0);}
+/* ============================ PRIX ============================ */
+.prix{display:grid; gap:clamp(1rem,2vw,1.5rem); margin-top:3rem; align-items:stretch}
+@media(min-width:900px){.prix{grid-template-columns:repeat(3,1fr)}}
+.offre{display:flex; flex-direction:column; background:#fff; border:1px solid var(--bord);
+  border-radius:3px; padding:clamp(1.75rem,3vw,2.25rem)}
+.offre--phare{border-color:var(--gold); box-shadow:0 14px 40px rgba(12,27,46,.09)}
+.offre h3{font-size:1.0625rem; font-weight:700; letter-spacing:.02em; margin-bottom:1.25rem}
+.offre .montant{font-family:"Playfair Display",serif; font-size:1.875rem; font-weight:700;
+  color:var(--ink); line-height:1; display:block}
+.offre .apres{display:block; font-size:var(--t-note); color:var(--ink-3); margin-top:.5rem}
+.offre p{margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--bord);
+  font-size:var(--t-note); color:var(--ink-2); line-height:1.62}
+.offre--phare .montant{color:var(--or-encre)}
 
-  .sitenav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(16,20,26,0.92); backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--hairline);
-  }
-  .sitenav .wrap{display:flex; align-items:center; justify-content:space-between; padding:18px 28px;}
-  .sitenav .logo{
-    font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.1em;
-    color:var(--text); text-decoration:none; text-transform:uppercase;
-  }
-  .sitenav .navlinks{display:flex; gap:28px; align-items:center;}
-  .sitenav a.navlink{color:var(--muted); text-decoration:none; font-size:14.5px;}
-  .sitenav a.navlink:hover{color:var(--text);}
-  .sitenav a.navcta{
-    color:var(--ink); background:var(--brass); padding:9px 16px; border-radius:2px;
-    font-weight:600; font-size:13.5px;
-  }
-  .sitenav a.navcta:hover{background:#DDB233;}
-  @media (max-width:640px){
-    .sitenav .navlinks{gap:14px;}
-    .sitenav a.navlink{font-size:13px;}
-  }
+/* ============================ CLOTURE ============================ */
+.final{text-align:center}
+.final .prose{margin:1.75rem auto 0}
+.final .boutons{justify-content:center}
+.pied{background:var(--navy); border-top:1px solid var(--bord-navy); margin:0;
+  padding:2rem var(--pad); text-align:center; font-size:var(--t-note); color:var(--sur-navy-3)}
+.pied span{display:block; max-width:46em; margin:0 auto}
+.pied b{color:var(--gold); font-weight:600}
+.voies__prose{margin:1.1rem 0 0; color:var(--ink-soft); font-size:.98rem;
+  line-height:1.65}
+.inv__amorce{margin:.2rem 0 .8rem; font-weight:700; color:var(--navy)}
+.inv__cas{margin:0 0 1.1rem; padding:0; list-style:none; display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:.35rem 1.6rem}
+.inv__cas li{position:relative; padding-left:1.05rem; color:var(--ink-soft);
+  font-size:.95rem; line-height:1.55}
+.inv__cas li::before{content:""; position:absolute; left:0; top:.6em; width:5px;
+  height:5px; border-radius:50%; background:var(--gold)}
+.inv__cloture{margin:0 0 2rem; color:var(--ink); font-size:1rem; line-height:1.65;
+  max-width:56ch}
+</style>
+
+<style>
+/* --- LA BARRE DE NAVIGATION (25/08, demande de Tom: deux entrees, pas plus).
+   Elle vit sur les trois pages et se lit pareil sur fond marine comme sur creme. */
+.barre{background:var(--navy); border-bottom:1px solid var(--bord-navy);
+  padding:1rem var(--pad); display:flex; align-items:center; justify-content:space-between;
+  gap:1.5rem; flex-wrap:wrap}
+.barre__nom{font-family:"DM Sans",sans-serif; font-size:.78rem; font-weight:700;
+  letter-spacing:.2em; text-transform:uppercase; color:#fff; text-decoration:none}
+.barre__nom span{color:var(--gold)}
+.barre__liens{display:flex; align-items:center; gap:1.75rem}
+.barre__liens a{font-size:.78rem; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--sur-navy-2); text-decoration:none;
+  padding:.35rem 0; border-bottom:1px solid transparent}
+.barre__liens a:hover{color:#fff; border-bottom-color:var(--gold)}
+.barre__liens a[aria-current="page"]{color:var(--gold); border-bottom-color:var(--gold)}
+</style>
+
+<style>
+/* --- LES TROIS VOIES DE DECISION (PDF de Tom, 25/08). Elles remplacent quatre puces:
+   une decision se range dans une voie, et les trois se lisent d'un coup d'oeil. Meme
+   etiquette que les sections, meme filet, aucune couleur de plus. */
+.voies{margin:1.75rem 0 2rem}
+.voies__titre{display:block; font-size:var(--t-label); font-weight:700; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--or-encre); margin:0 0 1rem}
+/* TROIS COLONNES, PAS DEUX PUIS UNE: la section est deja coupee en deux volets, donc la
+   place utile fait la moitie de la page. A 11rem la troisieme voie tombait a la ligne. */
+.voies__grille{display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1.1rem; border-top:1px solid var(--bord); padding-top:1.25rem}
+@media (max-width:640px){.voies__grille{grid-template-columns:1fr}}
+.voies__grille h4{margin:0 0 .45rem; font-family:"DM Sans",sans-serif; font-size:.8125rem;
+  font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink)}
+.voies__grille p{margin:0; font-size:var(--t-note); color:var(--ink-3); line-height:1.55}
+/* Les verdicts sans leur phrase d'introduction: trois mots, rien autour. */
+.verdict--nu .quoi{display:none}
+.verdict--nu ul li span{display:none}
+</style>
+
+<style>
+.barre__liens .barre__btn{background:var(--gold); color:var(--navy); border-radius:2px;
+  padding:.55rem 1rem; border-bottom:0; letter-spacing:.1em}
+.barre__liens .barre__btn:hover{background:var(--gold-soft); color:var(--navy);
+  border-bottom:0}
+.barre__liens .barre__btn[aria-current="page"]{color:var(--navy)}
 </style>
 </head>
 <body>
+<nav class="barre"><a class="barre__nom" href="/">Tom Scally <span>Signal Shift</span></a><div class="barre__liens"><a href="/about-tom.html">About Tom</a><a href="/faq.html">FAQ</a><a class="barre__btn" href="/get-an-outside-read.html">Get an Outside Read</a></div></nav>
 
-<nav class="sitenav">
-  <div class="wrap">
-    <a class="logo" href="index.html">Signal Shift</a>
-    <div class="navlinks">
-      <a class="navlink" href="about-tom.html">About Tom</a>
-      <a class="navlink" href="faq.html">FAQ</a>
-      <a class="navcta" href="get-an-outside-read.html">Get an Outside Read</a>
-    </div>
-  </div>
-</nav>
-
-<div class="wrap hero">
-  <p class="eyebrow">Signal Shift</p>
-  <h1>Before the<br>Next Move.</h1>
-  <p class="lede">Independent, evidence-based review for decisions with real capital, credibility, or momentum riding on them — before you commit, and again after, to see if the market agreed.</p>
-  <p class="lede" style="color:var(--brass); font-weight:500; margin-top:-6px;">Move forward with confidence, or find out what needs to change — before it costs you.</p>
-  <div class="hero-cta-row">
-    <a class="btn-primary" href="https://calendly.com/tscally/call">Get an Outside Read →</a>
-    <a class="btn-ghost" href="#exhibit">See a real finding ↓</a>
-  </div>
-
-  <div class="waveform-box">
-    <svg viewBox="0 0 800 180" width="100%" height="auto" role="img" aria-label="A flat signal line that shifts sharply at the moment a decision meets the market">
-      <line x1="0" y1="90" x2="800" y2="90" stroke="#2A323D" stroke-width="1" stroke-dasharray="2 6"/>
-      <path id="shiftline" d="M0,110 C120,110 180,108 240,105 C300,102 340,96 380,90 C420,84 440,60 470,40"
-            fill="none" stroke="#C9A227" stroke-width="2.5"/>
-      <path id="teal-seg" d="M470,40 C500,60 520,100 560,120 C610,145 680,150 800,148"
-            fill="none" stroke="#3FA7A3" stroke-width="2.5"/>
-      <circle cx="470" cy="40" r="4.5" fill="#E9E6DE"/>
-      <line x1="470" y1="40" x2="470" y2="165" stroke="#8B93A1" stroke-width="1" stroke-dasharray="3 4"/>
-    </svg>
-    <div class="waveform-caption">
-      <span>Internal conviction</span>
-      <span>The decision gap</span>
-    </div>
-  </div>
-</div>
-
-<div class="hairline"></div>
-
-<section class="wrap reveal">
-  <p class="eyebrow">The Premise</p>
-  <h2>Companies decide internally.<br>The outcome happens externally.</h2>
-  <div class="premise-grid">
-    <div class="premise-card">
-      <h3>What leadership knows</h3>
-      <p>Experience, financial models, customer knowledge, internal data. Real, and often deep — built from years inside the business.</p>
-    </div>
-    <div class="premise-card">
-      <h3>What the market decides</h3>
-      <p>Customers, investors, partners, and competitors have no obligation to see it the same way. They form their own view, separately.</p>
-    </div>
-  </div>
-  <p class="gap-note">Signal Shift tests whether current external evidence supports internal confidence — before significant resources are committed, and again after, to see whether the market responded as expected.</p>
-  <div style="margin-top:32px; padding:26px 28px; background:var(--panel); border:1px solid var(--hairline); border-radius:3px;">
-    <p style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--muted); line-height:2.1; margin:0;">
-      <span style="color:var(--text);">SEE WHAT'S MISSING</span><br>
-      &darr;<br>
-      <span style="color:var(--brass);">TEST IT AGAINST OUTSIDE EVIDENCE</span><br>
-      &darr;<br>
-      <span style="color:var(--teal);">UNDERSTAND WHAT'S EXPOSED</span><br>
-      &darr;<br>
-      <span style="color:var(--text);">MAKE A MORE INFORMED DECISION</span>
-    </p>
-  </div>
-</section>
-
-<div class="hairline"></div>
-
-<section class="wrap reveal">
-  <div class="split">
-    <div class="split-col">
-      <p class="eyebrow">Before</p>
-      <h2>Does the evidence support the move?</h2>
-      <p class="muted">Sometimes the move hasn't happened yet. Sometimes it's already underway and not landing the way you expected — the launch is out, the pipeline should be moving, and it isn't. Either way, the question is the same: does the outside evidence still support the plan as it's currently built?</p>
-      <ul class="evidence">
-        <li>Competitive positioning &amp; timing</li>
-        <li>Market conditions &amp; audience priorities</li>
-        <li>Whether the differentiation claim is already taken</li>
-        <li>What's economically exposed if a key assumption is wrong</li>
-      </ul>
-      <p class="muted" style="margin-top:22px; font-size:14px;">This applies wherever leadership has committed — or is about to commit — real time, money, or credibility to a decision the market will ultimately judge — a brand or communications push, a product or feature launch, a fundraise or investor narrative, or a major partnership announcement.</p>
-      <div class="verdict-row">
-        <span class="chip">Proceed</span>
-        <span class="chip">Adjust</span>
-        <span class="chip">Reconsider</span>
+<!-- ============================ OUVERTURE ============================ -->
+<section class="bande bande--navy hero">
+  <div class="dedans">
+    <div class="hero__haut">
+    <div class="hero__mot">
+      <span class="etiq">Signal Shift</span>
+      <h1>Before the<span class="rupture">Next Move.</span></h1>
+      <p class="lead" style="margin-top:1.75rem">Independent, evidence-based review for
+        decisions with real capital, credibility, or momentum riding on them — before you
+        commit, and again after, to see if the market agreed.</p>
+      <div class="boutons">
+        <a class="cta cta--plein" href="/get-an-outside-read.html">Get an Outside Read →</a>
+        <a class="cta cta--nu" href="#exhibit">See a real finding ↓</a>
       </div>
     </div>
-    <div class="split-col">
-      <p class="eyebrow">After</p>
-      <h2>Winning attention and losing the window are the same speed.</h2>
-      <p class="muted">A launch can dominate a news cycle and still leave nothing behind — while a competitor quietly earns the trust that actually converts. The same method that tests a decision beforehand comes back afterward and separates real reach from real authority, before that gap becomes the market's new baseline.</p>
-      <ul class="evidence">
-        <li>Earned coverage vs. paid syndication</li>
-        <li>Share of voice against named competitors</li>
-        <li>Whether visibility is compounding, or already decaying</li>
-        <li>What changed — and what should inform the next move</li>
-      </ul>
+    <div class="portrait">
+      <img src="tom.png" alt="Tom Scally, creator of Signal Shift" width="620" height="774">
     </div>
-  </div>
-  <p class="disclaimer">We won't hand you a precise probability we can't defend, or a score dressed up as more scientific than it is. If we can't show our reasoning, we don't give you the number.</p>
-</section>
-
-<div class="hairline"></div>
-
-<section class="wrap reveal" id="exhibit">
-  <p class="eyebrow">Exhibit A — Bitcoin Ocean</p>
-  <h2>Winning visibility. Racing to lock authority.</h2>
-  <div class="exhibit">
-    <p><strong>What the outside read revealed:</strong> a company appeared to be winning — dominant reach, a dominant news cycle. Fourteen days later, a direct competitor was about to change the market's standard of proof entirely. Signal Shift identified that gap before it hardened into the new default comparison.</p>
-    <div class="exhibit-stats">
-      <div class="stat"><span class="num">65M+</span><span class="label">Potential impressions — 6x the nearest competitor</span></div>
-      <div class="stat"><span class="num">86%</span><span class="label">Of that reach was syndication, not earned authority</span></div>
-      <div class="stat"><span class="num">14 days</span><span class="label">Before a competitor raised the bar the market would judge by</span></div>
     </div>
-    <p><strong>The finding:</strong> visibility and authority aren't the same thing, and they don't arrive on the same timeline. Bitcoin Ocean won the awareness race. The read specified exactly what would need to happen next to win the trust race too — before the window closed.</p>
-    <p class="exhibit-foot">This exhibit reflects Signal Shift's independent post-announcement read. It does not include a pre-decision engagement.</p>
-  </div>
-  <p class="quickproof"><strong>A separate launch we reviewed</strong> generated 376 paid postings and an estimated 821M in potential reach — and zero independent editorial coverage. It didn't rank on page one for any term a real buyer would search. Same gap, different company: activity without impact.</p>
-  <p class="urgency-note"><strong>This is the part that doesn't wait for you to notice:</strong> competitive windows close on their own schedule, not yours. Whatever you're about to announce is being measured against whatever your closest competitor does next. The question isn't just whether your move is good — it's whether it's still good by the time the market finishes reacting to it.</p>
-</section>
-
-<div class="hairline"></div>
-
-<section class="wrap reveal">
-  <p class="eyebrow">The Human Decision Layer</p>
-  <div class="humanlayer">
-    <div>
-      <blockquote>"The system provides the evidence. Experience provides the judgment. Leadership makes the decision."</blockquote>
-    </div>
-    <div>
-      <p class="muted">Information and analysis are easier to access than ever. The harder question is what the evidence actually means for this company, this decision, and this moment.</p>
-      <p class="muted">Signal Shift doesn't simply analyze the case management presents. It starts outside the company, tests the assumptions behind the move against observable market evidence, and identifies where internal confidence and external reality diverge — with someone accountable for the read, not a model with nothing at stake if it's wrong.</p>
+    <div class="trace">
+      <svg viewBox="0 0 1200 260" fill="none" aria-hidden="true" preserveAspectRatio="none">
+        <line x1="0" y1="176" x2="1200" y2="176" stroke="rgba(201,168,76,.18)" stroke-width="1"/>
+        <line x1="720" y1="26" x2="720" y2="240" stroke="rgba(201,168,76,.3)" stroke-width="1" stroke-dasharray="4 7"/>
+        <path d="M0 176 C 220 176, 430 172, 600 160 C 690 152, 706 96, 720 62"
+              stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M720 62 C 748 122, 820 178, 980 196 C 1080 206, 1150 208, 1200 209"
+              stroke="#4f7ca8" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="720" cy="62" r="5" fill="#c9a84c"/>
+      </svg>
+      <div class="trace__leg"><span>Internal conviction</span><span>The decision gap</span></div>
     </div>
   </div>
 </section>
 
-<div class="hairline"></div>
-
-<section class="wrap reveal">
-  <p class="eyebrow">Investment</p>
-  <h2>Priced for the decision, not the report.</h2>
-  <p class="muted" style="max-width:62ch; margin-bottom:8px;">Call before you commit — not after:</p>
-  <ul class="evidence" style="max-width:62ch; margin-bottom:36px;">
-    <li>You're about to spend real money on a launch</li>
-    <li>You're preparing an investor story</li>
-    <li>You're considering entering a new market</li>
-    <li>You're about to announce a partnership</li>
-    <li>You're evaluating whether to acquire or invest in a company</li>
-    <li>You're months into a strategy and unsure whether to keep funding it</li>
-    <li>Results have stalled and you're not sure whether the problem is execution, positioning, or the underlying premise</li>
-    <li>You're mid-strategy and the results aren't showing up the way you expected</li>
-  </ul>
-  <p class="muted" style="max-width:62ch; margin-bottom:36px;">Against what's actually at stake in moments like these, a $1,000 Outside Read is a small check before a large commitment.</p>
-  <div class="tiers">
-    <div class="tier featured">
-      <h3>Outside Read</h3>
-      <span class="price">Starting at $1,000</span>
-      <p>Evidence, diagnosis, and a clear conclusion — what's supported, what's exposed, and a Proceed / Adjust / Reconsider verdict.</p>
+<!-- ============================ LA PREMISSE ============================ -->
+<section class="bande bande--creme">
+  <div class="dedans">
+    <span class="etiq">The Premise</span>
+    <h2>Companies decide internally.<br>The outcome happens externally.</h2>
+    <div class="duo">
+      <div class="carte">
+        <h3>What leadership knows</h3>
+        <p>Experience, financial models, customer knowledge, internal data. Real, and often
+          deep — built from years inside the business.</p>
+      </div>
+      <div class="carte">
+        <h3>What the market decides</h3>
+        <p>Customers, investors, partners, and competitors have no obligation to see it the
+          same way. They form their own view, separately.</p>
+      </div>
     </div>
-    <div class="tier">
-      <h3>Commercial Working Session</h3>
-      <span class="price">Scoped after intake</span>
-      <p>You and your leadership team work through what the evidence changes — where growth may be leaking, what may have been missed, and what the findings mean for the path forward.</p>
-    </div>
-    <div class="tier">
-      <h3>Before + After</h3>
-      <span class="price">Scoped after intake</span>
-      <p>For the decisions where getting it right matters most — the full pre-decision read, plus a post-decision comparison against the original thesis.</p>
+    <p class="souligne">Signal Shift tests whether current external evidence supports
+      internal confidence — before significant resources are committed, and again after, to
+      see whether the market responded as expected.</p>
+    <div class="chaine">
+      <ol>
+        <li>See what's missing</li>
+        <li class="temps--preuve">Test it against outside evidence</li>
+        <li class="temps--expose">Understand what's exposed</li>
+        <li>Make a more informed decision</li>
+      </ol>
     </div>
   </div>
 </section>
 
-<div class="hairline"></div>
-
-<section class="wrap closing reveal">
-  <h2>Before your next move</h2>
-  <p class="lede" style="margin:0 auto 30px;">Competitive windows close on their own schedule, not yours. You may not need more activity, and you may not need another strategy. You may need to know whether the evidence supports the move you're about to make — before the market decides for you.</p>
-  <a class="btn-primary" href="https://calendly.com/tscally/call">Get an Outside Read →</a>
+<!-- ============================ AVANT / APRES ============================ -->
+<section class="bande bande--sable">
+  <div class="dedans">
+    <div class="duo">
+      <div class="volet">
+        <span class="etiq">Before</span>
+        <h3>Does the evidence support the move?</h3>
+        <p>Sometimes the move hasn't happened yet. Sometimes it's already underway and not
+          landing the way you expected — the launch is out, the pipeline should be moving,
+          and it isn't.</p>
+        <p>Either way, the question is the same: does the outside evidence still support the
+          plan as it's currently built?</p>
+        <ul class="liste">
+          <li>Competitive positioning &amp; timing</li>
+          <li>Market conditions &amp; audience priorities</li>
+          <li>Whether the differentiation is actually distinct</li>
+          <li>Where the plan may be losing traction</li>
+          <li>What's economically exposed if a key assumption is wrong</li>
+        </ul>
+        <div class="verdict verdict--nu">
+          <ul>
+            <li>Proceed</li>
+            <li>Adjust</li>
+            <li>Reconsider</li>
+          </ul>
+        </div>
+      </div>
+      <div class="volet">
+        <span class="etiq">After</span>
+        <h3>Winning attention and losing the window happen at the same speed.</h3>
+        <p>A launch can dominate a news cycle and still leave nothing behind — while a
+          competitor quietly earns the trust that actually converts.</p>
+        <p>The same method comes back afterward to separate real reach from real authority —
+          before that gap becomes the market's new baseline.</p>
+        <ul class="liste">
+          <li>Earned coverage vs. paid syndication</li>
+          <li>Share of voice against named competitors</li>
+          <li>Whether visibility is compounding or already decaying</li>
+          <li>Whether the intended audience actually responded</li>
+          <li>What changed — and what should inform the next move</li>
+        </ul>
+        <div class="verdict verdict--nu">
+          <ul>
+            <li>Build</li>
+            <li>Correct</li>
+            <li>Move on</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="voies__prose" style="margin-top:1.75rem">This applies wherever leadership is
+      committing real time, money, or credibility to a move the market will ultimately
+      judge — from launches and positioning to fundraising, partnerships, and growth.</p>
+    <p class="note prose" style="margin-top:2.75rem">We won't hand you a precise
+      probability we can't defend, or a score dressed up as more scientific than it is. If
+      we can't show our reasoning, we don't give you the number.</p>
+  </div>
 </section>
 
-<footer>
-  Outside evidence. Commercial judgment. Better decisions. — Tom Scally
-</footer>
+<!-- ============================ LE CAS ============================ -->
+<section class="bande bande--navy" id="exhibit">
+  <div class="dedans">
+    <span class="etiq">Exhibit A — Bitcoin Ocean</span>
+    <h2>Winning visibility.<br>Racing to lock authority.</h2>
+    <p class="lead prose" style="margin-top:1.75rem"><strong>The decision error:</strong> a
+      company appeared to be winning — dominant reach, a dominant news cycle. Fourteen days
+      later, a direct competitor was about to change the market's standard of proof entirely.
+      Signal Shift identified that gap before it hardened into the new default comparison.</p>
 
-<script>
-  const opts = {threshold:0.12};
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-  }, opts);
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-</script>
+    <div class="stats">
+      <div class="stat"><b>65M+</b><span>Potential impressions — 6x the nearest competitor</span></div>
+      <div class="stat"><b>86%</b><span>Of that reach was syndication, not earned authority</span></div>
+      <div class="stat"><b>14 days</b><span>Before a competitor raised the bar the market would judge by</span></div>
+    </div>
+
+    <div class="trouve prose">
+      <p><b>The finding:</b> visibility and authority aren't the same thing, and they don't
+        arrive on the same timeline. Bitcoin Ocean won the awareness race. The read specified
+        exactly what would need to happen next to win the trust race too — before the window
+        closed.</p>
+    </div>
+    <p class="note prose" style="margin-top:1.5rem; font-style:italic">This exhibit reflects
+      Signal Shift's independent post-announcement read. It does not include a pre-decision
+      engagement.</p>
+    <div class="contre">
+      <p><strong>A separate launch we reviewed</strong> generated 376 paid postings and an
+        estimated 821M in potential reach — and zero independent editorial coverage. It
+        didn't rank on page one for any term a real buyer would search. Same gap, different
+        company: activity without impact.</p>
+      <p style="margin-top:1.15rem"><b>This is the part that doesn't wait for you to
+        notice:</b> competitive windows close on their own schedule, not yours. Whatever
+        you're about to announce is being measured against whatever your closest competitor
+        does next. The question isn't just whether your move is good — it's whether it's
+        still good by the time the market finishes reacting to it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LA DECISION HUMAINE ============================ -->
+<section class="bande bande--sable">
+  <div class="dedans">
+    <span class="etiq">The human decision layer</span>
+    <div class="duo duo--cit">
+      <blockquote>“The system provides the evidence. Experience provides the judgment.
+        Leadership makes the decision.”</blockquote>
+      <div>
+        <p>AI has made information and analysis widely available — that isn't the problem
+          Signal Shift solves. The harder question is what the evidence means for this
+          decision, at this company, right now.</p>
+        <p>AI will mostly evaluate the assumptions you give it. Signal Shift independently
+          tests those assumptions against what's actually happening outside your company,
+          and shows you where the two disagree — with someone accountable for the read, not
+          a model with nothing at stake if it's wrong.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ L'INVESTISSEMENT ============================ -->
+<section class="bande bande--creme">
+  <div class="dedans">
+    <span class="etiq">Investment</span>
+    <h2>Priced for the decision, not the report.</h2>
+    <p class="inv__amorce">Call before you commit — not after:</p>
+    <ul class="inv__cas">
+      <li>You're about to spend real money on a launch</li>
+      <li>You're preparing an investor story</li>
+      <li>You're considering entering a new market</li>
+      <li>You're about to announce a partnership</li>
+      <li>You're evaluating whether to acquire or invest in a company</li>
+      <li>You're months into a strategy and unsure whether to keep funding it</li>
+            <li>Results have stalled and you&rsquo;re not sure whether the problem is execution, positioning, or the underlying premise.</li>
+    </ul>
+    <p class="inv__cloture">Against what's actually at stake in moments like these, a
+      $1,000 Outside Read is a small check before a large commitment.</p>
+    <div class="prix">
+      <div class="offre offre--phare">
+        <h3>Outside Read</h3>
+        <span class="montant">Starting at $1,000</span>
+        <p>Evidence, diagnosis, and a clear conclusion — what's supported, what's exposed,
+          and a Proceed / Adjust / Reconsider verdict.</p>
+      </div>
+      <div class="offre">
+        <h3>Commercial Working Session</h3>
+        <span class="montant">Scoped</span>
+        <span class="apres">after intake</span>
+        <p>You and your leadership team work through what the evidence changes &mdash; where growth may be leaking, what may have been missed, and what the findings mean for the path forward.</p>
+      </div>
+      <div class="offre">
+        <h3>Before + After</h3>
+        <span class="montant">Scoped</span>
+        <span class="apres">after intake</span>
+        <p>For the decisions where getting it right matters most — the full pre-decision
+          read, plus a post-decision comparison against the original thesis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CLOTURE ============================ -->
+<section class="bande bande--navy final">
+  <div class="dedans">
+    <h2>Before your next move</h2>
+    <p class="lead prose">Competitive windows close on their own schedule, not yours. You
+      may not need more activity, and you may not need another strategy. You may need to know
+      whether the evidence supports the move you're about to make — before the market decides
+      for you.</p>
+    <div class="boutons">
+      <a class="cta cta--plein" href="/get-an-outside-read.html">Get an Outside Read →</a>
+    </div>
+  </div>
+</section>
+
+<p class="pied"><span>Outside evidence. Commercial judgment. Better decisions. — <b style="white-space:nowrap">Tom Scally</b></span></p>
 
 </body>
 </html>
