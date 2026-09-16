@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get an Outside Read — Signal Shift</title>
+<link rel="canonical" href="https://tomscally.com/get-an-outside-read.html">
+<meta name="description" content="A short intake before a Signal Shift Outside Read: the decision, the lane, the timing and what is at stake.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10141A;
+    --panel:#171D26;
+    --panel-2:#1C2330;
+    --hairline:#2A323D;
+    --text:#E9E6DE;
+    --muted:#8B93A1;
+    --brass:#C9A227;
+    --brass-dim:#8A7325;
+    --teal:#3FA7A3;
+    --max:840px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  a{color:var(--brass);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin:0 0 14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--brass-dim);
+    display:inline-block;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0 0 0.5em;
+  }
+  h1{font-size:clamp(38px,6vw,62px); line-height:1.06; font-weight:600;}
+  h2{font-size:clamp(26px,3.4vw,34px); line-height:1.18;}
+  p{margin:0 0 1em; color:var(--text);}
+  .muted{color:var(--muted);}
+  .lede{font-size:19px; color:var(--muted); max-width:56ch;}
+
+  section{padding:96px 0;}
+  .hairline{border-top:1px solid var(--hairline);}
+
+  /* ---- Hero ---- */
+  .hero{padding:120px 0 80px; position:relative;}
+  .hero-cta-row{display:flex; gap:18px; flex-wrap:wrap; align-items:center; margin-top:34px;}
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--brass); color:var(--ink);
+    font-weight:600; text-decoration:none;
+    padding:14px 26px; border-radius:2px;
+    font-family:'IBM Plex Sans', sans-serif;
+    border:1px solid var(--brass);
+    transition:background 0.15s ease, transform 0.15s ease;
+  }
+  .btn-primary:hover{background:#DDB233; transform:translateY(-1px);}
+  .btn-ghost{
+    color:var(--muted); text-decoration:none;
+    font-size:15px; border-bottom:1px solid var(--hairline);
+    padding-bottom:2px;
+  }
+  .btn-ghost:hover{color:var(--text); border-color:var(--muted);}
+
+  .waveform-box{margin-top:64px;}
+  .waveform-caption{
+    display:flex; justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; color:var(--muted); letter-spacing:0.05em;
+    margin-top:10px; text-transform:uppercase;
+  }
+  .waveform-caption span:last-child{color:var(--teal);}
+
+  #shiftline{
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    animation: draw 2.2s ease-out forwards 0.2s;
+  }
+  #teal-seg{
+    stroke-dasharray: 700;
+    stroke-dashoffset: 700;
+    animation: draw 1.6s ease-out forwards 1.1s;
+  }
+  @keyframes draw{ to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce){
+    #shiftline,#teal-seg{stroke-dashoffset:0; animation:none;}
+  }
+
+  /* ---- Premise ---- */
+  .premise-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:32px;
+  }
+  .premise-card{
+    background:var(--panel); border:1px solid var(--hairline);
+    padding:26px 28px; border-radius:3px;
+  }
+  .premise-card h3{font-size:18px; margin-bottom:10px; color:var(--text); font-weight:500;}
+  .premise-card p{color:var(--muted); font-size:15px; margin:0;}
+  .gap-note{
+    margin-top:28px; font-family:'IBM Plex Mono', monospace; font-size:13px;
+    color:var(--muted); border-left:2px solid var(--teal); padding-left:16px;
+  }
+
+  /* ---- Before / After ---- */
+  .split{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .split-col h2{font-size:24px;}
+  ul.evidence{list-style:none; padding:0; margin:20px 0 0;}
+  ul.evidence li{
+    padding:9px 0 9px 22px; position:relative;
+    color:var(--muted); font-size:15px;
+    border-bottom:1px solid var(--hairline);
+  }
+  ul.evidence li:last-child{border-bottom:none;}
+  ul.evidence li::before{
+    content:"—"; position:absolute; left:0; color:var(--brass-dim);
+  }
+  .verdict-row{display:flex; gap:10px; margin-top:26px; flex-wrap:wrap;}
+  .chip{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.08em;
+    text-transform:uppercase; padding:8px 14px; border:1px solid var(--hairline);
+    border-radius:20px; color:var(--muted);
+  }
+  .disclaimer{
+    margin-top:24px; font-size:13.5px; color:var(--muted);
+    font-style:italic; border-top:1px solid var(--hairline); padding-top:18px;
+  }
+
+  /* ---- Exhibit / case study ---- */
+  .exhibit{
+    background:var(--panel); border:1px solid var(--hairline);
+    padding:44px; border-radius:3px; margin-top:32px;
+  }
+  .exhibit-stats{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--hairline); margin:30px 0; border:1px solid var(--hairline);
+  }
+  .stat{background:var(--panel-2); padding:22px 20px;}
+  .stat .num{
+    font-family:'IBM Plex Mono', monospace; font-size:28px; color:var(--teal);
+    display:block; margin-bottom:6px;
+  }
+  .stat .label{font-size:12.5px; color:var(--muted); line-height:1.4;}
+  .exhibit p{color:var(--muted); font-size:15.5px;}
+  .exhibit p strong{color:var(--text); font-weight:500;}
+  .exhibit-foot{
+    font-size:13px; color:var(--muted); font-style:italic;
+    margin-top:22px; border-top:1px solid var(--hairline); padding-top:16px;
+  }
+  .quickproof{
+    margin-top:22px; padding-top:22px; border-top:1px dashed var(--hairline);
+    font-size:14.5px; color:var(--muted);
+  }
+  .quickproof strong{color:var(--text);}
+  .urgency-note{
+    margin-top:26px; padding:20px 22px; background:var(--panel);
+    border-left:2px solid var(--teal); border-radius:2px;
+    font-size:15px; color:var(--text);
+  }
+  .urgency-note strong{color:var(--teal);}
+
+  /* ---- Human layer ---- */
+  .humanlayer{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  .humanlayer blockquote{
+    font-family:'Fraunces', serif; font-size:22px; font-weight:500;
+    line-height:1.4; margin:0; color:var(--text); font-style:italic;
+  }
+
+  /* ---- Pricing ---- */
+  .tiers{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:36px;}
+  .tier{
+    background:var(--panel); border:1px solid var(--hairline); padding:30px 26px;
+    border-radius:3px; display:flex; flex-direction:column;
+  }
+  .tier.featured{border-color:var(--brass-dim);}
+  .tier h3{font-size:17px; margin-bottom:4px; font-weight:500;}
+  .tier .price{
+    font-family:'IBM Plex Mono', monospace; color:var(--brass);
+    font-size:20px; margin-bottom:16px; display:block;
+  }
+  .tier p{color:var(--muted); font-size:14.5px; flex-grow:1;}
+
+  /* ---- Closing ---- */
+  .closing{text-align:center; padding:110px 0;}
+  .closing h2{font-size:clamp(28px,4vw,40px);}
+  footer{
+    padding:40px 0 60px; text-align:center;
+    color:var(--muted); font-size:13px;
+    font-family:'IBM Plex Mono', monospace; letter-spacing:0.04em;
+  }
+
+  @media (max-width:760px){
+    .premise-grid,.split,.humanlayer{grid-template-columns:1fr; gap:28px;}
+    .exhibit-stats{grid-template-columns:1fr;}
+    .tiers{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+    .exhibit{padding:28px 22px;}
+  }
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  .sitenav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(16,20,26,0.92); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--hairline);
+  }
+  .sitenav .wrap{display:flex; align-items:center; justify-content:space-between; padding:18px 28px;}
+  .sitenav .logo{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.1em;
+    color:var(--text); text-decoration:none; text-transform:uppercase;
+  }
+  .sitenav .navlinks{display:flex; gap:28px; align-items:center;}
+  .sitenav a.navlink{color:var(--muted); text-decoration:none; font-size:14.5px;}
+  .sitenav a.navlink:hover{color:var(--text);}
+  .sitenav a.navcta{
+    color:var(--ink); background:var(--brass); padding:9px 16px; border-radius:2px;
+    font-weight:600; font-size:13.5px;
+  }
+  .sitenav a.navcta:hover{background:#DDB233;}
+  @media (max-width:640px){
+    .sitenav .navlinks{gap:14px;}
+    .sitenav a.navlink{font-size:13px;}
+  }
+</style>
+
+
+<style>
+  .formwrap{padding-top:80px; padding-bottom:100px;}
+  fieldset{border:none; margin:0 0 34px; padding:0;}
+  legend{
+    font-family:'Fraunces', serif; font-size:19px; color:var(--text);
+    margin-bottom:14px; padding:0;
+  }
+  .field-hint{color:var(--muted); font-size:14px; margin:-8px 0 14px;}
+  input[type="text"], input[type="email"], textarea{
+    width:100%; background:var(--panel); border:1px solid var(--hairline);
+    color:var(--text); padding:12px 14px; border-radius:2px;
+    font-family:'IBM Plex Sans', sans-serif; font-size:15px;
+  }
+  textarea{resize:vertical; min-height:90px;}
+  input:focus, textarea:focus{outline:2px solid var(--teal); outline-offset:1px; border-color:var(--teal);}
+  .radio-group{display:flex; flex-direction:column; gap:10px;}
+  .radio-option{
+    display:flex; align-items:center; gap:12px;
+    background:var(--panel); border:1px solid var(--hairline);
+    padding:13px 16px; border-radius:3px; cursor:pointer;
+    transition:border-color 0.15s ease;
+  }
+  .radio-option:hover{border-color:var(--brass-dim);}
+  .radio-option input{accent-color:var(--brass); width:16px; height:16px;}
+  .radio-option label{cursor:pointer; font-size:15px; color:var(--text); flex:1;}
+  .lane-note{color:var(--muted); font-size:13px; margin-top:4px;}
+  .confidential-note{
+    display:flex; gap:10px; align-items:flex-start;
+    background:var(--panel); border-left:2px solid var(--teal);
+    padding:16px 18px; border-radius:2px; margin-bottom:40px;
+    font-size:14px; color:var(--muted);
+  }
+  .submit-btn{
+    background:var(--brass); color:var(--ink); font-weight:600;
+    border:1px solid var(--brass); padding:15px 30px; border-radius:2px;
+    font-family:'IBM Plex Sans', sans-serif; font-size:15px; letter-spacing:0.03em;
+    cursor:pointer; width:100%;
+  }
+  .submit-btn:hover{background:#DDB233;}
+  .submit-note{text-align:center; color:var(--muted); font-size:14px; margin-top:16px;}
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:600px){.two-col{grid-template-columns:1fr;}}
+  label.field-label{display:block; font-size:14px; color:var(--muted); margin-bottom:8px;}
+</style>
+
+
+<style>
+  details.faq-item{border-bottom:1px solid var(--hairline); padding:18px 0;}
+  details.faq-item summary{
+    font-family:'Fraunces', serif; font-size:17px; color:var(--text);
+    cursor:pointer; list-style:none; display:flex; justify-content:space-between;
+    align-items:center; gap:16px;
+  }
+  details.faq-item summary::-webkit-details-marker{display:none;}
+  details.faq-item summary::after{
+    content:"+"; color:var(--brass); font-size:18px; font-family:'IBM Plex Mono', monospace;
+  }
+  details.faq-item[open] summary::after{content:"\2212";}
+  details.faq-item p{color:var(--muted); margin-top:12px; font-size:14.5px; max-width:64ch;}
+.merci{margin-top:1.5rem; padding:1.1rem 1.2rem; border-left:3px solid var(--accent, #b07c2e);
+  background:#fff; font-size:.95rem; line-height:1.6; display:none}
+.merci.vu{display:block}
+</style>
+</head>
+<body>
+
+<nav class="sitenav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Signal Shift</a>
+    <div class="navlinks">
+      <a class="navlink" href="about-tom.html">About Tom</a>
+      <a class="navlink" href="faq.html">FAQ</a>
+      <a class="navcta" href="get-an-outside-read.html">Get an Outside Read</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap formwrap">
+  <p class="eyebrow">Get an Outside Read</p>
+  <h1 style="font-size:clamp(30px,4.5vw,42px);">What are you trying to understand?</h1>
+  <p class="lede" style="margin-bottom:26px;">Something isn't producing the response you expected — or you're considering what to do next. Give me the short version.</p>
+
+  <div class="confidential-note">
+    <span>&#128274;</span>
+    <span>Everything below stays between us. Nothing here is shared, published, or used as a case study without your explicit sign-off.</span>
+  </div>
+
+  <!-- L'ENVOI ARRIVE CHEZ NOUS (en place depuis le 27/08/2026, eprouve le 15/09): la
+       page est servie par GitHub Pages, qui ne recoit rien. Le script en bas de page
+       poste sur notre serveur, qui range la demande et previent Tom; si ce serveur ne
+       repond pas, un courrier prerempli prend le relais. -->
+  <form id="intake" novalidate>
+
+    <fieldset>
+      <legend>Where are you looking for clarity?</legend>
+      <div class="radio-group">
+        <div class="radio-option">
+          <input type="radio" name="lane" id="lane1" value="Market & Launch" required>
+          <label for="lane1">Market &amp; Launch<br><span class="lane-note">Brand / communications push, product or feature launch</span></label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" name="lane" id="lane2" value="Capital & Investor Narrative">
+          <label for="lane2">Capital &amp; Investor Narrative<br><span class="lane-note">Fundraise or investor narrative</span></label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" name="lane" id="lane3" value="Partnerships & Commercial Growth">
+          <label for="lane3">Partnerships &amp; Commercial Growth<br><span class="lane-note">Major partnership or commercial initiative</span></label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>What's happening?</legend>
+      <p class="field-hint">What are you doing, what did you expect to happen, and what are you seeing instead?</p>
+      <textarea name="whats_happening" required style="min-height:130px;"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>What's the timeline?</legend>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="timeline" id="t1" value="Within 30 days" required><label for="t1">Within 30 days</label></div>
+        <div class="radio-option"><input type="radio" name="timeline" id="t2" value="1-3 months"><label for="t2">1–3 months</label></div>
+        <div class="radio-option"><input type="radio" name="timeline" id="t3" value="3-6 months"><label for="t3">3–6 months</label></div>
+        <div class="radio-option"><input type="radio" name="timeline" id="t4" value="Exploring / no fixed date"><label for="t4">Exploring / no fixed date</label></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>What's potentially at stake?</legend>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="stake" id="s1" value="Under $25K" required><label for="s1">Under $25K</label></div>
+        <div class="radio-option"><input type="radio" name="stake" id="s2" value="$25K-$100K"><label for="s2">$25K–$100K</label></div>
+        <div class="radio-option"><input type="radio" name="stake" id="s3" value="$100K-$500K"><label for="s3">$100K–$500K</label></div>
+        <div class="radio-option"><input type="radio" name="stake" id="s4" value="$500K+"><label for="s4">$500K+</label></div>
+        <div class="radio-option"><input type="radio" name="stake" id="s5" value="Primarily credibility/reputation"><label for="s5">Primarily credibility/reputation rather than direct spend</label></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Your details</legend>
+      <div class="two-col" style="margin-bottom:14px;">
+        <div>
+          <label class="field-label" for="name">Name</label>
+          <input type="text" name="name" id="name" required>
+        </div>
+        <div>
+          <label class="field-label" for="company">Company</label>
+          <input type="text" name="company" id="company" required>
+        </div>
+      </div>
+      <label class="field-label" for="email">Email</label>
+      <input type="email" name="email" id="email" required>
+    </fieldset>
+
+    <button type="submit" class="submit-btn">SUBMIT FOR REVIEW</button>
+    <p class="submit-note">Outside Reads start at $1,000.</p>
+    <div class="merci" id="merci"></div>
+  </form>
+</div>
+
+
+<div class="wrap" style="padding-bottom:60px;">
+  <p class="eyebrow">A few questions before you submit</p>
+  <details class="faq-item">
+    <summary>What information remains confidential?</summary>
+    <p>Everything you share stays between us. Nothing is published, referenced, or used as a case study without your explicit sign-off first.</p>
+  </details>
+  <details class="faq-item">
+    <summary>What does the $1,000 Outside Read actually include?</summary>
+    <p>A written read on one specific decision: what the evidence supports, what's uncertain, what's exposed if a key assumption is wrong, and a Proceed / Adjust / Reconsider recommendation with the reasoning behind it.</p>
+  </details>
+  <details class="faq-item">
+    <summary>What happens after the Outside Read?</summary>
+    <p>You get the written read directly. If it points to Adjust or Reconsider, that's yours to act on however you choose. If you want to talk through the implications directly, that's the Commercial Working Session, a separate step.</p>
+  </details>
+  <p style="margin-top:20px;"><a class="btn-ghost" href="faq.html">See the full FAQ &rarr;</a></p>
+</div>
+
+<footer>
+  Outside evidence. Commercial judgment. Better decisions. — Tom Scally
+</footer>
+
+<script>
+/* LE FORMULAIRE ARRIVE CHEZ NOUS, ET LE COURRIER PREREMPLI RESTE LE FILET (27/08).
+
+   La page est servie par GitHub Pages: personne n'y recoit un envoi. On poste donc vers
+   notre serveur, qui RANGE la demande puis l'envoie a Tom. Si ce serveur ne repond pas,
+   on retombe sur le geste d'avant - presse-papier plus courrier prerempli - au lieu de
+   perdre la demande: une porte qui tombe ne doit pas coûter un client. */
+(function () {
+  var f = document.getElementById('intake');
+  var m = document.getElementById('merci');
+  var bouton = f.querySelector('button[type=submit], button:not([type])');
+  var ADRESSE = 'tom@tomscally.com';
+  var PORTE = 'https://vps-39c10144.vps.ovh.net/formulaire';
+
+  function reponses() {
+    var champs = {};
+    f.querySelectorAll('input[type=text],input[type=email],textarea').forEach(function (el) {
+      if (el.value.trim()) { champs[el.name] = el.value.trim(); }
+    });
+    f.querySelectorAll('input[type=radio]:checked').forEach(function (el) {
+      if (!champs[el.name]) { champs[el.name] = el.value; }
+    });
+    return champs;
+  }
+
+  function dire(html) { m.innerHTML = html; m.classList.add('vu'); }
+
+  function repli(champs) {
+    var texte = Object.keys(champs).map(function (k) {
+      return k + '\n' + champs[k];
+    }).join('\n\n');
+    if (navigator.clipboard) { navigator.clipboard.writeText(texte).catch(function () {}); }
+    window.location.href = 'mailto:' + ADRESSE
+      + '?subject=' + encodeURIComponent('Outside Read request')
+      + '&body=' + encodeURIComponent(texte);
+    dire('Your answers are copied to your clipboard, and a message to <strong>'
+      + ADRESSE + '</strong> should be opening. If nothing opened, paste them into an '
+      + 'email to that address and Tom will come back to you.');
+  }
+
+  f.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var champs = reponses();
+    if (!Object.keys(champs).length) {
+      dire('Add at least the decision and your email, then submit again.');
+      return;
+    }
+    if (bouton) { bouton.disabled = true; bouton.dataset.mot = bouton.textContent;
+                  bouton.textContent = 'Sending...'; }
+    var fini = false;
+    var minuteur = setTimeout(function () {
+      if (!fini) { fini = true; rendre(); repli(champs); }
+    }, 8000);
+    function rendre() {
+      clearTimeout(minuteur);
+      if (bouton) { bouton.disabled = false;
+                    bouton.textContent = bouton.dataset.mot || 'Submit'; }
+    }
+    fetch(PORTE, {
+      method: 'POST',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify({cible: 'tom', champs: champs})
+    }).then(function (r) {
+      return r.ok ? r.json() : Promise.reject(new Error('refus'));
+    }).then(function (x) {
+      if (fini) { return; }
+      fini = true; rendre();
+      if (!x || !x.ok) { return repli(champs); }
+      f.reset();
+      dire('Thank you. Your request has reached Tom, and he will come back to you '
+        + 'directly at the email address you gave.');
+    }).catch(function () {
+      if (fini) { return; }
+      fini = true; rendre(); repli(champs);
+    });
+  });
+})();
+</script>
+</body>
+</html>
