@@ -134,14 +134,19 @@ h3{font-size:1.1875rem; font-weight:600; letter-spacing:0}
    police a chasse fixe avec des couleurs qu'on n'a pas: ici c'est la meme suite,
    dans la typographie de la page. L'or ne sert que dans sa version encree, la seule
    qui passe le contraste sur fond creme. */
-.chaine{margin-top:2.5rem; background:#fff; border:1px solid var(--bord); border-radius:3px;
-  padding:clamp(1.5rem,2.6vw,2.25rem); max-width:var(--mesure)}
+/* SANS CADRE, CENTREE, ET AU LARGE (Paul, 16/09/2026 a 13 h 59). La boite blanche a
+   contour la serrait dans la colonne de gauche et la faisait ressembler a une carte de
+   plus, alors que c'est une SUITE: quatre temps qui se lisent de haut en bas. Enlever le
+   cadre, la centrer et lui donner de l'air la rend a ce qu'elle est. */
+.chaine{margin:3.75rem auto 0; background:none; border:0; padding:0; max-width:34rem;
+  text-align:center}
 .chaine ol{list-style:none; margin:0; padding:0}
-.chaine li{font-family:"DM Sans",sans-serif; font-size:var(--t-label); font-weight:700;
-  letter-spacing:.18em; text-transform:uppercase; color:var(--ink); line-height:1.5}
-.chaine li + li{margin-top:.5rem}
+.chaine li{font-family:"DM Sans",sans-serif; font-size:calc(var(--t-label) * 1.18);
+  font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--ink);
+  line-height:1.5}
+.chaine li + li{margin-top:.9rem}
 .chaine li::before{content:"\2193"; display:block; color:var(--gold); font-weight:400;
-  letter-spacing:0; font-size:1rem; line-height:1.6; margin:.35rem 0}
+  letter-spacing:0; font-size:1.15rem; line-height:1.6; margin:.9rem 0}
 .chaine li:first-child::before{content:none}
 .chaine .temps--preuve{color:var(--or-encre)}
 .chaine .temps--expose{color:var(--navy-light)}
