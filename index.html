@@ -283,6 +283,12 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
 .voies__grille h4{margin:0 0 .45rem; font-family:"DM Sans",sans-serif; font-size:.8125rem;
   font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink)}
 .voies__grille p{margin:0; font-size:var(--t-note); color:var(--ink-3); line-height:1.55}
+/* PAR OU COMMENCER (fichier de Tom, 21/09): trois cartes, trois situations, en citation. */
+.depart{display:grid; gap:1.1rem; margin-top:1.75rem}
+@media(min-width:820px){.depart{grid-template-columns:repeat(3,1fr)}}
+.depart .carte p{font-style:italic}
+.depart__suite{margin:1.75rem 0 0; max-width:var(--mesure); font-weight:500; color:var(--ink)}
+.depart__appel{margin:.6rem 0 0; font-weight:700; color:var(--or-encre)}
 /* Les verdicts sans leur phrase d'introduction: trois mots, rien autour. */
 .verdict--nu .quoi{display:none}
 .verdict--nu ul li span{display:none}
@@ -384,6 +390,7 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
           <li>Whether the differentiation claim is already taken</li>
           <li>What's economically exposed if a key assumption is wrong</li>
         </ul>
+        <p class="voies__prose">This applies wherever leadership has committed &mdash; or is about to commit &mdash; real time, money, or credibility to a decision the market will ultimately judge &mdash; a brand or communications push, a product or feature launch, a fundraise or investor narrative, or a major partnership announcement.</p>
         <div class="verdict verdict--nu">
           <ul>
             <li>Proceed</li>
@@ -394,20 +401,19 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
       </div>
       <div class="volet">
         <span class="etiq">After</span>
-        <h3>Winning attention and losing the window happen at the same speed.</h3>
+        <h3>Winning attention and losing the window are the same speed.</h3>
         <p>A launch can dominate a news cycle and still leave nothing behind — while a
           competitor quietly earns the trust that actually converts.</p>
-        <p>The same method comes back afterward to separate real reach from real authority —
-          before that gap becomes the market's new baseline.</p>
+        <p>The same method that tests a decision beforehand comes back afterward and separates
+          real reach from real authority, before that gap becomes the market's new baseline.</p>
         <ul class="liste">
           <li>Earned coverage vs. paid syndication</li>
           <li>Share of voice against named competitors</li>
-          <li>Whether visibility is compounding or already decaying</li>
+          <li>Whether visibility is compounding, or already decaying</li>
           <li>What changed — and what should inform the next move</li>
         </ul>
       </div>
     </div>
-    <p class="voies__prose">This applies wherever leadership has committed &mdash; or is about to commit &mdash; real time, money, or credibility to a decision the market will ultimately judge &mdash; a brand or communications push, a product or feature launch, a fundraise or investor narrative, or a major partnership announcement.</p>
     <p class="note prose" style="margin-top:2.75rem">We won't hand you a precise
       probability we can't defend, or a score dressed up as more scientific than it is. If
       we can't show our reasoning, we don't give you the number.</p>
@@ -456,7 +462,7 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
 <!-- ============================ LA DECISION HUMAINE ============================ -->
 <section class="bande bande--sable">
   <div class="dedans">
-    <span class="etiq">The human decision layer</span>
+    <span class="etiq">The Human Decision Layer</span>
     <div class="duo duo--cit">
       <blockquote>“The system provides the evidence. Experience provides the judgment.
         Leadership makes the decision.”</blockquote>
@@ -468,12 +474,39 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
   </div>
 </section>
 
-<!-- ============================ L'INVESTISSEMENT ============================ -->
+<!-- ============================ PAR OU COMMENCER ============================ -->
+<!-- Section ajoutee par Tom dans son fichier du 21/09, remise dans notre charte: nos
+     cartes blanches, notre etiquette, nos titres. -->
 <section class="bande bande--creme">
+  <div class="dedans">
+    <span class="etiq">Where to Start</span>
+    <h2>Not every Outside Read starts with a decision.</h2>
+    <p class="prose">Sometimes you know the decision. Sometimes you just know something isn&rsquo;t adding up.</p>
+    <div class="depart">
+      <div class="carte">
+        <h3>Before</h3>
+        <p>&ldquo;We think we know the right next move. Before we put more money behind it, we want to know what the outside evidence says.&rdquo;</p>
+      </div>
+      <div class="carte">
+        <h3>Already underway</h3>
+        <p>&ldquo;We launched six months ago and don&rsquo;t understand why sales aren&rsquo;t moving.&rdquo;</p>
+      </div>
+      <div class="carte">
+        <h3>After</h3>
+        <p>&ldquo;We changed our positioning but aren&rsquo;t sure whether the market is responding.&rdquo;</p>
+      </div>
+    </div>
+    <p class="depart__suite">You bring the situation. Signal Shift determines what needs to be tested &mdash; and whether the outside evidence supports where you&rsquo;re headed.</p>
+    <p class="depart__appel">Where there&rsquo;s uncertainty, get an outside read.</p>
+  </div>
+</section>
+
+<!-- ============================ L'INVESTISSEMENT ============================ -->
+<section class="bande bande--sable">
   <div class="dedans">
     <span class="etiq">Investment</span>
     <h2>Priced for the decision, not the report.</h2>
-    <p class="inv__amorce">Call before you commit — not after:</p>
+    <p class="inv__amorce">Get an outside read when the next commitment matters:</p>
     <ul class="inv__cas">
       <li>You're about to spend real money on a launch</li>
       <li>You're preparing an investor story</li>
@@ -481,8 +514,8 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
       <li>You're about to announce a partnership</li>
       <li>You're evaluating whether to acquire or invest in a company</li>
       <li>You're months into a strategy and unsure whether to keep funding it</li>
+            <li>Results have stalled and you&rsquo;re not sure whether the problem is execution, positioning, or the underlying premise</li>
             <li>You&rsquo;re mid-strategy and the results aren&rsquo;t showing up the way you expected</li>
-            <li>Results have stalled and you&rsquo;re not sure whether the problem is execution, positioning, or the underlying premise.</li>
     </ul>
     <p class="inv__cloture">Against what's actually at stake in moments like these, a
       $1,000 Outside Read is a small check before a large commitment.</p>
@@ -490,7 +523,7 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
       <div class="offre offre--phare">
         <h3>Outside Read</h3>
         <span class="montant">Starting at $1,000</span>
-        <p>Evidence, interpretation, and a clear conclusion — what's supported, what's exposed,
+        <p>Evidence, diagnosis, and a clear conclusion — what's supported, what's exposed,
           and a Proceed / Adjust / Reconsider verdict.</p>
       </div>
       <div class="offre">
