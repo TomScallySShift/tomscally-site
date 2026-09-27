@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Get an Outside Read | Signal Shift</title>
-<meta name="description" content="A short intake before a Signal Shift Outside Read: the decision, the lane, the timing and what is at stake. Outside Reads start at $1,000.">
+<meta name="description" content="A short intake before a Signal Shift Outside Read: the next move, the lane, the timing and what is at stake. Outside Reads start at $1,000.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
@@ -292,7 +292,7 @@ button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weig
 <section class="bande bande--navy" style="padding-bottom:clamp(2.25rem,4vw,3.25rem)">
   <div class="dedans prose">
     <span class="etiq">Get an Outside Read</span>
-    <h1 style="font-size:clamp(2rem,4.6vw,3rem)">What decision are you considering?</h1>
+    <h1 style="font-size:clamp(2rem,4.6vw,3rem)">What move are you considering?</h1>
   </div>
 </section>
 
@@ -303,12 +303,12 @@ button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weig
       explicit sign-off.</p>
     <form id="intake" novalidate>
       <div class="q">
-        <span class="titre">Which decision lane best describes it?</span>
-<div class="choix"><label><input type="radio" name="Which decision lane best describes it?" value="Market &amp; Launch"><span>Market &amp; Launch<small>Brand / communications push, product or feature launch</small></span></label><label><input type="radio" name="Which decision lane best describes it?" value="Capital &amp; Investor Narrative"><span>Capital &amp; Investor Narrative<small>Fundraise or investor narrative</small></span></label><label><input type="radio" name="Which decision lane best describes it?" value="Partnerships &amp; Commercial Growth"><span>Partnerships &amp; Commercial Growth<small>Major partnership or commercial initiative</small></span></label></div>
+        <span class="titre">Which lane best describes it?</span>
+<div class="choix"><label><input type="radio" name="Which lane best describes it?" value="Market &amp; Launch"><span>Market &amp; Launch<small>Brand / communications push, product or feature launch</small></span></label><label><input type="radio" name="Which lane best describes it?" value="Capital &amp; Investor Narrative"><span>Capital &amp; Investor Narrative<small>Fundraise or investor narrative</small></span></label><label><input type="radio" name="Which lane best describes it?" value="Partnerships &amp; Commercial Growth"><span>Partnerships &amp; Commercial Growth<small>Major partnership or commercial initiative</small></span></label></div>
       </div>
       <div class="q">
-        <label for="q3">Briefly describe the decision</label>
-        <textarea id="q3" name="Briefly describe the decision"></textarea>
+        <label for="q3">Briefly describe the move or situation</label>
+        <textarea id="q3" name="Briefly describe the move or situation"></textarea>
       </div>
       <div class="q">
         <span class="titre">When do you expect to make it?</span>
@@ -340,7 +340,7 @@ button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weig
       <details>
         <summary>What is an Outside Read?</summary>
         <p>An Outside Read is an independent perspective on a specific commercial situation.</p>
-        <p>It looks at what the external evidence is showing and identifies what supports your thinking, what&rsquo;s worth considering, and what deserves a closer look. The objective isn&rsquo;t simply to provide more information or research. It&rsquo;s to identify what may matter to the next decision.</p>
+        <p>It looks at what the external evidence is showing and identifies what supports your move, what&rsquo;s worth considering, and what deserves a closer look. The objective isn&rsquo;t simply to provide more information or research. It&rsquo;s to show what may matter next.</p>
       </details>
       <details>
         <summary>Why can't I just ask ChatGPT whether my strategy will work?</summary>
@@ -349,10 +349,10 @@ button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weig
         <p>The Outside Read combines external evidence with independent commercial judgment. AI is one of the tools. It isn&rsquo;t the judgment.</p>
       </details>
       <details>
-        <summary>Does an Outside Read predict whether my decision will succeed?</summary>
+        <summary>Does an Outside Read predict whether my next move will succeed?</summary>
         <p>No.</p>
         <p>An Outside Read isn&rsquo;t a prediction or guarantee. It provides another perspective on what the current outside evidence is showing. Sometimes the evidence reinforces management&rsquo;s thinking. Sometimes it adds context. Sometimes it surfaces something worth examining more closely.</p>
-        <p>The read informs the decision. Leadership decides what happens next.</p>
+        <p>The read informs what comes next. Leadership decides what happens next.</p>
       </details>
     </div>
   </div>
@@ -402,7 +402,7 @@ button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weig
     ev.preventDefault();
     var champs = reponses();
     if (!Object.keys(champs).length) {
-      dire('Add at least the decision and your email, then submit again.');
+      dire('Add at least the move or situation and your email, then submit again.');
       return;
     }
     if (bouton) { bouton.disabled = true; bouton.dataset.mot = bouton.textContent;
