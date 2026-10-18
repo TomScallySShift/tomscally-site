@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Signal Shift — Before the Next Move | Tom Scally</title>
 <link rel="canonical" href="https://tomscally.com/">
-<meta name="description" content="An independent Outside Read before an important commercial move, or when something already underway isn't producing the results you expected.">
+<meta name="description" content="Independent Perspective. Informed Judgment. I'm a project-based independent advisor. Companies bring me in when they're making an important push or when something already underway isn't developing as expected.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
@@ -302,32 +302,42 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
 .barre__liens .barre__btn:hover{background:var(--gold-soft); color:var(--navy);
   border-bottom:0}
 .barre__liens .barre__btn[aria-current="page"]{color:var(--navy)}
+/* Mail de Tom du 18/10: deux moments cote a cote, cartes en texte droit (pas des citations). */
+@media(min-width:820px){.depart--deux{grid-template-columns:repeat(2,1fr)}}
+.depart--droit .carte p{font-style:normal}
+/* L'etude de cas en trois colonnes (tableau du docx de Tom), dans la grille des chiffres. */
+.scan .stat{padding:clamp(1.25rem,2.4vw,1.75rem)}
+.scan .stat p{margin:0; font-size:var(--t-body); line-height:1.6; color:var(--sur-navy-2)}
+.scan .scan__tete{padding-top:1rem; padding-bottom:1rem}
+.scan__tete .etiq{margin:0}
+.chiffre, .bande--navy .chiffre{color:var(--gold); font-weight:700; font-size:1.15em; white-space:nowrap}
+@media(max-width:759px){.scan .scan__tete{display:none}
+  .scan .stat[data-col]::before{content:attr(data-col); display:block; font-size:var(--t-label);
+    font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem}}
 </style>
 </head>
 <body>
-<nav class="barre"><a class="barre__nom" href="/">Tom Scally <span>Signal Shift</span></a><div class="barre__liens"><a href="/about-tom.html">About Tom</a><a href="/faq.html">FAQ</a><a class="barre__btn" href="/get-an-outside-read.html">Get an Outside Read</a></div></nav>
+<nav class="barre"><a class="barre__nom" href="/">Tom Scally <span>Signal Shift</span></a><div class="barre__liens"><a href="/about-tom.html">About Tom</a><a href="/faq.html">FAQ</a><a class="barre__btn" href="/get-an-outside-read.html">Schedule a Conversation</a></div></nav>
 
 <!-- ============================ OUVERTURE ============================ -->
-<!-- Texte de Tom, mail du 25/09/2026 (Signal_Shift_Homepage_FINAL_for_Paul.docx): l'Outside
-     Read est le produit, Signal Shift la methode. Notre charte, ses mots, son ordre. -->
+<!-- Texte de Tom, mail du 18/10/2026 (Signal_Shift_Website_Copy_Final.docx): Signal Shift devient un
+     conseil independant, par projet. Meme charte et memes blocs; ses mots, son ordre; ses lignes en
+     gras en moutarde. Plus aucun prix sur le site. -->
 <section class="bande bande--navy hero">
   <div class="dedans">
     <div class="hero__haut">
     <div class="hero__mot">
       <span class="etiq">Signal Shift</span>
       <h1>Before the<span class="rupture">Next Move.</span></h1>
-      <p class="lead moutarde" style="margin-top:1.75rem">An independent Outside Read before an important
-        commercial move, or when something already underway isn&rsquo;t producing the results you
-        expected.</p>
-      <p class="lead" style="margin-top:1.1rem">You know the business from the inside. Signal Shift looks outside
-        the company at the evidence around the market, competitors, positioning, response and other relevant
-        signals to show what supports the move, what may be worth considering, and what deserves a closer look.</p>
-      <p class="lead prose moutarde" style="margin-top:1.1rem">A forward-looking Outside Read that interprets what the
-        external evidence means for your situation, so you have a clearer view of what may matter next,
-        including what you may not be seeing.</p>
+      <p class="lead moutarde" style="margin-top:1.75rem">Independent Perspective. Informed Judgment.</p>
+      <p class="lead" style="margin-top:1.1rem">I&rsquo;m a project-based independent advisor. Companies bring me in when they&rsquo;re making an important push or when something already underway isn&rsquo;t developing as expected.</p>
+      <p class="lead">Think of it a little like an MRI. A doctor may have a good understanding of what&rsquo;s happening, but an MRI can reveal something that isn&rsquo;t immediately visible.</p>
+      <p class="lead">Signal Shift does that for businesses.</p>
+      <p class="lead">Using a methodology I&rsquo;ve developed, I examine the conditions surrounding a specific situation from an independent perspective to help leadership see what may not be visible from inside the company.</p>
+      <p class="lead">I interpret what I find and recommend whether to Proceed, Adjust, or Reconsider.</p>
+      <p class="lead">What happens next is entirely your decision.</p>
       <div class="boutons">
-        <a class="cta cta--plein" href="/get-an-outside-read.html">Get an Outside Read →</a>
-        <a class="cta cta--nu" href="#exhibit">See a real finding ↓</a>
+        <a class="cta cta--plein" href="/get-an-outside-read.html">Schedule a Conversation →</a>
       </div>
     </div>
     <div class="portrait">
@@ -349,206 +359,180 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
   </div>
 </section>
 
-<!-- ============================ CE QUE FAIT UN OUTSIDE READ ============================ -->
+<!-- ============================ QUAND ============================ -->
+<section class="bande bande--creme">
+  <div class="dedans">
+    <span class="etiq">When an Outside Read Makes Sense</span>
+    <h2>Companies typically bring me in at two important moments.</h2>
+    <div class="depart depart--deux depart--droit">
+      <div class="carte">
+        <h3>Before an Important Move</h3>
+        <p>You&rsquo;re preparing to raise capital, enter a new market, launch something important, or commit additional resources.</p>
+        <p>You believe in the direction but want an independent perspective on whether the conditions surrounding the situation support what you&rsquo;re planning.</p>
+        <p>The question: Are there factors worth understanding before moving forward?</p>
+      </div>
+      <div class="carte">
+        <h3>When Something Isn&rsquo;t Developing as Expected</h3>
+        <p>An initiative is underway. Time, money, and resources are being committed, but the expected momentum isn&rsquo;t developing.</p>
+        <p>The reason isn&rsquo;t always obvious. It could involve positioning, market response, competitive activity, or changing conditions around the business.</p>
+        <p>The question: Is the direction still supported by what&rsquo;s happening around the company, or does something deserve reconsideration?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LA METHODE ============================ -->
 <section class="bande bande--sable">
   <div class="dedans">
-    <span class="etiq">What an Outside Read Does</span>
-    <h2>An independent perspective on a specific commercial situation.</h2>
-    <p class="prose" style="margin-top:1.75rem">An Outside Read looks at a specific commercial situation from the outside.</p>
-    <p class="prose">Signal Shift is the methodology behind the read. It interprets external evidence around the market, competitors, positioning, response and other relevant signals alongside what leadership already knows from inside the business.</p>
-    <p class="prose moutarde">The goal isn&rsquo;t more information. It&rsquo;s a clearer view of what may matter most, including something you may not be seeing.</p>
+    <span class="etiq">The Discipline Behind the Read</span>
+    <h2>Trust. Traction. Conditions.</h2>
+    <p class="prose" style="margin-top:1.75rem">Every situation is different, but the Signal Shift methodology provides a consistent framework for examining what is happening around a company.</p>
+    <div class="depart depart--droit">
+      <div class="carte">
+        <h3 class="moutarde">Trust</h3>
+        <p>Is the company&rsquo;s story holding up from the outside?</p>
+        <p>I examine how the company is positioned, how its story is being communicated, and whether external recognition and credibility support what leadership is trying to accomplish.</p>
+      </div>
+      <div class="carte">
+        <h3 class="moutarde">Traction</h3>
+        <p>Is the expected momentum developing?</p>
+        <p>I look for observable signs of progress, market response, and whether the activity surrounding an initiative supports the direction the company is pursuing.</p>
+      </div>
+      <div class="carte">
+        <h3 class="moutarde">Conditions</h3>
+        <p>Has something around the company changed that could influence the outcome?</p>
+        <p>I examine the competitive environment, market developments, buyer behavior, industry activity, and other outside factors that could be influencing results.</p>
+      </div>
+    </div>
+    <p class="souligne moutarde">Research informs. Experience interprets. Judgment guides.</p>
+    <p class="prose" style="margin-top:1.1rem">The objective isn&rsquo;t to produce more information. It&rsquo;s to interpret what the conditions reveal about the situation.</p>
+  </div>
+</section>
 
-    <span class="etiq" style="margin-top:2.6rem">What You Get Back</span>
-    <div class="depart" style="font-style:normal">
+<!-- ============================ CE QUE VOUS RECEVEZ ============================ -->
+<section class="bande bande--creme">
+  <div class="dedans">
+    <span class="etiq">What You Get Back</span>
+    <h2>The Outside Read</h2>
+    <p class="prose" style="margin-top:1.75rem">An Outside Read is a focused, independent assessment of the specific situation we&rsquo;ve agreed to examine.</p>
+    <p class="prose">It brings together the findings, their implications, and my judgment about what they mean for the direction you&rsquo;re considering or already pursuing.</p>
+    <p class="prose">You&rsquo;ll understand:</p>
+    <div class="depart depart--droit" style="margin-top:1rem">
       <div class="carte">
-        <h3 class="moutarde">What supports your move</h3>
-        <p style="font-style:normal">The outside evidence is consistent with the direction you&rsquo;re considering.</p>
+        <h3 class="moutarde">What Supports Your Direction</h3>
+        <p>The outside conditions and findings that reinforce what you&rsquo;re doing.</p>
       </div>
       <div class="carte">
-        <h3 class="moutarde">What&rsquo;s worth considering</h3>
-        <p style="font-style:normal">There is context or an external signal worth factoring in.</p>
+        <h3 class="moutarde">What&rsquo;s Worth Considering</h3>
+        <p>Developments or observations that may influence how the situation unfolds.</p>
       </div>
       <div class="carte">
-        <h3 class="moutarde">What deserves a closer look</h3>
-        <p style="font-style:normal">There is something important enough to understand before committing further.</p>
+        <h3 class="moutarde">What Deserves a Closer Look</h3>
+        <p>Potential gaps, uncertainties, or changes leadership should understand before committing additional resources.</p>
       </div>
     </div>
 
-    <span class="etiq" style="margin-top:2.6rem">The Read</span>
-    <div class="depart" style="font-style:normal">
+    <span class="etiq" style="margin-top:2.6rem">Three Possible Recommendations</span>
+    <div class="depart depart--droit">
       <div class="carte">
         <h3 class="moutarde">Proceed</h3>
-        <p style="font-style:normal">The outside evidence broadly supports the direction.</p>
+        <p>The available findings and conditions support continuing in the intended direction.</p>
       </div>
       <div class="carte">
         <h3 class="moutarde">Adjust</h3>
-        <p style="font-style:normal">The direction may still make sense, with something worth factoring in.</p>
+        <p>The direction may still make sense, but certain findings suggest something worth changing or factoring in.</p>
       </div>
       <div class="carte">
         <h3 class="moutarde">Reconsider</h3>
-        <p style="font-style:normal">Something in the outside evidence deserves a closer look before moving forward.</p>
+        <p>The findings raise questions significant enough to warrant reassessing the direction.</p>
       </div>
     </div>
+    <p class="depart__suite">The goal isn&rsquo;t to find something wrong. It&rsquo;s to provide an independent assessment of the situation.</p>
     <p class="depart__appel moutarde">The read informs what comes next. Leadership decides what happens next.</p>
   </div>
 </section>
 
-<!-- ============================ CE QU'IL Y A DERRIERE ============================ -->
-<section class="bande bande--creme">
-  <div class="dedans">
-    <span class="etiq">What Sits Behind It</span>
-    <h2>An Outside Read is grounded in external evidence, not opinion alone.</h2>
-    <p class="prose" style="margin-top:1.75rem">Depending on the situation, Signal Shift may look at competitive positioning, market response, messaging, third-party validation, category dynamics, partnerships, visibility and other relevant commercial signals.</p>
-    <p class="souligne moutarde">Evidence informs the read. Experience provides the judgment. Leadership makes the call.</p>
-  </div>
-</section>
-
 <!-- ============================ LE CAS ============================ -->
+<!-- Le tableau du docx de Tom: trois colonnes, une ligne par signal, chiffres cles en or.
+     Sur telephone, chaque case porte le nom de sa colonne. -->
 <section class="bande bande--navy" id="exhibit">
   <div class="dedans">
-    <span class="etiq">Exhibit A — Bitcoin Ocean</span>
-    <h2>Winning visibility.<br>Racing to lock authority.</h2>
-    <p class="lead prose" style="margin-top:1.75rem"><strong>What the outside read revealed:</strong> a
-      company appeared to be winning — dominant reach, a dominant news cycle. Fourteen days
-      later, a direct competitor was about to change the market's standard of proof entirely.
-      Signal Shift identified that gap before it hardened into the new default comparison.</p>
-
-    <div class="stats">
-      <div class="stat"><b>65M+</b><span>Potential impressions — 6x the nearest competitor</span></div>
-      <div class="stat"><b>86%</b><span>Of that reach was syndication, not earned authority</span></div>
-      <div class="stat"><b>14 days</b><span>Before a competitor raised the bar the market would judge by</span></div>
+    <span class="etiq">Methodology in Action: An Illustrative Scan</span>
+    <p class="lead prose" style="margin-top:1.75rem">This illustrative scan demonstrates how the Signal Shift methodology connects independent research, outside conditions, and informed judgment when a company is navigating an important situation.</p>
+    <h2 style="margin-top:2.5rem">An Outside Read: B2B Market Infrastructure</h2>
+    <div class="stats scan">
+      <div class="stat scan__tete"><span class="etiq">The Situation</span></div>
+      <div class="stat scan__tete"><span class="etiq">The Signals</span></div>
+      <div class="stat scan__tete"><span class="etiq">Independent Judgment</span></div>
+      <div class="stat" data-col="The Situation"><p>A private-market infrastructure company was preparing for a <strong class="chiffre">$10 million</strong> capital raise, while working to increase market visibility and generate new business.</p></div>
+      <div class="stat" data-col="The Signals"><p><strong>TRUST:</strong> Approximately <strong class="chiffre">40</strong> company announcements, but only <strong class="chiffre">one</strong> independent headline identified within a selected 20-outlet media panel.</p></div>
+      <div class="stat" data-col="Independent Judgment"><p><strong>ADJUST.</strong> Examine whether communications activity is translating into meaningful independent recognition.</p></div>
+      <div class="stat" data-col="The Situation"><p>The company had an established operating presence and was expanding the number of securities issues serviced.</p></div>
+      <div class="stat" data-col="The Signals"><p><strong>TRACTION:</strong> Securities issues serviced increased <strong class="chiffre">16%</strong>, while individual securityholder accounts declined <strong class="chiffre">21%</strong>.</p></div>
+      <div class="stat" data-col="Independent Judgment"><p>Clarify what the divergence means for customer mix, operating momentum, and the company&rsquo;s growth narrative.</p></div>
+      <div class="stat" data-col="The Situation"><p>The company operated in a private-market environment where activity was developing unevenly.</p></div>
+      <div class="stat" data-col="The Signals"><p><strong>CONDITIONS:</strong> Differences in activity across crowdfunding, private placements, and fund-related offerings.</p></div>
+      <div class="stat" data-col="Independent Judgment"><p>Examine whether changing market conditions influence where customer opportunities develop and who participates in provider-selection conversations.</p></div>
     </div>
-
     <div class="trouve prose">
-      <p><b>The finding:</b> visibility and authority aren't the same thing, and they don't
-        arrive on the same timeline. Bitcoin Ocean won the awareness race. The read specified
-        exactly what would need to happen next to win the trust race too — before the window
-        closed.</p>
+      <h3 style="font-size:1.375rem; margin-bottom:.8rem">The Independent Judgment: ADJUST</h3>
+      <p>The findings did not establish that the company&rsquo;s direction was wrong. They identified three considerations worth examining: independent recognition, the meaning of diverging operating indicators, and changing market conditions.</p>
     </div>
-    <p class="note prose" style="margin-top:1.5rem; font-style:italic">This exhibit reflects
-      Signal Shift's independent post-announcement read. It does not include an engagement
-      before the move.</p>
-    <div class="contre">
-      <p><strong>A separate launch we reviewed</strong> generated 376 paid postings and an
-        estimated 821M in potential reach — and zero independent editorial coverage. It
-        didn't rank on page one for any term a real buyer would search. Same gap, different
-        company: activity without impact.</p>
-      <p style="margin-top:1.15rem"><b>This is the part that doesn't wait for you to
-        notice:</b> competitive windows close on their own schedule, not yours. Whatever
-        you're about to announce is being measured against whatever your closest competitor
-        does next. The question isn't just whether your move is good — it's whether it's
-        still good by the time the market finishes reacting to it.</p>
-    </div>
+    <p class="prose">The value wasn&rsquo;t simply finding the numbers. It was recognizing why they might matter, interpreting them in context, and identifying what leadership should understand before moving forward.</p>
+    <p class="prose moutarde">The read informs what comes next. Leadership decides what happens next.</p>
   </div>
 </section>
 
-<!-- ============================ LE JUGEMENT HUMAIN ============================ -->
+<!-- ============================ AVEC QUI ============================ -->
 <section class="bande bande--sable">
   <div class="dedans">
-    <span class="etiq">The Human Judgment Layer</span>
-    <div class="duo duo--cit">
-      <blockquote class="moutarde">“The system provides the evidence. Experience provides the judgment.
-        Leadership makes the call.”</blockquote>
-      <div>
-        <p>Information and analysis are easier to access than ever. The harder question is <span class="moutarde">what the evidence means for this company, this situation and this moment.</span></p>
-        <p>Signal Shift starts outside the company, considers the external evidence around the situation, and brings an independent perspective to <span class="moutarde">what may matter next</span>, with someone accountable for the read and the judgment behind it.</p>
-        <p class="moutarde">The read is forward-looking, not predictive. It uses current external signals to help leadership see what may deserve attention before the next move.</p>
+    <span class="etiq">Who I Work With</span>
+    <p class="lead prose" style="margin-top:1.25rem">Signal Shift works with leaders and organizations facing important situations where an independent perspective may be valuable.</p>
+    <div class="depart depart--droit">
+      <div class="carte">
+        <h3>Founders &amp; CEOs</h3>
+        <p>Preparing for capital raises, market expansion, new initiatives, or trying to understand why expected progress isn&rsquo;t developing.</p>
+      </div>
+      <div class="carte">
+        <h3>Growth-Stage Companies</h3>
+        <p>Investing in important initiatives where market response, positioning, competitive conditions, or momentum deserve closer examination.</p>
+      </div>
+      <div class="carte">
+        <h3>Investors &amp; Advisory Firms</h3>
+        <p>Seeking an independent perspective on a portfolio company, client, investment-related situation, or strategic initiative.</p>
       </div>
     </div>
+    <p class="depart__suite">Each engagement begins with the situation, not a predetermined set of recommendations.</p>
   </div>
 </section>
 
-<!-- ============================ QUAND ============================ -->
-<!-- Mail de Tom du 27/09/2026 (« final/final »): remplace « When an Outside Read Can Help »;
-     ses lignes en gras sont en moutarde. -->
+<!-- ============================ LE REGARD DE TOM ============================ -->
 <section class="bande bande--creme">
   <div class="dedans">
-    <span class="etiq">When an Outside Read Makes Sense</span>
-    <h2 class="moutarde">A focused Outside Read when the next move matters.</h2>
-    <p class="inv__amorce moutarde" style="margin-top:1.75rem">Consider an Outside Read when you&rsquo;re about to commit more, or when something already underway isn&rsquo;t producing the results you expected:</p>
-    <ul class="inv__cas">
-      <li>You&rsquo;re about to spend real money on a launch</li>
-      <li>You&rsquo;re preparing an investor story</li>
-      <li>You&rsquo;re considering entering a new market</li>
-      <li>You&rsquo;re about to announce or deepen a major partnership</li>
-      <li>You&rsquo;re evaluating an acquisition or investment</li>
-      <li>You&rsquo;re months into a strategy and unsure whether to keep funding it</li>
-      <li>Results have stalled and it&rsquo;s unclear whether the issue is execution, positioning or the underlying premise</li>
-    </ul>
-    <p class="souligne moutarde">Before you commit more. Or when the results aren&rsquo;t adding up.</p>
+    <span class="etiq">The Perspective Behind Signal Shift</span>
+    <p class="lead prose" style="margin-top:1.25rem">Signal Shift was developed from years of working with companies across capital markets, communications, business development, and strategic partnerships.</p>
+    <p class="prose">That experience has given me a perspective on how companies position themselves, how opportunities actually develop, and how outside conditions can influence momentum.</p>
+    <p class="prose">I bring that experience to the table to look at your business the way a critical outsider or an investor&rsquo;s due diligence team might.</p>
+    <p class="prose">I don&rsquo;t give you data dumps. I give you an independent judgment on what the outside record actually means for your next move.</p>
   </div>
 </section>
 
-<!-- ============================ PAR OU COMMENCER ============================ -->
-<!-- Section ajoutee par Tom dans son fichier du 21/09, remise dans notre charte: nos
-     cartes blanches, notre etiquette, nos titres. -->
-<section class="bande bande--sable">
-  <div class="dedans">
-    <span class="etiq">Where to Start</span>
-    <h2 class="moutarde">Not every Outside Read starts with a clearly defined next move.</h2>
-    <p class="prose" style="margin-top:1.75rem">Sometimes you know what you&rsquo;re considering. Sometimes you just know <span class="moutarde">something isn&rsquo;t adding up.</span></p>
-    <div class="depart">
-      <div class="carte">
-        <h3>Before</h3>
-        <p>&ldquo;We think we know the right next move. Before we put more money behind it, we want to know what the outside evidence says.&rdquo;</p>
-      </div>
-      <div class="carte">
-        <h3>Already underway</h3>
-        <p>&ldquo;We launched six months ago and don&rsquo;t understand why sales aren&rsquo;t moving.&rdquo;</p>
-      </div>
-      <div class="carte">
-        <h3>After</h3>
-        <p>&ldquo;We changed our positioning but aren&rsquo;t sure whether the market is responding.&rdquo;</p>
-      </div>
-    </div>
-    <p class="depart__appel moutarde">Either is enough to start.</p>
-  </div>
-</section>
-
-<!-- ============================ L'INVESTISSEMENT ============================ -->
-<section class="bande bande--creme">
-  <div class="dedans">
-    <span class="etiq">Investment</span>
-    <h2>Priced for the next move, not the report.</h2>
-    <p class="inv__cloture" style="margin-top:1.75rem">Against what's actually at stake in moments like these, a
-      $1,000 Outside Read is a small check before a large commitment.</p>
-    <div class="prix">
-      <div class="offre offre--phare">
-        <h3>Outside Read</h3>
-        <span class="montant">Starting at $1,000</span>
-        <p>External evidence, independent judgment, and a clear read: what supports your
-          move, what's worth considering, what deserves a closer look, and a Proceed / Adjust / Reconsider read.</p>
-      </div>
-      <div class="offre">
-        <h3>Commercial Working Session</h3>
-        <span class="montant">Scoped</span>
-        <span class="apres">after intake</span>
-        <p>You and your leadership team work through what the evidence changes &mdash; where growth may be leaking, what may have been missed, and what the findings mean for the path forward.</p>
-      </div>
-      <div class="offre">
-        <h3>Before + After</h3>
-        <span class="montant">Scoped</span>
-        <span class="apres">after intake</span>
-        <p>For the moves where getting it right matters most: the full read before the move,
-          plus a comparison afterwards against the original thesis.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ CLOTURE ============================ -->
+<!-- ============================ TRAVAILLER ENSEMBLE ============================ -->
 <section class="bande bande--navy final">
   <div class="dedans">
-    <h2>Before the next move</h2>
-    <p class="lead prose">Facing an important commercial move, or results that aren&rsquo;t matching
-      expectations? An Outside Read can give you a clearer view of what may matter next.</p>
+    <span class="etiq">Work With Me</span>
+    <h2>Every Situation Is Different.</h2>
+    <p class="lead prose">Every Signal Shift engagement starts with a conversation about what you&rsquo;re trying to understand.</p>
+    <p class="prose" style="margin-top:1rem">You may be preparing for something important, or something already underway may not be developing as expected.</p>
+    <p class="prose" style="margin-top:1rem">We&rsquo;ll discuss the situation, what you already know, and whether an independent Outside Read could provide a perspective worth considering.</p>
+    <p class="prose" style="margin-top:1rem">If there&rsquo;s a fit, we&rsquo;ll define the scope of the engagement together.</p>
     <div class="boutons">
-      <a class="cta cta--plein" href="/get-an-outside-read.html">Get an Outside Read →</a>
+      <a class="cta cta--plein" href="/get-an-outside-read.html">Schedule a Conversation →</a>
     </div>
   </div>
 </section>
 
-<p class="pied"><span>Outside evidence. Commercial judgment. What may matter next. · <b style="white-space:nowrap">Tom Scally</b></span></p>
+<p class="pied"><span><b>Signal Shift</b> · <b>Before the Next Move.</b> Independent Perspective. Informed Judgment.<br>The read informs what comes next. Leadership decides what happens next.</span></p>
 
 </body>
 </html>
