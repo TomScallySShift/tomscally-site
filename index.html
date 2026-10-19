@@ -105,9 +105,12 @@ h3{font-size:1.1875rem; font-weight:600; letter-spacing:0}
   transform:translateX(-50%); width:116%; height:92%; border-radius:50%;
   background:radial-gradient(circle, rgba(201,168,76,.26) 0%, rgba(201,168,76,.10) 42%,
   transparent 68%); z-index:0; pointer-events:none}
-.portrait img{position:relative; z-index:1; width:100%; max-width:380px; height:auto;
-  display:block; filter:drop-shadow(0 24px 48px rgba(0,0,0,.42))}
-@media(max-width:959px){.portrait img{max-width:280px}}
+/* Plus grand et fondu en bas (Paul, 19/10/2026): la photo ne s'arrete plus sur une coupe nette. */
+.portrait img{position:relative; z-index:1; width:100%; max-width:500px; height:auto;
+  display:block; filter:drop-shadow(0 24px 48px rgba(0,0,0,.42));
+  -webkit-mask-image:linear-gradient(to bottom, #000 72%, transparent 100%);
+  mask-image:linear-gradient(to bottom, #000 72%, transparent 100%)}
+@media(max-width:959px){.portrait img{max-width:340px}}
 .hero h1 .rupture{display:block; color:var(--gold)}
 /* LE TRACE. Une ligne plate qui se casse: c'est le sujet de la page, il merite
    la moitie de l'ouverture et pas une frise decorative de 90 px. */
