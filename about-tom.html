@@ -103,7 +103,11 @@ h3{font-size:1.1875rem; font-weight:600; letter-spacing:0}
   background:radial-gradient(circle, rgba(201,168,76,.26) 0%, rgba(201,168,76,.10) 42%,
   transparent 68%); z-index:0; pointer-events:none}
 .portrait img{position:relative; z-index:1; width:100%; max-width:380px; height:auto;
-  display:block; filter:drop-shadow(0 24px 48px rgba(0,0,0,.42))}
+  display:block; filter:drop-shadow(0 24px 48px rgba(0,0,0,.42));
+  -webkit-mask-image:linear-gradient(to bottom, #000 72%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom, #000 72%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%);
+  mask-composite:intersect}
 @media(max-width:959px){.portrait img{max-width:280px}}
 .hero h1 .rupture{display:block; color:var(--gold)}
 /* LE TRACE. Une ligne plate qui se casse: c'est le sujet de la page, il merite
@@ -264,7 +268,11 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
   transform:translateX(-50%); width:min(100%,340px); aspect-ratio:1; border-radius:50%;
   background:radial-gradient(circle,rgba(201,168,76,.20) 0%,rgba(201,168,76,0) 68%)}
 .portrait img{position:relative; z-index:1; width:100%; max-width:380px; height:auto;
-  display:block}
+  display:block;
+  -webkit-mask-image:linear-gradient(to bottom, #000 72%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom, #000 72%, transparent 100%), linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%);
+  mask-composite:intersect}
 @media(max-width:959px){.portrait img{max-width:260px}}
 </style>
 
