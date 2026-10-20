@@ -95,7 +95,7 @@ h3{font-size:1.1875rem; font-weight:600; letter-spacing:0}
 .hero{position:relative; overflow:hidden}
 .hero .dedans{display:grid; gap:clamp(2.5rem,5vw,4.5rem)}
 .hero__haut{display:grid; gap:clamp(2rem,4vw,3.5rem); align-items:center}
-@media(min-width:960px){.hero__haut{grid-template-columns:1.15fr .85fr}}
+@media(min-width:960px){.hero__haut{grid-template-columns:1fr 1fr}}  /* colonne de la photo elargie (Paul, 20/10/2026) */
 .hero__mot{max-width:36rem}
 /* LE PORTRAIT, REPRIS DE SA PAGE D'ACCUEIL: meme halo, meme ombre portee. Une page qui
    vend un jugement HUMAIN montre l'humain; sans lui, la moitie droite de l'ouverture
@@ -106,7 +106,7 @@ h3{font-size:1.1875rem; font-weight:600; letter-spacing:0}
   background:radial-gradient(circle, rgba(201,168,76,.26) 0%, rgba(201,168,76,.10) 42%,
   transparent 68%); z-index:0; pointer-events:none}
 /* Plus grand et fondu en bas et sur les cotes (Paul, 19 et 20/10/2026): la photo ne s'arrete plus sur une coupe nette. */
-.portrait img{position:relative; z-index:1; width:100%; max-width:500px; height:auto;
+.portrait img{position:relative; z-index:1; width:100%; max-width:640px; height:auto;
   display:block; filter:drop-shadow(0 24px 48px rgba(0,0,0,.42));
   -webkit-mask-image:linear-gradient(to bottom, #000 72%, transparent 100%), linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
   -webkit-mask-composite:source-in;
