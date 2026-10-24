@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Signal Shift — Before the Next Move | Tom Scally</title>
 <link rel="canonical" href="https://tomscally.com/">
-<meta name="description" content="Independent Perspective. Informed Judgment. I'm a project-based independent advisor. Companies bring me in at two important moments: before committing significant time, money, or resources to something important, or when an initiative already underway isn't developing as expected.">
+<meta name="description" content="Independent Perspective. Informed Judgment. Your company is preparing for an important decision, or something already underway isn't producing the results you expected. Signal Shift provides an independent Outside Read of the Trust, Traction, and Conditions surrounding your situation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
@@ -316,6 +316,39 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
 .scan .scan__tete{padding-top:1rem; padding-bottom:1rem}
 .scan__tete .etiq{margin:0}
 .chiffre, .bande--navy .chiffre{color:var(--gold); font-weight:700; font-size:1.15em; white-space:nowrap}
+/* Mails de Tom des 23 et 24/10: l'accroche (italique, un peu plus grande, de l'air autour),
+   le cadre en trois criteres avec ses deux temps, et les trois jugements en cartes, reprises
+   telles quelles pour la conclusion ADJUST de l'etude de cas. */
+.accroche{font-family:"Playfair Display",Georgia,serif; font-style:italic; font-weight:400;
+  font-size:calc(var(--t-lead) * 1.08); line-height:1.45; color:#fff; margin:2.25rem 0 0; max-width:34rem}
+.final .accroche{margin:2.5rem auto 0; color:#fff}
+.cadre .carte h3{font-size:1.5rem; font-family:"Playfair Display",serif; margin-bottom:.5rem}
+.cadre .question{font-weight:600; color:var(--ink)}
+.temps{margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid var(--bord)}
+.temps__nom{display:block; font-size:var(--t-label); font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--or-encre); margin-bottom:.45rem}
+.jugements{display:grid; gap:1.1rem; margin-top:1.75rem}
+@media(min-width:820px){.jugements{grid-template-columns:repeat(3,1fr)}}
+.jugement{background:#fff; border:1px solid var(--bord); border-top:3px solid var(--gold);
+  border-radius:3px; padding:clamp(1.5rem,2.6vw,2.25rem)}
+.jugement h3{font-family:"DM Sans",sans-serif; font-size:1.0625rem; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--or-encre); margin-bottom:.7rem}
+.jugement p{color:var(--ink-2)}
+.jugement--cas{max-width:46rem; margin:clamp(2.5rem,5vw,3.5rem) 0 0; box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.jugement--cas h3{font-size:clamp(1.15rem,2vw,1.35rem)}
+.jugement--cas h3 b{color:var(--or-encre); font-weight:800}
+.signaux{display:grid; gap:1px; background:var(--bord-navy); border:1px solid var(--bord-navy);
+  margin-top:1.5rem}
+@media(min-width:900px){.signaux{grid-template-columns:repeat(3,1fr)}}
+.signal{background:var(--navy); padding:clamp(1.5rem,3vw,2.25rem)}
+.signal h4{margin:0 0 1.1rem; font-family:"Playfair Display",serif; font-size:1.5rem;
+  font-weight:700; color:var(--gold)}
+.signal p{font-size:var(--t-body); line-height:1.62; color:var(--sur-navy-2)}
+.signal p b{display:block; font-size:var(--t-label); letter-spacing:.16em; text-transform:uppercase;
+  color:#fff; margin-bottom:.35rem}
+.signal p + p{margin-top:1.35rem}
+.cas__bloc{margin-top:clamp(2.5rem,5vw,3.5rem)}
+.cas__bloc h3{font-size:1.375rem; margin-bottom:.9rem}
 @media(max-width:759px){.scan .scan__tete{display:none}
   .scan .stat[data-col]::before{content:attr(data-col); display:block; font-size:var(--t-label);
     font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem}}
@@ -335,11 +368,10 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
       <span class="etiq">Signal Shift</span>
       <h1>Before the<span class="rupture">Next Move.</span></h1>
       <p class="lead moutarde" style="margin-top:1.75rem">Independent Perspective. Informed Judgment.</p>
-      <p class="lead" style="margin-top:1.1rem">I&rsquo;m a project-based independent advisor. Companies bring me in at two important moments: before committing significant time, money, or resources to something important, or when an initiative already underway isn&rsquo;t developing as expected.</p>
-      <p class="lead">Think of it like an MRI. A doctor may understand the patient, but an MRI can reveal something that isn&rsquo;t immediately visible.</p>
-      <p class="lead">Signal Shift does that for businesses.</p>
-      <p class="lead">Using a methodology I&rsquo;ve developed around Trust, Traction, and Conditions, I examine the outside picture surrounding a specific situation to help leadership see what may not be visible from inside the company.</p>
-      <p class="lead">I interpret what I find and recommend whether to Proceed, Adjust, or Reconsider.</p>
+      <p class="lead" style="margin-top:1.1rem">Your company is preparing for an important decision. Or something already underway isn&rsquo;t producing the results you expected.</p>
+      <p class="lead">Before committing more time, money, or resources, it may be worth understanding what isn&rsquo;t visible from inside the company.</p>
+      <p class="lead">Signal Shift provides an independent Outside Read of the Trust, Traction, and Conditions surrounding your situation to help leadership determine whether to Proceed, Adjust, or Reconsider.</p>
+      <p class="accroche">&ldquo;Small, subtle changes turn out to be big ones over time.&rdquo;</p>
       <div class="boutons">
         <a class="cta cta--plein" href="/get-an-outside-read.html">Schedule a Conversation →</a>
         <a class="cta cta--nu" href="#exhibit">See an illustrative scan ↓</a>
@@ -386,102 +418,91 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
   </div>
 </section>
 
-<!-- ============================ LA METHODE ============================ -->
-<section class="bande bande--sable">
+<!-- ============================ LE CADRE ============================ -->
+<!-- Texte de Tom, mail du 24/10/2026: The Core Framework puis The Judgment remplacent
+     « The Discipline Behind the Read » et « What You Get Back ». -->
+<section class="bande bande--sable cadre">
   <div class="dedans">
-    <span class="etiq">The Discipline Behind the Read</span>
-    <h2>Trust. Traction. Conditions.</h2>
-    <p class="prose" style="margin-top:1.75rem">Every situation is different, but the Signal Shift methodology provides a consistent framework for examining what is happening around a company.</p>
+    <h2>The Core Framework</h2>
+    <p class="prose" style="margin-top:1.75rem">Every situation is distinct, but the Signal Shift methodology evaluates what is happening around a company through three specific lenses. We look past internal assumptions to assess the external evidence surrounding your situation.</p>
     <div class="depart depart--droit">
       <div class="carte">
         <h3 class="moutarde">Trust</h3>
-        <p>Is the company&rsquo;s story holding up from the outside?</p>
-        <p>I examine how the company is positioned, how its story is being communicated, and whether external recognition and credibility support what leadership is trying to accomplish.</p>
+        <p class="question">Is your story holding up from the outside?</p>
+        <p>Your internal teams and agencies deeply understand your vision. But an internal echo chamber can mask how the market actually interprets your business.</p>
+        <div class="temps"><span class="temps__nom">The Diagnostic Look</span><p>We evaluate your external visibility, independent positioning, and market credibility.</p></div>
+        <div class="temps"><span class="temps__nom">The Subtle Change</span><p>A gap between what you are saying inside the company and what the market actually hears outside it. Left unaddressed, it silently erodes your authority with buyers and investors.</p></div>
       </div>
       <div class="carte">
         <h3 class="moutarde">Traction</h3>
-        <p>Is the expected momentum developing?</p>
-        <p>I look for observable signs of progress, market response, and whether the activity surrounding an initiative supports the direction the company is pursuing.</p>
+        <p class="question">Is your expected commercial momentum developing?</p>
+        <p>Internal reports often highlight execution milestones, product updates, and task-completion metrics. But internal activity does not always equate to actual external market velocity.</p>
+        <div class="temps"><span class="temps__nom">The Diagnostic Look</span><p>We isolate objective, observable signs of market progress and customer or partner response.</p></div>
+        <div class="temps"><span class="temps__nom">The Subtle Change</span><p>A hidden divergence where high-level metrics look healthy, but underlying asset usage or account retention is starting to contract. Left unaddressed, it means scaling a commercial strategy that has already lost its footing.</p></div>
       </div>
       <div class="carte">
         <h3 class="moutarde">Conditions</h3>
-        <p>Has something around the company changed that could be influencing the outcome?</p>
-        <p>I examine the competitive environment, market developments, buyer behavior, and industry activity. I look for external shifts that may already be affecting your results, even if they haven&rsquo;t appeared on your internal radar yet.</p>
+        <p class="question">Has the ground shifted beneath your feet?</p>
+        <p>A strategic path that made perfect sense six months ago can become obsolete overnight due to quiet, macro shifts that rarely show up on internal dashboard alerts.</p>
+        <div class="temps"><span class="temps__nom">The Diagnostic Look</span><p>We analyze changing buyer behaviors, market developments, and competitor movements.</p></div>
+        <div class="temps"><span class="temps__nom">The Subtle Change</span><p>Subtle changes in how your target audience prioritizes solutions or allocates capital. Left unaddressed, you risk launching a major move into a market environment that no longer exists.</p></div>
       </div>
     </div>
-    <p class="prose" style="margin-top:1.1rem">The objective isn&rsquo;t to gather more information. It&rsquo;s to understand what the conditions surrounding a company reveal, what may be missing, and what those findings mean for the direction leadership is pursuing.</p>
   </div>
 </section>
 
-<!-- ============================ CE QUE VOUS RECEVEZ ============================ -->
+<!-- ============================ LE JUGEMENT ============================ -->
 <section class="bande bande--creme">
   <div class="dedans">
-    <span class="etiq">What You Get Back</span>
-    <h2>The Outside Read</h2>
-    <p class="prose" style="margin-top:1.75rem">An Outside Read is a focused, independent assessment of the specific situation we&rsquo;ve agreed to examine.</p>
-    <p class="prose">It brings together the findings, their implications, and my judgment about what they mean for the direction you&rsquo;re considering or already pursuing.</p>
-    <p class="prose">You&rsquo;ll understand:</p>
-    <div class="depart depart--droit" style="margin-top:1rem">
-      <div class="carte">
-        <h3 class="moutarde">What Supports Your Direction</h3>
-        <p>The outside conditions and findings that reinforce what you&rsquo;re doing.</p>
-      </div>
-      <div class="carte">
-        <h3 class="moutarde">What&rsquo;s Worth Considering</h3>
-        <p>Developments or observations that may influence how the situation unfolds.</p>
-      </div>
-      <div class="carte">
-        <h3 class="moutarde">What Deserves a Closer Look</h3>
-        <p>Potential gaps, uncertainties, or changes leadership should understand before committing additional resources.</p>
-      </div>
+    <h2>The Judgment</h2>
+    <p class="prose" style="margin-top:1.75rem">The findings come together in an independent assessment of your situation.</p>
+    <div class="jugements">
+      <div class="jugement"><h3>Proceed</h3><p>The evidence supports the current direction.</p></div>
+      <div class="jugement"><h3>Adjust</h3><p>The direction is sound, but adjustments are warranted.</p></div>
+      <div class="jugement"><h3>Reconsider</h3><p>The evidence suggests a different path may be required.</p></div>
     </div>
-
-    <span class="etiq" style="margin-top:2.6rem">Three Possible Recommendations</span>
-    <div class="depart depart--droit">
-      <div class="carte">
-        <h3 class="moutarde">Proceed</h3>
-        <p>The available findings and conditions support continuing in the intended direction.</p>
-      </div>
-      <div class="carte">
-        <h3 class="moutarde">Adjust</h3>
-        <p>The direction may still make sense, but certain findings suggest something worth changing or factoring in.</p>
-      </div>
-      <div class="carte">
-        <h3 class="moutarde">Reconsider</h3>
-        <p>The findings raise questions significant enough to warrant reassessing the direction.</p>
-      </div>
-    </div>
-    <p class="depart__suite">The goal isn&rsquo;t to find something wrong. It&rsquo;s to provide an independent assessment of the situation.</p>
-    <p class="depart__appel moutarde">The read informs what comes next. Leadership decides what happens next.</p>
+    <p class="depart__appel moutarde" style="margin-top:1.75rem">The findings inform the judgment. Leadership makes the call.</p>
   </div>
 </section>
 
 <!-- ============================ LE CAS ============================ -->
-<!-- Le tableau du docx de Tom: trois colonnes, une ligne par signal, chiffres cles en or.
-     Sur telephone, chaque case porte le nom de sa colonne. -->
+<!-- Texte de Tom, mail du 24/10/2026: juste apres le cadre et le jugement; les trois criteres bien
+     separes; la conclusion ADJUST dans la meme carte que les trois jugements au-dessus. -->
 <section class="bande bande--navy" id="exhibit">
   <div class="dedans">
     <span class="etiq">Methodology in Action: An Illustrative Scan</span>
-    <h2 style="margin-top:2.5rem">An Outside Read: B2B Market Infrastructure</h2>
-    <div class="stats scan">
-      <div class="stat scan__tete"><span class="etiq">The Situation</span></div>
-      <div class="stat scan__tete"><span class="etiq">The Signals</span></div>
-      <div class="stat scan__tete"><span class="etiq">Independent Judgment</span></div>
-      <div class="stat" data-col="The Situation"><p>The company had an established operating presence and was expanding the number of securities issues serviced.</p></div>
-      <div class="stat" data-col="The Signals"><p><strong>TRACTION:</strong> Securities issues serviced increased <strong class="chiffre">16%</strong>, while individual securityholder accounts declined <strong class="chiffre">21%</strong>.</p></div>
-      <div class="stat" data-col="Independent Judgment"><p><strong>ADJUST.</strong> Clarify what the divergence means for customer mix, operating momentum, and the company&rsquo;s growth narrative.</p></div>
-      <div class="stat" data-col="The Situation"><p>The company operated in a private-market environment where activity was developing unevenly.</p></div>
-      <div class="stat" data-col="The Signals"><p><strong>CONDITIONS:</strong> Differences in activity across crowdfunding, private placements, and fund-related offerings.</p></div>
-      <div class="stat" data-col="Independent Judgment"><p>Examine whether changing market conditions influence where customer opportunities develop and who participates in provider-selection conversations.</p></div>
-      <div class="stat" data-col="The Situation"><p>A private-market infrastructure company was preparing for a <strong class="chiffre">$5 million</strong> capital raise, while working to increase market visibility and generate new business.</p></div>
-      <div class="stat" data-col="The Signals"><p><strong>TRUST:</strong> Approximately <strong class="chiffre">40</strong> company announcements, but only <strong class="chiffre">one</strong> independent headline identified within a selected 20-outlet media panel.</p></div>
-      <div class="stat" data-col="Independent Judgment"><p>Examine whether communications activity is translating into meaningful independent recognition.</p></div>
+    <p class="lead prose" style="margin-top:1.25rem">To understand what you receive back from an Outside Read, consider how this framework diagnosed a private-market B2B infrastructure company preparing for a <strong class="chiffre">$5 million</strong> capital raise while attempting to accelerate sales momentum.</p>
+    <div class="cas__bloc prose">
+      <h3>The Situation</h3>
+      <p>The leadership team believed their trajectory was pristine. Internal milestones were being hit, marketing activity was high, and the expansion narrative felt incredibly strong from the inside.</p>
+      <p>An independent look at the external evidence revealed a completely different story beneath the surface.</p>
     </div>
-    <div class="trouve prose">
-      <h3 style="font-size:1.375rem; margin-bottom:.8rem">The Independent Judgment: ADJUST</h3>
-      <p>The findings did not establish that the company&rsquo;s direction was wrong. They identified three considerations worth examining: the meaning of diverging operating indicators, changing market conditions, and independent recognition.</p>
+    <div class="cas__bloc">
+      <h3>The Outside Signals</h3>
+      <div class="signaux">
+        <div class="signal">
+          <h4>Trust</h4>
+          <p><b>The Finding</b>The company&rsquo;s internal team had pushed out approximately <strong class="chiffre">40</strong> corporate announcements. However, an independent audit revealed only <strong class="chiffre">one</strong> single headline across a selected 20-outlet media panel.</p>
+          <p><b>The Subtle Change</b>While leadership assumed they were building dominant industry authority, the market was experiencing narrative fatigue. The massive volume of internal communications wasn&rsquo;t translating into independent, trusted market recognition.</p>
+        </div>
+        <div class="signal">
+          <h4>Traction</h4>
+          <p><b>The Finding</b>Internal operational data proudly highlighted that the total number of securities issues serviced had increased by <strong class="chiffre">16%</strong>. But look closer at the external record: individual active securityholder accounts had quietly declined by <strong class="chiffre">21%</strong>.</p>
+          <p><b>The Subtle Change</b>A hidden divergence in the customer mix. The company was gaining high-level logos but rapidly losing its actual broad-market user footprint. They were preparing to pitch growth to investors while scaling a shrinking foundation.</p>
+        </div>
+        <div class="signal">
+          <h4>Conditions</h4>
+          <p><b>The Finding</b>Internal strategy treated their private-market sector as a monolith. External evidence showed that actual transaction activity had heavily fractured, developing unevenly across crowdfunding, private placements, and fund-related offerings.</p>
+          <p><b>The Subtle Change</b>Buyer behavior and provider-selection conversations had fundamentally shifted in specific sub-segments. Legacy marketing channels were targeting areas of the market where deal momentum had completely evaporated.</p>
+        </div>
+      </div>
     </div>
-    <p class="prose">The value wasn&rsquo;t simply finding the numbers. It was recognizing why they might matter, interpreting them in context, and identifying what leadership should understand before moving forward.</p>
+    <div class="jugement jugement--cas">
+      <h3>The Independent Judgment: <b>Adjust</b></h3>
+      <p>The Outside Read did not state that the company&rsquo;s underlying business model was wrong. It delivered a definitive recommendation to ADJUST before taking the company to market.</p>
+      <p>The value wasn&rsquo;t simply hand-delivering raw metrics. It was recognizing why those subtle discrepancies mattered, interpreting them in context, and arming leadership with the exact strategic adjustments they needed to make before committing millions in capital, time, and institutional credibility.</p>
+    </div>
+    <p class="depart__appel moutarde" style="margin-top:2rem">The findings inform the judgment. Leadership makes the call.</p>
   </div>
 </section>
 
@@ -528,6 +549,7 @@ blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:
     <p class="prose" style="margin-top:1rem">You may be preparing for something important, or something already underway may not be developing as expected.</p>
     <p class="prose" style="margin-top:1rem">We&rsquo;ll discuss the situation, what you already know, and whether an independent Outside Read could provide a perspective worth considering.</p>
     <p class="prose" style="margin-top:1rem">If there&rsquo;s a fit, we&rsquo;ll define the scope of the engagement together.</p>
+    <p class="accroche">&ldquo;Small, subtle changes turn out to be big ones over time.&rdquo;</p>
     <div class="boutons">
       <a class="cta cta--plein" href="/get-an-outside-read.html">Schedule a Conversation →</a>
     </div>
