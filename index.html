@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal Shift — Before the Next Move | Tom Scally</title>
+<link rel="canonical" href="https://tomscally.com/">
+<meta name="description" content="Independent Perspective. Informed Judgment. Your company is preparing for an important decision, or something already underway isn't producing the results you expected. Signal Shift provides an independent Outside Read of the Trust, Traction, and Conditions surrounding your situation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================================
+   SIGNAL SHIFT — BEFORE THE NEXT MOVE
+   Jetons repris de tomscally.com pour que la page soit du MEME site, pas une
+   piece rapportee: marine, or, creme, Playfair Display + DM Sans.
+
+   TROIS REGLES DE MISE EN TEXTE, tenues partout:
+     1. la mesure ne depasse jamais 34em (~64 signes). La version precedente
+        courait jusqu'a 121 signes par ligne, l'oeil y perd sa ligne;
+     2. QUATRE tailles de corps, pas huit. 11 px etiquette, 17 px courant,
+        20 px chapeau, 15 px note;
+     3. TROIS encres, pas une seule. Le gris unique de la version precedente
+        aplatissait vingt-cinq paragraphes sur vingt-six.
+   ========================================================================= */
+:root{
+  --navy:#0c1b2e; --navy-mid:#162a45; --navy-light:#1e3655;
+  --gold:#c9a84c; --gold-soft:#d4b96e;
+  --cream:#faf9f6; --off-white:#f7efca;
+  --ink:#0c1b2e; --ink-2:#3a3f4b; --ink-3:#5c6175;
+  --sur-navy:#e9eef5; --sur-navy-2:#9fb0c6; --sur-navy-3:#8398b3;
+  --bord:#e4e3df; --bord-navy:rgba(201,168,76,.22);
+  /* L'OR EST UNE ENCRE DE FOND SOMBRE. Pose sur la creme a 12 px il tombe a un rapport
+     de contraste de 2, mesure a la sonde: illisible. Sur fond clair on prend sa version
+     encrée, qui garde la couleur et passe les seuils. */
+  --or-encre:#7a5c0c;
+
+  --t-label:.72rem; --t-note:.9375rem; --t-body:1.0625rem; --t-lead:1.25rem;
+  --mesure:34em;
+  --pad:clamp(1.5rem,6vw,7rem);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--cream); color:var(--ink-2);
+  font:400 var(--t-body)/1.68 "DM Sans",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,blockquote{font-family:"Playfair Display",Georgia,serif;color:var(--ink);
+  font-weight:700; line-height:1.12; letter-spacing:-.01em; margin:0}
+p{margin:0 0 1.15em}
+p:last-child{margin-bottom:0}
+strong{color:var(--ink); font-weight:600}
+a{color:inherit}
+
+/* --- LA BANDE, unite de rythme de la page. Elles alternent, comme sur le site. */
+.bande{padding:clamp(3.75rem,9vw,7.5rem) var(--pad)}
+.bande--navy{background:var(--navy); color:var(--sur-navy-2)}
+.bande--navy h1,.bande--navy h2,.bande--navy h3,.bande--navy blockquote{color:#fff}
+.bande--navy strong{color:#fff}
+.bande--creme{background:var(--cream)}
+.bande--sable{background:var(--off-white)}
+.dedans{max-width:76rem; margin:0 auto}
+.prose{max-width:var(--mesure)}
+.lead{font-size:var(--t-lead); line-height:1.55; color:var(--ink-2)}
+.lead--appui{font-size:calc(var(--t-lead) * .82); color:var(--gold); margin-top:.9rem; max-width:34rem}
+.bande--navy .lead{color:var(--sur-navy)}
+.bande--navy .lead--appui{color:var(--gold)}
+.note{font-size:var(--t-note); color:var(--ink-3); line-height:1.6}
+.bande--navy .note{color:var(--sur-navy-3)}
+
+/* --- L'ETIQUETTE DE SECTION. Une seule taille, une seule graisse, partout. */
+.etiq{display:block; font-size:var(--t-label); font-weight:700; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--or-encre); margin:0 0 1.25rem}
+.etiq::before{content:""; display:inline-block; width:1.75rem; height:1px;
+  background:var(--gold); vertical-align:.28em; margin-right:.6rem}
+.bande--navy .etiq{color:var(--gold)}
+
+h1{font-size:clamp(2.75rem,7.2vw,4.75rem)}
+h2{font-size:clamp(1.85rem,3.6vw,2.85rem)}
+h3{font-size:1.1875rem; font-weight:600; letter-spacing:0}
+
+/* --- LES BOUTONS. Deux niveaux, jamais trois. */
+.cta{display:inline-flex; align-items:center; gap:.55rem; font-family:"DM Sans",sans-serif;
+  font-size:.9375rem; font-weight:700; letter-spacing:.02em; text-decoration:none;
+  padding:.95rem 1.6rem; border-radius:2px; transition:transform .16s, background .16s}
+.cta--plein{background:var(--gold); color:var(--navy)}
+.cta--plein:hover{background:var(--gold-soft); transform:translateY(-1px)}
+.cta--nu{color:var(--sur-navy); border-bottom:1px solid var(--bord-navy);
+  padding:.35rem 0; border-radius:0}
+.cta--nu:hover{color:var(--gold)}
+.boutons{display:flex; flex-wrap:wrap; align-items:center; gap:1.75rem; margin-top:2.5rem}
+
+/* ============================ OUVERTURE ============================ */
+.hero{position:relative; overflow:hidden}
+.hero .dedans{display:grid; gap:clamp(2.5rem,5vw,4.5rem)}
+.hero__haut{display:grid; gap:clamp(2rem,4vw,3.5rem); align-items:center}
+@media(min-width:960px){.hero__haut{grid-template-columns:1fr 1fr}}  /* colonne de la photo elargie (Paul, 20/10/2026) */
+.hero__mot{max-width:36rem}
+/* LE PORTRAIT, REPRIS DE SA PAGE D'ACCUEIL: meme halo, meme ombre portee. Une page qui
+   vend un jugement HUMAIN montre l'humain; sans lui, la moitie droite de l'ouverture
+   etait un aplat de marine. */
+.portrait{position:relative; display:flex; justify-content:center; align-items:flex-end}
+.portrait::before{content:""; position:absolute; bottom:4%; left:50%;
+  transform:translateX(-50%); width:116%; height:92%; border-radius:50%;
+  background:radial-gradient(circle, rgba(201,168,76,.26) 0%, rgba(201,168,76,.10) 42%,
+  transparent 68%); z-index:0; pointer-events:none}
+/* Plus grand et fondu en bas et sur les cotes (Paul, 19 et 20/10/2026): la photo ne s'arrete plus sur une coupe nette. */
+.portrait img{position:relative; z-index:1; width:100%; max-width:640px; height:auto;
+  display:block; filter:drop-shadow(0 24px 48px rgba(0,0,0,.42));
+  -webkit-mask-image:linear-gradient(to bottom, #000 72%, transparent 100%), linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom, #000 72%, transparent 100%), linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask-composite:intersect}
+@media(max-width:959px){.portrait img{max-width:340px}}
+.hero h1 .rupture{display:block; color:var(--gold)}
+/* LE TRACE. Une ligne plate qui se casse: c'est le sujet de la page, il merite
+   la moitie de l'ouverture et pas une frise decorative de 90 px. */
+.trace{position:relative}
+.trace svg{display:block; width:100%; height:clamp(150px,20vw,260px)}
+.trace__leg{display:flex; justify-content:space-between; gap:1rem; margin-top:1rem;
+  font-size:var(--t-label); font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--sur-navy-3)}
+.trace__leg span:last-child{color:var(--gold)}
+.trace path{stroke-dasharray:1400; stroke-dashoffset:1400; animation:tracer 2.4s .3s ease-out forwards}
+@keyframes tracer{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.trace path{animation:none; stroke-dashoffset:0}}
+
+/* ============================ DEUX COLONNES ============================ */
+.duo{display:grid; gap:clamp(1.25rem,3vw,2rem); margin-top:2.75rem}
+@media(min-width:820px){.duo{grid-template-columns:1fr 1fr}}
+.carte{background:#fff; border:1px solid var(--bord); border-radius:3px;
+  padding:clamp(1.5rem,2.6vw,2.25rem)}
+.bande--sable .carte{background:#fff}
+.carte h3{margin-bottom:.7rem}
+.carte p{font-size:var(--t-body); color:var(--ink-2)}
+.moutarde, .bande--navy .moutarde, .bande--navy .lead.moutarde{color:var(--gold); font-weight:600}
+.bande--creme .moutarde, .bande--sable .moutarde, .carte .moutarde{color:#86680f}
+.souligne{border-left:2px solid var(--gold); padding-left:1.5rem; margin-top:2.75rem;
+  max-width:var(--mesure); font-size:var(--t-lead); line-height:1.55; color:var(--ink)}
+
+/* La chaine des quatre temps (demande de Tom, 31/08). Son fichier la rendait en
+   police a chasse fixe avec des couleurs qu'on n'a pas: ici c'est la meme suite,
+   dans la typographie de la page. L'or ne sert que dans sa version encree, la seule
+   qui passe le contraste sur fond creme. */
+/* SANS CADRE, CENTREE, ET AU LARGE (Paul, 16/09/2026 a 13 h 59). La boite blanche a
+   contour la serrait dans la colonne de gauche et la faisait ressembler a une carte de
+   plus, alors que c'est une SUITE: quatre temps qui se lisent de haut en bas. Enlever le
+   cadre, la centrer et lui donner de l'air la rend a ce qu'elle est. */
+.chaine{margin:4.25rem auto 0; background:none; border:0; padding:0; max-width:42rem;
+  text-align:center}
+.chaine ol{list-style:none; margin:0; padding:0}
+.chaine li{font-family:"DM Sans",sans-serif; font-size:1.05rem;
+  font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--ink);
+  line-height:1.5}
+.chaine li + li{margin-top:1.15rem}
+.chaine li::before{content:"\2193"; display:block; color:var(--gold); font-weight:400;
+  letter-spacing:0; font-size:1.5rem; line-height:1.6; margin:1rem 0}
+.chaine li:first-child::before{content:none}
+.chaine .temps--preuve{color:var(--or-encre)}
+.chaine .temps--expose{color:var(--navy-light)}
+
+/* ============================ AVANT / APRES ============================ */
+/* LES DEUX TRIPTYQUES SUR LA MEME LIGNE (demande de Tom, 01/09). Deux colonnes de
+   hauteurs differentes posent leur verdict a deux hauteurs differentes. On rend chaque
+   volet flexible, la liste absorbe le vide, et le verdict tombe au bas de sa colonne. */
+.volet{display:flex; flex-direction:column}
+.volet .liste{flex:1 1 auto}
+.volet .verdict{margin-top:auto; padding-top:1.75rem}
+.volet h3{font-size:1.5rem; font-family:"Playfair Display",serif; font-weight:700;
+  line-height:1.2; margin:.35rem 0 .9rem}
+.volet .etiq{margin-bottom:.35rem}
+.liste{list-style:none; margin:1.5rem 0 0; padding:0}
+.liste li{position:relative; padding:.7rem 0 .7rem 1.6rem; border-top:1px solid var(--bord);
+  font-size:var(--t-body); color:var(--ink-2)}
+.liste li::before{content:"—"; position:absolute; left:0; color:var(--gold)}
+/* LES TROIS VERDICTS NE SONT PAS DES BOUTONS.
+   Premiere version: trois pastilles arrondies, la premiere pleine en or. Elles avaient
+   exactement la forme de l'appel a l'action juste au-dessus, et elles ne cliquent pas.
+   Un element qui a la forme d'une commande et n'en est pas une ment au lecteur. Ici c'est
+   du VOCABULAIRE: les trois issues possibles d'un Outside Read. Donc ni fond, ni coin
+   arrondi, ni contour: une legende, lue comme une legende. */
+.portee{margin-top:1.5rem; padding-left:1.5rem; border-left:2px solid var(--gold)}
+.portee p{font-size:var(--t-note); color:var(--ink-3); margin-bottom:.6rem}
+.portee ul{list-style:none; margin:0; padding:0}
+.portee li{position:relative; padding:.2rem 0 .2rem 1.35rem; font-size:var(--t-body);
+  color:var(--ink)}
+.portee li::before{content:"—"; position:absolute; left:0; color:var(--gold)}
+.verdict{margin-top:1.75rem}
+.verdict .quoi{display:block; font-size:var(--t-note); color:var(--ink-3);
+  margin-bottom:.7rem}
+.verdict ul{display:flex; flex-wrap:wrap; gap:0; list-style:none; margin:0; padding:0;
+  border-top:1px solid var(--bord)}
+.verdict li{flex:1 1 7rem; padding:.85rem 0 0; border-top:2px solid transparent;
+  margin-top:-1px; font-family:"Playfair Display",serif; font-size:1.0625rem;
+  font-weight:600; color:var(--ink)}
+.verdict li:nth-child(1){border-top-color:var(--gold)}
+.verdict li:nth-child(2){border-top-color:#b9b4a4}
+.verdict li:nth-child(3){border-top-color:#cfcabb}
+.verdict li span{display:block; font-family:"DM Sans",sans-serif; font-size:var(--t-note);
+  font-weight:400; color:var(--ink-3); margin-top:.2rem}
+.trace__leg span:last-child{color:var(--gold)}
+
+/* ============================ LE CAS ============================ */
+.stats{display:grid; gap:1px; background:var(--bord-navy); border:1px solid var(--bord-navy);
+  margin:clamp(2.5rem,5vw,3.5rem) 0}
+@media(min-width:760px){.stats{grid-template-columns:repeat(3,1fr)}}
+.stat{background:var(--navy); padding:clamp(1.75rem,3vw,2.5rem)}
+.stat b{display:block; font-family:"Playfair Display",serif; font-weight:700;
+  font-size:clamp(2.5rem,5vw,3.5rem); line-height:1; color:var(--gold); letter-spacing:-.02em}
+.stat span{display:block; margin-top:.9rem; font-size:var(--t-note); line-height:1.5;
+  color:var(--sur-navy-2)}
+.trouve{border-left:2px solid var(--gold); padding-left:1.5rem; margin:2.25rem 0;
+  max-width:var(--mesure)}
+.trouve b{color:#fff}
+.contre{background:var(--navy-mid); border:1px solid var(--bord-navy); border-radius:3px;
+  padding:clamp(1.5rem,3vw,2rem); margin-top:2.5rem; max-width:38rem}
+.contre p{font-size:var(--t-body); color:var(--sur-navy-2)}
+.contre b{color:var(--gold)}
+
+/* ============================ CITATION ============================ */
+blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:400;
+  line-height:1.34; margin:0; max-width:30rem}
+.duo--cit{align-items:start}
+
+/* ============================ PRIX ============================ */
+.prix{display:grid; gap:clamp(1rem,2vw,1.5rem); margin-top:3rem; align-items:stretch}
+@media(min-width:900px){.prix{grid-template-columns:repeat(3,1fr)}}
+.offre{display:flex; flex-direction:column; background:#fff; border:1px solid var(--bord);
+  border-radius:3px; padding:clamp(1.75rem,3vw,2.25rem)}
+.offre--phare{border-color:var(--gold); box-shadow:0 14px 40px rgba(12,27,46,.09)}
+.offre h3{font-size:1.0625rem; font-weight:700; letter-spacing:.02em; margin-bottom:1.25rem}
+.offre .montant{font-family:"Playfair Display",serif; font-size:1.875rem; font-weight:700;
+  color:var(--ink); line-height:1; display:block}
+.offre .apres{display:block; font-size:var(--t-note); color:var(--ink-3); margin-top:.5rem}
+.offre p{margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--bord);
+  font-size:var(--t-note); color:var(--ink-2); line-height:1.62}
+.offre--phare .montant{color:var(--or-encre)}
+
+/* ============================ CLOTURE ============================ */
+.final{text-align:center}
+.final .prose{margin:1.75rem auto 0}
+.final .boutons{justify-content:center}
+.pied{background:var(--navy); border-top:1px solid var(--bord-navy); margin:0;
+  padding:2rem var(--pad); text-align:center; font-size:var(--t-note); color:var(--sur-navy-3)}
+.pied span{display:block; max-width:46em; margin:0 auto}
+.pied b{color:var(--gold); font-weight:600}
+.voies__prose{margin:1.1rem 0 0; color:var(--ink-soft); font-size:.98rem;
+  line-height:1.65}
+.inv__amorce{margin:.2rem 0 .8rem; font-weight:700; color:var(--navy)}
+.inv__cas{margin:0 0 1.1rem; padding:0; list-style:none; display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:.35rem 1.6rem}
+.inv__cas li{position:relative; padding-left:1.05rem; color:var(--ink-soft);
+  font-size:.95rem; line-height:1.55}
+.inv__cas li::before{content:""; position:absolute; left:0; top:.6em; width:5px;
+  height:5px; border-radius:50%; background:var(--gold)}
+.inv__cloture{margin:0 0 2rem; color:var(--ink); font-size:1rem; line-height:1.65;
+  max-width:56ch}
+</style>
+
+<style>
+/* --- LA BARRE DE NAVIGATION (25/08, demande de Tom: deux entrees, pas plus).
+   Elle vit sur les trois pages et se lit pareil sur fond marine comme sur creme. */
+.barre{background:var(--navy); border-bottom:1px solid var(--bord-navy);
+  padding:1rem var(--pad); display:flex; align-items:center; justify-content:space-between;
+  gap:1.5rem; flex-wrap:wrap}
+.barre__nom{font-family:"DM Sans",sans-serif; font-size:.78rem; font-weight:700;
+  letter-spacing:.2em; text-transform:uppercase; color:#fff; text-decoration:none}
+.barre__nom span{color:var(--gold)}
+.barre__liens{display:flex; align-items:center; gap:1.75rem}
+.barre__liens a{font-size:.78rem; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--sur-navy-2); text-decoration:none;
+  padding:.35rem 0; border-bottom:1px solid transparent}
+.barre__liens a:hover{color:#fff; border-bottom-color:var(--gold)}
+.barre__liens a[aria-current="page"]{color:var(--gold); border-bottom-color:var(--gold)}
+</style>
+
+<style>
+/* --- LES TROIS VOIES DE DECISION (PDF de Tom, 25/08). Elles remplacent quatre puces:
+   une decision se range dans une voie, et les trois se lisent d'un coup d'oeil. Meme
+   etiquette que les sections, meme filet, aucune couleur de plus. */
+.voies{margin:1.75rem 0 2rem}
+.voies__titre{display:block; font-size:var(--t-label); font-weight:700; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--or-encre); margin:0 0 1rem}
+/* TROIS COLONNES, PAS DEUX PUIS UNE: la section est deja coupee en deux volets, donc la
+   place utile fait la moitie de la page. A 11rem la troisieme voie tombait a la ligne. */
+.voies__grille{display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1.1rem; border-top:1px solid var(--bord); padding-top:1.25rem}
+@media (max-width:640px){.voies__grille{grid-template-columns:1fr}}
+.voies__grille h4{margin:0 0 .45rem; font-family:"DM Sans",sans-serif; font-size:.8125rem;
+  font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink)}
+.voies__grille p{margin:0; font-size:var(--t-note); color:var(--ink-3); line-height:1.55}
+/* PAR OU COMMENCER (fichier de Tom, 21/09): trois cartes, trois situations, en citation. */
+.depart{display:grid; gap:1.1rem; margin-top:1.75rem}
+@media(min-width:820px){.depart{grid-template-columns:repeat(3,1fr)}}
+.depart .carte p{font-style:italic}
+.depart__suite{margin:1.75rem 0 0; max-width:var(--mesure); font-weight:500; color:var(--ink)}
+.depart__appel{margin:.6rem 0 0; font-weight:700; color:var(--or-encre)}
+/* Les verdicts sans leur phrase d'introduction: trois mots, rien autour. */
+.verdict--nu .quoi{display:none}
+.verdict--nu ul li span{display:none}
+</style>
+
+<style>
+.barre__liens .barre__btn{background:var(--gold); color:var(--navy); border-radius:2px;
+  padding:.55rem 1rem; border-bottom:0; letter-spacing:.1em}
+.barre__liens .barre__btn:hover{background:var(--gold-soft); color:var(--navy);
+  border-bottom:0}
+.barre__liens .barre__btn[aria-current="page"]{color:var(--navy)}
+/* Mail de Tom du 18/10: deux moments cote a cote, cartes en texte droit (pas des citations). */
+@media(min-width:820px){.depart--deux{grid-template-columns:repeat(2,1fr)}}
+.depart--droit .carte p{font-style:normal}
+/* L'etude de cas en trois colonnes (tableau du docx de Tom), dans la grille des chiffres. */
+.scan .stat{padding:clamp(1.25rem,2.4vw,1.75rem)}
+.scan .stat p{margin:0; font-size:var(--t-body); line-height:1.6; color:var(--sur-navy-2)}
+.scan .scan__tete{padding-top:1rem; padding-bottom:1rem}
+.scan__tete .etiq{margin:0}
+.chiffre, .bande--navy .chiffre{color:var(--gold); font-weight:700; font-size:1.15em; white-space:nowrap}
+/* Mails de Tom des 23 et 24/10: l'accroche (italique, un peu plus grande, de l'air autour),
+   le cadre en trois criteres avec ses deux temps, et les trois jugements en cartes, reprises
+   telles quelles pour la conclusion ADJUST de l'etude de cas. */
+.accroche{font-family:"Playfair Display",Georgia,serif; font-style:italic; font-weight:400;
+  font-size:calc(var(--t-lead) * 1.08); line-height:1.45; color:#fff; margin:2.25rem 0 0; max-width:34rem}
+.final .accroche{margin:2.5rem auto 0; color:#fff}
+.cadre .carte h3{font-size:1.5rem; font-family:"Playfair Display",serif; margin-bottom:.5rem}
+.cadre .question{font-weight:600; color:var(--ink)}
+.temps{margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid var(--bord)}
+.temps__nom{display:block; font-size:var(--t-label); font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--or-encre); margin-bottom:.45rem}
+.jugements{display:grid; gap:1.1rem; margin-top:1.75rem}
+@media(min-width:820px){.jugements{grid-template-columns:repeat(3,1fr)}}
+.jugement{background:#fff; border:1px solid var(--bord); border-top:3px solid var(--gold);
+  border-radius:3px; padding:clamp(1.5rem,2.6vw,2.25rem)}
+.jugement h3{font-family:"DM Sans",sans-serif; font-size:1.0625rem; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--or-encre); margin-bottom:.7rem}
+.jugement p{color:var(--ink-2)}
+.jugement--cas{max-width:46rem; margin:clamp(2.5rem,5vw,3.5rem) 0 0; box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.jugement--cas h3{font-size:clamp(1.15rem,2vw,1.35rem)}
+.jugement--cas h3 b{color:var(--or-encre); font-weight:800}
+.signaux{display:grid; gap:1px; background:var(--bord-navy); border:1px solid var(--bord-navy);
+  margin-top:1.5rem}
+@media(min-width:900px){.signaux{grid-template-columns:repeat(3,1fr)}}
+.signal{background:var(--navy); padding:clamp(1.5rem,3vw,2.25rem)}
+.signal h4{margin:0 0 1.1rem; font-family:"Playfair Display",serif; font-size:1.5rem;
+  font-weight:700; color:var(--gold)}
+.signal p{font-size:var(--t-body); line-height:1.62; color:var(--sur-navy-2)}
+.signal p b{display:block; font-size:var(--t-label); letter-spacing:.16em; text-transform:uppercase;
+  color:#fff; margin-bottom:.35rem}
+.signal p + p{margin-top:1.35rem}
+/* Resume executif sur l'accueil (27/10/2026). */
+@media(min-width:760px){.stats--4{grid-template-columns:repeat(4,1fr)}}
+.stats--4 .stat b{font-size:clamp(2rem,3.6vw,2.75rem)}
+.synthese{background:var(--navy-mid); border:1px solid var(--bord-navy); border-left:3px solid var(--gold); border-radius:3px; padding:clamp(1.25rem,2.6vw,1.75rem); margin-top:2rem; max-width:52rem}
+.synthese h3{font-family:"DM Sans",sans-serif; font-size:var(--t-label); font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin:0 0 .7rem}
+.synthese p{color:var(--sur-navy); margin:0}
+.signal--seul h4{font-size:1.25rem}
+.cas__bloc{margin-top:clamp(2.5rem,5vw,3.5rem)}
+.cas__bloc h3{font-size:1.375rem; margin-bottom:.9rem}
+@media(max-width:759px){.scan .scan__tete{display:none}
+  .scan .stat[data-col]::before{content:attr(data-col); display:block; font-size:var(--t-label);
+    font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem}}
+</style>
+</head>
+<body>
+<nav class="barre"><a class="barre__nom" href="/">Tom Scally <span>Signal Shift</span></a><div class="barre__liens"><a href="/about-tom.html">About Tom</a><a href="/faq.html">FAQ</a><a class="barre__btn" href="/get-an-outside-read.html">Schedule a Conversation</a></div></nav>
+
+<!-- ============================ OUVERTURE ============================ -->
+<!-- Texte de Tom, mail du 18/10/2026 (Signal_Shift_Website_Copy_Final.docx): Signal Shift devient un
+     conseil independant, par projet. Meme charte et memes blocs; ses mots, son ordre; ses lignes en
+     gras en moutarde. Plus aucun prix sur le site. -->
+<section class="bande bande--navy hero">
+  <div class="dedans">
+    <div class="hero__haut">
+    <div class="hero__mot">
+      <span class="etiq">Signal Shift</span>
+      <h1>Before the<span class="rupture">Next Move.</span></h1>
+      <p class="lead moutarde" style="margin-top:1.75rem">Independent Perspective. Informed Judgment.</p>
+      <p class="lead" style="margin-top:1.1rem">Your company is preparing for an important decision. Or something already underway isn&rsquo;t producing the results you expected.</p>
+      <p class="lead">Before committing more time, money, or resources, it may be worth understanding what isn&rsquo;t visible from inside the company.</p>
+      <p class="lead">Signal Shift provides an independent Outside Read of the Trust, Traction, and Conditions surrounding your situation to help leadership determine whether to Proceed, Adjust, or Reconsider.</p>
+      <p class="accroche">&ldquo;Small, subtle changes turn out to be big ones over time.&rdquo;</p>
+      <div class="boutons">
+        <a class="cta cta--plein" href="/get-an-outside-read.html">Schedule a Conversation →</a>
+        <a class="cta cta--nu" href="#exhibit">See an illustrative scan ↓</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <img src="tom.png" alt="Tom Scally, creator of Signal Shift" width="640" height="853">
+    </div>
+    </div>
+    <div class="trace">
+      <svg viewBox="0 0 1200 260" fill="none" aria-hidden="true" preserveAspectRatio="none">
+        <line x1="0" y1="176" x2="1200" y2="176" stroke="rgba(201,168,76,.18)" stroke-width="1"/>
+        <line x1="720" y1="26" x2="720" y2="240" stroke="rgba(201,168,76,.3)" stroke-width="1" stroke-dasharray="4 7"/>
+        <path d="M0 176 C 220 176, 430 172, 600 160 C 690 152, 706 96, 720 62"
+              stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M720 62 C 748 122, 820 178, 980 196 C 1080 206, 1150 208, 1200 209"
+              stroke="#4f7ca8" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="720" cy="62" r="5" fill="#c9a84c"/>
+      </svg>
+      <div class="trace__leg"><span>The inside view</span><span>The Outside Read</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ QUAND ============================ -->
+<section class="bande bande--creme">
+  <div class="dedans">
+    <span class="etiq">When an Outside Read Makes Sense</span>
+    <h2>Companies typically bring me in at two important moments.</h2>
+    <div class="depart depart--deux depart--droit">
+      <div class="carte">
+        <h3>Before an Important Move</h3>
+        <p>You&rsquo;re preparing to raise capital, enter a new market, launch something important, or commit additional resources.</p>
+        <p>You believe in the direction but want an independent perspective on whether the conditions surrounding the situation support what you&rsquo;re planning.</p>
+        <p>The question: Are there factors worth understanding before moving forward?</p>
+      </div>
+      <div class="carte">
+        <h3>When Something Isn&rsquo;t Developing as Expected</h3>
+        <p>An initiative is underway. Time, money, and resources are being committed, but the expected momentum isn&rsquo;t developing.</p>
+        <p>The reason isn&rsquo;t always obvious. It could involve positioning, market response, competitive activity, or changing conditions around the business.</p>
+        <p>The question: Is the direction still supported by what&rsquo;s happening around the company, or does something deserve reconsideration?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LE CADRE ============================ -->
+<!-- Texte de Tom, mail du 24/10/2026: The Core Framework puis The Judgment remplacent
+     « The Discipline Behind the Read » et « What You Get Back ». -->
+<section class="bande bande--sable cadre">
+  <div class="dedans">
+    <h2>The Core Framework</h2>
+    <p class="prose" style="margin-top:1.75rem">Every situation is distinct, but the Signal Shift methodology evaluates what is happening around a company through three specific lenses. We look past internal assumptions to assess the external evidence surrounding your situation.</p>
+    <div class="depart depart--droit">
+      <div class="carte">
+        <h3 class="moutarde">Trust</h3>
+        <p class="question">Is your story holding up from the outside?</p>
+        <p>Your internal teams and agencies deeply understand your vision. But an internal echo chamber can mask how the market actually interprets your business.</p>
+        <div class="temps"><span class="temps__nom">The Diagnostic Look</span><p>We evaluate your external visibility, independent positioning, and market credibility.</p></div>
+        <div class="temps"><span class="temps__nom">The Subtle Change</span><p>A gap between what you are saying inside the company and what the market actually hears outside it. Left unaddressed, it silently erodes your authority with buyers and investors.</p></div>
+      </div>
+      <div class="carte">
+        <h3 class="moutarde">Traction</h3>
+        <p class="question">Is your expected commercial momentum developing?</p>
+        <p>Internal reports often highlight execution milestones, product updates, and task-completion metrics. But internal activity does not always equate to actual external market velocity.</p>
+        <div class="temps"><span class="temps__nom">The Diagnostic Look</span><p>We isolate objective, observable signs of market progress and customer or partner response.</p></div>
+        <div class="temps"><span class="temps__nom">The Subtle Change</span><p>A hidden divergence where high-level metrics look healthy, but underlying asset usage or account retention is starting to contract. Left unaddressed, it means scaling a commercial strategy that has already lost its footing.</p></div>
+      </div>
+      <div class="carte">
+        <h3 class="moutarde">Conditions</h3>
+        <p class="question">Has the ground shifted beneath your feet?</p>
+        <p>A strategic path that made perfect sense six months ago can become obsolete overnight due to quiet, macro shifts that rarely show up on internal dashboard alerts.</p>
+        <div class="temps"><span class="temps__nom">The Diagnostic Look</span><p>We analyze changing buyer behaviors, market developments, and competitor movements.</p></div>
+        <div class="temps"><span class="temps__nom">The Subtle Change</span><p>Subtle changes in how your target audience prioritizes solutions or allocates capital. Left unaddressed, you risk launching a major move into a market environment that no longer exists.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LE JUGEMENT ============================ -->
+<section class="bande bande--creme">
+  <div class="dedans">
+    <h2>The Judgment</h2>
+    <p class="prose" style="margin-top:1.75rem">The findings come together in an independent assessment of your situation.</p>
+    <div class="jugements">
+      <div class="jugement"><h3>Proceed</h3><p>The evidence supports the current direction.</p></div>
+      <div class="jugement"><h3>Adjust</h3><p>The direction is sound, but adjustments are warranted.</p></div>
+      <div class="jugement"><h3>Reconsider</h3><p>The evidence suggests a different path may be required.</p></div>
+    </div>
+    <p class="depart__appel moutarde" style="margin-top:1.75rem">The findings inform the judgment. Leadership makes the call.</p>
+  </div>
+</section>
+
+<!-- ============================ LE CAS ============================ -->
+<!-- Resume executif (27/10/2026). -->
+<section class="bande bande--navy" id="exhibit">
+  <div class="dedans">
+    <span class="etiq">Methodology in Action: An Outside Read</span>
+    <h2 style="margin-top:1.25rem">B2B Market Infrastructure: Executive Summary</h2>
+    <p class="note prose" style="margin-top:1rem">Based on an Outside Read of a real company, completed in October 2026. The company&rsquo;s name, the size of its raise, and other identifying details have been removed, and figures that could identify the company are rounded. Every figure shown comes from public regulatory filings, company releases, or media coverage.</p>
+    <p class="lead prose" style="margin-top:1.25rem">The company is preparing a capital raise while working to increase visibility and generate new business. This read covers what sits outside the company and could affect those objectives, through Signal Shift&rsquo;s three lenses: Trust, Traction, and Conditions.</p>
+    <div class="synthese">
+      <h3>Bottom line</h3>
+      <p>On paper, the company holds a strong position: an established business with its own regulated arm that keeps the investor records for the securities its clients issue. In public, that strength is hard to see: few third parties confirm its news, the individual investor accounts on its records are falling, and demand is moving away from the segment where nearly half of its identifiable clients raise. Around it, the best-known tokenization firms are turning to listed companies, new demand is going to advertised private placements, funds, and broker platforms, and in its segment what investors can check is third-party confirmation, not press coverage.</p>
+    </div>
+    <div class="stats stats--4">
+      <div class="stat"><b>40:1</b><span>company announcements to independent articles, 20-outlet panel (mostly crypto and fintech), eight months</span></div>
+      <div class="stat"><b>15%+</b><span>growth in the client securities on its records in a year (annual regulatory filing)</span></div>
+      <div class="stat"><b>&minus;20%</b><span>individual investor accounts on those records, same filing, rounded</span></div>
+      <div class="stat"><b>&minus;30%</b><span>new crowdfunding offerings in a year, market-wide (SEC data)</span></div>
+    </div>
+    <div class="signaux">
+      <div class="signal signal--seul"><h4>What supports the direction</h4><p>The regulator has proposed new rules for the record-keeping the company already does, written for electronic and blockchain-based records, and the industry&rsquo;s largest players are confirming that role. Dozens of issuers name its record-keeping arm in their own filings.</p></div>
+      <div class="signal signal--seul"><h4>What&rsquo;s worth considering</h4><p>New crowdfunding offerings fell 30% in a year, while advertised private placements and new venture fund filings grew (October to March, latest SEC data). The best-known tokenization firms are turning to listed companies.</p></div>
+      <div class="signal signal--seul"><h4>What deserves a closer look</h4><p>About 40 announcements, one independent article. A minority of the partners it announced confirmed the partnership in their own name. Individual investor accounts down about 20% while the client securities on its records rose more than 15%.</p></div>
+    </div>
+    <div class="jugement jugement--cas">
+      <h3>The Independent Judgment: <b>Adjust</b></h3>
+      <p>The findings do not establish that the direction is wrong: the regulator and the industry&rsquo;s largest players are confirming the role its record-keeping arm already holds. They identify three considerations to address before the raise: independent recognition (Trust), the gap between client securities on record and investor accounts (Traction), and a market moving toward buyers that need a register (Conditions).</p>
+    </div>
+    <p class="depart__appel moutarde" style="margin-top:2rem">The findings inform the judgment. Leadership makes the call.</p>
+  </div>
+</section>
+
+<!-- ============================ AVEC QUI ============================ -->
+<section class="bande bande--sable">
+  <div class="dedans">
+    <span class="etiq">Who I Work With</span>
+    <p class="lead prose" style="margin-top:1.25rem">Signal Shift works with leaders and organizations facing important situations where an independent perspective may be valuable.</p>
+    <div class="depart depart--droit">
+      <div class="carte">
+        <h3>Founders &amp; CEOs</h3>
+        <p>Preparing for capital raises, market expansion, new initiatives, or trying to understand why expected progress isn&rsquo;t developing.</p>
+      </div>
+      <div class="carte">
+        <h3>Growth-Stage Companies</h3>
+        <p>Investing in important initiatives where market response, positioning, competitive conditions, or momentum deserve closer examination.</p>
+      </div>
+      <div class="carte">
+        <h3>Investors &amp; Advisory Firms</h3>
+        <p>Seeking an independent perspective on a portfolio company, client, investment-related situation, or strategic initiative.</p>
+      </div>
+    </div>
+    <p class="depart__suite">Each engagement begins with the situation, not a predetermined set of recommendations.</p>
+  </div>
+</section>
+
+<!-- ============================ LE REGARD DE TOM ============================ -->
+<section class="bande bande--creme">
+  <div class="dedans">
+    <span class="etiq">The Perspective Behind Signal Shift</span>
+    <p class="lead prose" style="margin-top:1.25rem">Signal Shift was developed from years of working with companies across capital markets, communications, business development, and strategic partnerships.</p>
+    <p class="prose">That experience has given me a perspective on how companies position themselves, how opportunities actually develop, and how outside conditions can influence momentum.</p>
+    <p class="prose">I bring that experience to the table to look at your business the way a critical outsider or an investor&rsquo;s due diligence team might.</p>
+    <p class="prose">I don&rsquo;t give you data dumps. I give you an independent judgment on what the outside record actually means for your next move.</p>
+  </div>
+</section>
+
+<!-- ============================ TRAVAILLER ENSEMBLE ============================ -->
+<section class="bande bande--navy final">
+  <div class="dedans">
+    <span class="etiq">Work With Me</span>
+    <h2>Every Situation Is Different.</h2>
+    <p class="lead prose">Every Signal Shift engagement starts with a conversation about what you&rsquo;re trying to understand.</p>
+    <p class="prose" style="margin-top:1rem">You may be preparing for something important, or something already underway may not be developing as expected.</p>
+    <p class="prose" style="margin-top:1rem">We&rsquo;ll discuss the situation, what you already know, and whether an independent Outside Read could provide a perspective worth considering.</p>
+    <p class="prose" style="margin-top:1rem">If there&rsquo;s a fit, we&rsquo;ll define the scope of the engagement together.</p>
+    <p class="accroche">&ldquo;Small, subtle changes turn out to be big ones over time.&rdquo;</p>
+    <div class="boutons">
+      <a class="cta cta--plein" href="/get-an-outside-read.html">Schedule a Conversation →</a>
+    </div>
+  </div>
+</section>
+
+<p class="pied"><span><b>Signal Shift</b> · <b>Before the Next Move.</b> Independent Perspective. Informed Judgment.<br>The read informs what comes next. Leadership decides what happens next.</span></p>
+
+</body>
+</html>

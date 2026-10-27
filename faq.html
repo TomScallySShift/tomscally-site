@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ | Signal Shift</title>
+<meta name="description" content="Common questions about Signal Shift: what an Outside Read contains, how it differs from consulting and market research, timing, and confidentiality.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================================
+   SIGNAL SHIFT — BEFORE THE NEXT MOVE
+   Jetons repris de tomscally.com pour que la page soit du MEME site, pas une
+   piece rapportee: marine, or, creme, Playfair Display + DM Sans.
+
+   TROIS REGLES DE MISE EN TEXTE, tenues partout:
+     1. la mesure ne depasse jamais 34em (~64 signes). La version precedente
+        courait jusqu'a 121 signes par ligne, l'oeil y perd sa ligne;
+     2. QUATRE tailles de corps, pas huit. 11 px etiquette, 17 px courant,
+        20 px chapeau, 15 px note;
+     3. TROIS encres, pas une seule. Le gris unique de la version precedente
+        aplatissait vingt-cinq paragraphes sur vingt-six.
+   ========================================================================= */
+:root{
+  --navy:#0c1b2e; --navy-mid:#162a45; --navy-light:#1e3655;
+  --gold:#c9a84c; --gold-soft:#d4b96e;
+  --cream:#faf9f6; --off-white:#f7efca;
+  --ink:#0c1b2e; --ink-2:#3a3f4b; --ink-3:#5c6175;
+  --sur-navy:#e9eef5; --sur-navy-2:#9fb0c6; --sur-navy-3:#8398b3;
+  --bord:#e4e3df; --bord-navy:rgba(201,168,76,.22);
+  /* L'OR EST UNE ENCRE DE FOND SOMBRE. Pose sur la creme a 12 px il tombe a un rapport
+     de contraste de 2, mesure a la sonde: illisible. Sur fond clair on prend sa version
+     encrée, qui garde la couleur et passe les seuils. */
+  --or-encre:#7a5c0c;
+
+  --t-label:.72rem; --t-note:.9375rem; --t-body:1.0625rem; --t-lead:1.25rem;
+  --mesure:34em;
+  --pad:clamp(1.5rem,6vw,7rem);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--cream); color:var(--ink-2);
+  font:400 var(--t-body)/1.68 "DM Sans",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,blockquote{font-family:"Playfair Display",Georgia,serif;color:var(--ink);
+  font-weight:700; line-height:1.12; letter-spacing:-.01em; margin:0}
+p{margin:0 0 1.15em}
+p:last-child{margin-bottom:0}
+strong{color:var(--ink); font-weight:600}
+a{color:inherit}
+
+/* --- LA BANDE, unite de rythme de la page. Elles alternent, comme sur le site. */
+.bande{padding:clamp(3.75rem,9vw,7.5rem) var(--pad)}
+.bande--navy{background:var(--navy); color:var(--sur-navy-2)}
+.bande--navy h1,.bande--navy h2,.bande--navy h3,.bande--navy blockquote{color:#fff}
+.bande--navy strong{color:#fff}
+.bande--creme{background:var(--cream)}
+.bande--sable{background:var(--off-white)}
+.dedans{max-width:76rem; margin:0 auto}
+.prose{max-width:var(--mesure)}
+.lead{font-size:var(--t-lead); line-height:1.55; color:var(--ink-2)}
+.bande--navy .lead{color:var(--sur-navy)}
+.note{font-size:var(--t-note); color:var(--ink-3); line-height:1.6}
+.bande--navy .note{color:var(--sur-navy-3)}
+
+/* --- L'ETIQUETTE DE SECTION. Une seule taille, une seule graisse, partout. */
+.etiq{display:block; font-size:var(--t-label); font-weight:700; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--or-encre); margin:0 0 1.25rem}
+.etiq::before{content:""; display:inline-block; width:1.75rem; height:1px;
+  background:var(--gold); vertical-align:.28em; margin-right:.6rem}
+.bande--navy .etiq{color:var(--gold)}
+
+h1{font-size:clamp(2.75rem,7.2vw,4.75rem)}
+h2{font-size:clamp(1.85rem,3.6vw,2.85rem)}
+h3{font-size:1.1875rem; font-weight:600; letter-spacing:0}
+
+/* --- LES BOUTONS. Deux niveaux, jamais trois. */
+.cta{display:inline-flex; align-items:center; gap:.55rem; font-family:"DM Sans",sans-serif;
+  font-size:.9375rem; font-weight:700; letter-spacing:.02em; text-decoration:none;
+  padding:.95rem 1.6rem; border-radius:2px; transition:transform .16s, background .16s}
+.cta--plein{background:var(--gold); color:var(--navy)}
+.cta--plein:hover{background:var(--gold-soft); transform:translateY(-1px)}
+.cta--nu{color:var(--sur-navy); border-bottom:1px solid var(--bord-navy);
+  padding:.35rem 0; border-radius:0}
+.cta--nu:hover{color:var(--gold)}
+.boutons{display:flex; flex-wrap:wrap; align-items:center; gap:1.75rem; margin-top:2.5rem}
+
+/* ============================ OUVERTURE ============================ */
+.hero{position:relative; overflow:hidden}
+.hero .dedans{display:grid; gap:clamp(2.5rem,5vw,4.5rem)}
+.hero__haut{display:grid; gap:clamp(2rem,4vw,3.5rem); align-items:center}
+@media(min-width:960px){.hero__haut{grid-template-columns:1.15fr .85fr}}
+.hero__mot{max-width:36rem}
+/* LE PORTRAIT, REPRIS DE SA PAGE D'ACCUEIL: meme halo, meme ombre portee. Une page qui
+   vend un jugement HUMAIN montre l'humain; sans lui, la moitie droite de l'ouverture
+   etait un aplat de marine. */
+.portrait{position:relative; display:flex; justify-content:center; align-items:flex-end}
+.portrait::before{content:""; position:absolute; bottom:4%; left:50%;
+  transform:translateX(-50%); width:116%; height:92%; border-radius:50%;
+  background:radial-gradient(circle, rgba(201,168,76,.26) 0%, rgba(201,168,76,.10) 42%,
+  transparent 68%); z-index:0; pointer-events:none}
+.portrait img{position:relative; z-index:1; width:100%; max-width:380px; height:auto;
+  display:block; filter:drop-shadow(0 24px 48px rgba(0,0,0,.42))}
+@media(max-width:959px){.portrait img{max-width:280px}}
+.hero h1 .rupture{display:block; color:var(--gold)}
+/* LE TRACE. Une ligne plate qui se casse: c'est le sujet de la page, il merite
+   la moitie de l'ouverture et pas une frise decorative de 90 px. */
+.trace{position:relative}
+.trace svg{display:block; width:100%; height:clamp(150px,20vw,260px)}
+.trace__leg{display:flex; justify-content:space-between; gap:1rem; margin-top:1rem;
+  font-size:var(--t-label); font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--sur-navy-3)}
+.trace__leg span:last-child{color:var(--gold)}
+.trace path{stroke-dasharray:1400; stroke-dashoffset:1400; animation:tracer 2.4s .3s ease-out forwards}
+@keyframes tracer{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.trace path{animation:none; stroke-dashoffset:0}}
+
+/* ============================ DEUX COLONNES ============================ */
+.duo{display:grid; gap:clamp(1.25rem,3vw,2rem); margin-top:2.75rem}
+@media(min-width:820px){.duo{grid-template-columns:1fr 1fr}}
+.carte{background:#fff; border:1px solid var(--bord); border-radius:3px;
+  padding:clamp(1.5rem,2.6vw,2.25rem)}
+.bande--sable .carte{background:#fff}
+.carte h3{margin-bottom:.7rem}
+.carte p{font-size:var(--t-body); color:var(--ink-2)}
+.souligne{border-left:2px solid var(--gold); padding-left:1.5rem; margin-top:2.75rem;
+  max-width:var(--mesure); font-size:var(--t-lead); line-height:1.55; color:var(--ink)}
+
+/* ============================ AVANT / APRES ============================ */
+.volet h3{font-size:1.5rem; font-family:"Playfair Display",serif; font-weight:700;
+  line-height:1.2; margin:.35rem 0 .9rem}
+.volet .etiq{margin-bottom:.35rem}
+.liste{list-style:none; margin:1.5rem 0 0; padding:0}
+.liste li{position:relative; padding:.7rem 0 .7rem 1.6rem; border-top:1px solid var(--bord);
+  font-size:var(--t-body); color:var(--ink-2)}
+.liste li::before{content:"—"; position:absolute; left:0; color:var(--gold)}
+/* LES TROIS VERDICTS NE SONT PAS DES BOUTONS.
+   Premiere version: trois pastilles arrondies, la premiere pleine en or. Elles avaient
+   exactement la forme de l'appel a l'action juste au-dessus, et elles ne cliquent pas.
+   Un element qui a la forme d'une commande et n'en est pas une ment au lecteur. Ici c'est
+   du VOCABULAIRE: les trois issues possibles d'un Outside Read. Donc ni fond, ni coin
+   arrondi, ni contour: une legende, lue comme une legende. */
+.portee{margin-top:1.5rem; padding-left:1.5rem; border-left:2px solid var(--gold)}
+.portee p{font-size:var(--t-note); color:var(--ink-3); margin-bottom:.6rem}
+.portee ul{list-style:none; margin:0; padding:0}
+.portee li{position:relative; padding:.2rem 0 .2rem 1.35rem; font-size:var(--t-body);
+  color:var(--ink)}
+.portee li::before{content:"—"; position:absolute; left:0; color:var(--gold)}
+.verdict{margin-top:1.75rem}
+.verdict .quoi{display:block; font-size:var(--t-note); color:var(--ink-3);
+  margin-bottom:.7rem}
+.verdict ul{display:flex; flex-wrap:wrap; gap:0; list-style:none; margin:0; padding:0;
+  border-top:1px solid var(--bord)}
+.verdict li{flex:1 1 7rem; padding:.85rem 0 0; border-top:2px solid transparent;
+  margin-top:-1px; font-family:"Playfair Display",serif; font-size:1.0625rem;
+  font-weight:600; color:var(--ink)}
+.verdict li:nth-child(1){border-top-color:var(--gold)}
+.verdict li:nth-child(2){border-top-color:#b9b4a4}
+.verdict li:nth-child(3){border-top-color:#cfcabb}
+.verdict li span{display:block; font-family:"DM Sans",sans-serif; font-size:var(--t-note);
+  font-weight:400; color:var(--ink-3); margin-top:.2rem}
+.trace__leg span:last-child{color:var(--gold)}
+
+/* ============================ LE CAS ============================ */
+.stats{display:grid; gap:1px; background:var(--bord-navy); border:1px solid var(--bord-navy);
+  margin:clamp(2.5rem,5vw,3.5rem) 0}
+@media(min-width:760px){.stats{grid-template-columns:repeat(3,1fr)}}
+.stat{background:var(--navy); padding:clamp(1.75rem,3vw,2.5rem)}
+.stat b{display:block; font-family:"Playfair Display",serif; font-weight:700;
+  font-size:clamp(2.5rem,5vw,3.5rem); line-height:1; color:var(--gold); letter-spacing:-.02em}
+.stat span{display:block; margin-top:.9rem; font-size:var(--t-note); line-height:1.5;
+  color:var(--sur-navy-2)}
+.trouve{border-left:2px solid var(--gold); padding-left:1.5rem; margin:2.25rem 0;
+  max-width:var(--mesure)}
+.trouve b{color:#fff}
+.contre{background:var(--navy-mid); border:1px solid var(--bord-navy); border-radius:3px;
+  padding:clamp(1.5rem,3vw,2rem); margin-top:2.5rem; max-width:38rem}
+.contre p{font-size:var(--t-body); color:var(--sur-navy-2)}
+.contre b{color:var(--gold)}
+
+/* ============================ CITATION ============================ */
+blockquote{font-size:clamp(1.5rem,3vw,2.125rem); font-style:italic; font-weight:400;
+  line-height:1.34; margin:0; max-width:30rem}
+.duo--cit{align-items:start}
+
+/* ============================ PRIX ============================ */
+.prix{display:grid; gap:clamp(1rem,2vw,1.5rem); margin-top:3rem; align-items:stretch}
+@media(min-width:900px){.prix{grid-template-columns:repeat(3,1fr)}}
+.offre{display:flex; flex-direction:column; background:#fff; border:1px solid var(--bord);
+  border-radius:3px; padding:clamp(1.75rem,3vw,2.25rem)}
+.offre--phare{border-color:var(--gold); box-shadow:0 14px 40px rgba(12,27,46,.09)}
+.offre h3{font-size:1.0625rem; font-weight:700; letter-spacing:.02em; margin-bottom:1.25rem}
+.offre .montant{font-family:"Playfair Display",serif; font-size:1.875rem; font-weight:700;
+  color:var(--ink); line-height:1; display:block}
+.offre .apres{display:block; font-size:var(--t-note); color:var(--ink-3); margin-top:.5rem}
+.offre p{margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--bord);
+  font-size:var(--t-note); color:var(--ink-2); line-height:1.62}
+.offre--phare .montant{color:var(--or-encre)}
+
+/* ============================ CLOTURE ============================ */
+.final{text-align:center}
+.final .prose{margin:1.75rem auto 0}
+.final .boutons{justify-content:center}
+.pied{background:var(--navy); border-top:1px solid var(--bord-navy); margin:0;
+  padding:2rem var(--pad); text-align:center; font-size:var(--t-note); color:var(--sur-navy-3)}
+.pied span{display:block; max-width:46em; margin:0 auto}
+.pied b{color:var(--gold); font-weight:600}
+.confid{display:flex; gap:.6rem; align-items:flex-start; margin:0 0 2rem;
+  padding:.85rem 1rem; background:rgba(13,27,42,.045);
+  border-left:2px solid var(--gold); color:var(--ink-soft); font-size:.9rem;
+  line-height:1.6}
+.choix span small{display:block; margin-top:.2rem; font-size:.78rem; font-weight:400;
+  color:var(--ink-soft); line-height:1.45}
+.faq-mini{margin-top:3rem; border-top:1px solid rgba(13,27,42,.12); padding-top:1.6rem}
+.faq-mini details{border-bottom:1px solid rgba(13,27,42,.12)}
+.faq-mini summary{cursor:pointer; padding:.95rem 0; font-weight:700; color:var(--navy);
+  font-size:.95rem; list-style:none; display:flex; justify-content:space-between;
+  gap:1rem; align-items:center}
+.faq-mini summary::-webkit-details-marker{display:none}
+.faq-mini summary::after{content:"+"; color:var(--gold); font-weight:700;
+  font-size:1.15rem; line-height:1}
+.faq-mini details[open] summary::after{content:"\2212"}
+.faq-mini p{margin:0 0 1.1rem; color:var(--ink-soft); font-size:.94rem; line-height:1.7}
+.faq-liste details{border-bottom:1px solid rgba(13,27,42,.12)}
+.faq-liste summary{cursor:pointer; padding:1.15rem 0; font-weight:700; color:var(--navy);
+  font-size:1.02rem; line-height:1.45; list-style:none; display:flex;
+  justify-content:space-between; gap:1.2rem; align-items:flex-start}
+.faq-liste summary::-webkit-details-marker{display:none}
+.faq-liste summary::after{content:"+"; color:var(--gold); font-weight:700;
+  font-size:1.3rem; line-height:1.2; flex:none}
+.faq-liste details[open] summary::after{content:"\2212"}
+.faq-liste p{margin:0 0 1.4rem; color:var(--ink-soft); font-size:.98rem; line-height:1.75;
+  max-width:62ch}
+</style>
+<style>
+/* --- LA BARRE DE NAVIGATION (25/08, demande de Tom: deux entrees, pas plus).
+   Elle vit sur les trois pages et se lit pareil sur fond marine comme sur creme. */
+.barre{background:var(--navy); border-bottom:1px solid var(--bord-navy);
+  padding:1rem var(--pad); display:flex; align-items:center; justify-content:space-between;
+  gap:1.5rem; flex-wrap:wrap}
+.barre__nom{font-family:"DM Sans",sans-serif; font-size:.78rem; font-weight:700;
+  letter-spacing:.2em; text-transform:uppercase; color:#fff; text-decoration:none}
+.barre__nom span{color:var(--gold)}
+.barre__liens{display:flex; align-items:center; gap:1.75rem}
+.barre__liens a{font-size:.78rem; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--sur-navy-2); text-decoration:none;
+  padding:.35rem 0; border-bottom:1px solid transparent}
+.barre__liens a:hover{color:#fff; border-bottom-color:var(--gold)}
+.barre__liens a[aria-current="page"]{color:var(--gold); border-bottom-color:var(--gold)}
+</style>
+
+<style>
+/* --- LA PRISE DE BRIEF. Une question par bloc, jamais deux colonnes: on repond en
+   descendant, et chaque reponse se relit d'un coup d'oeil avant d'envoyer. */
+.q{border-top:1px solid var(--bord); padding:2rem 0}
+.q:first-of-type{border-top:0; padding-top:0}
+.q > label,.q .titre{display:block; font-family:"Playfair Display",Georgia,serif;
+  font-size:1.25rem; font-weight:600; color:var(--ink); margin:0 0 1rem; line-height:1.3}
+/* UN CHAMP BLANC SUR UN FOND CREME NE SE VOIT PAS (Paul, 25/08: *"des boites blanches
+   dans un fond blanc, c'est super bizarre"*). Le fond de page est a #faf9f6 et le champ a
+   #ffffff: deux points d'ecart, l'oeil ne trouve pas le bord. On lui donne le trait des
+   TITRES, en deux pixels: le champ devient un objet, pas une nuance. */
+.q input[type=text],.q input[type=email],.q textarea{width:100%; font:inherit;
+  color:var(--ink); background:#fff; border:2px solid var(--ink); border-radius:2px;
+  padding:.85rem 1rem}
+.q textarea{min-height:8rem; resize:vertical}
+.q input:focus,.q textarea:focus{outline:2px solid var(--gold); outline-offset:2px;
+  border-color:var(--gold)}
+.choix{display:flex; flex-direction:column; gap:.65rem}
+.choix label{display:flex; align-items:flex-start; gap:.7rem; cursor:pointer;
+  font-size:var(--t-body); color:var(--ink-2)}
+.choix input{margin-top:.4rem; accent-color:var(--gold); width:1rem; height:1rem}
+.trio{display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1.25rem}
+.trio label{display:block; font-family:"DM Sans",sans-serif; font-size:var(--t-label);
+  font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--or-encre);
+  margin-bottom:.5rem}
+.envoi{margin-top:2.5rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.5rem}
+button.cta{border:0; cursor:pointer; font:inherit; font-size:.9375rem; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase; padding:1.05rem 2rem}
+.prix{font-size:var(--t-note); color:var(--ink-3)}
+.merci{margin-top:1.75rem; padding:1.15rem 1.25rem; border-left:2px solid var(--gold);
+  background:#fff; font-size:var(--t-note); color:var(--ink-2); display:none}
+.merci.vu{display:block}
+</style>
+
+<style>
+.barre__liens .barre__btn{background:var(--gold); color:var(--navy); border-radius:2px;
+  padding:.55rem 1rem; border-bottom:0; letter-spacing:.1em}
+.barre__liens .barre__btn:hover{background:var(--gold-soft); color:var(--navy);
+  border-bottom:0}
+.barre__liens .barre__btn[aria-current="page"]{color:var(--navy)}
+</style>
+</head>
+<body>
+<nav class="barre"><a class="barre__nom" href="/">Tom Scally <span>Signal Shift</span></a><div class="barre__liens"><a href="/about-tom.html">About Tom</a><a href="/faq.html" aria-current="page">FAQ</a><a class="barre__btn" href="/get-an-outside-read.html">Schedule a Conversation</a></div></nav>
+
+<section class="bande bande--navy">
+  <div class="dedans prose">
+    <span class="etiq">FAQ</span>
+    <h1 style="font-size:clamp(2.25rem,5.4vw,3.5rem)">Questions we get asked.</h1>
+  </div>
+</section>
+
+<section class="bande bande--creme">
+  <div class="dedans" style="max-width:48rem">
+    <div class="faq-liste">
+      <details open>
+        <summary>When would I use an Outside Read?</summary>
+        <p>An Outside Read is useful in two situations:</p>
+        <p>Before an important commercial move, when you&rsquo;re preparing to commit significant time, money or credibility and want another perspective before moving forward. That might include entering a market, launching something, changing positioning, pursuing a major partnership, raising capital, expanding, or making a significant commercial investment.</p>
+        <p>It can also be useful when something is already underway and the results aren&rsquo;t matching expectations.</p>
+      </details>
+      <details>
+        <summary>What if we&rsquo;ve already made the move?</summary>
+        <p>That&rsquo;s also a natural time for an Outside Read.</p>
+        <p>If a launch is out, the pipeline has stalled, growth isn&rsquo;t developing as expected, investor interest isn&rsquo;t materializing, or the market response isn&rsquo;t matching expectations, the question becomes: What might we not be seeing?</p>
+        <p>An Outside Read looks independently at the external evidence that may help explain the gap before leadership decides what comes next.</p>
+      </details>
+      <details>
+        <summary>What is an Outside Read?</summary>
+        <p>An Outside Read is a focused, independent assessment of the specific situation we&rsquo;ve agreed to examine.</p>
+        <p>It brings together the findings, their implications, and my judgment about what they mean for the direction you&rsquo;re considering or already pursuing.</p>
+        <p>The objective isn&rsquo;t to gather more information. It&rsquo;s to understand what the conditions surrounding a company reveal, what may be missing, and what those findings mean for the direction leadership is pursuing.</p>
+      </details>
+      <details>
+        <summary>What is Signal Shift?</summary>
+        <p>Signal Shift is the methodology behind the Outside Read.</p>
+        <p>Every situation is different, but the Signal Shift methodology provides a consistent framework for examining what is happening around a company.</p>
+        <p>Trust. Traction. Conditions.</p>
+      </details>
+      <details>
+        <summary>Why can&rsquo;t I just ask ChatGPT whether my strategy will work?</summary>
+        <p>You can use AI to research and analyze a situation. I use AI too.</p>
+        <p>But information usually isn&rsquo;t the hard part. The harder question is what&rsquo;s worth looking at and what the evidence actually means for this company, this situation and this moment.</p>
+        <p>The Outside Read combines external evidence with independent commercial judgment. AI is one of the tools. It isn&rsquo;t the judgment.</p>
+      </details>
+      <details>
+        <summary>Don&rsquo;t my team and advisors already have this covered?</summary>
+        <p>They may, and an Outside Read isn&rsquo;t intended to replace them.</p>
+        <p>Your team and advisors bring deep knowledge of the company and the situation. The Outside Read brings something different: an independent perspective from outside the company.</p>
+        <p>The value isn&rsquo;t disagreement for the sake of disagreement. It&rsquo;s another informed view of what the external evidence is showing.</p>
+      </details>
+      <details>
+        <summary>Does an Outside Read predict whether my next move will succeed?</summary>
+        <p>No.</p>
+        <p>An Outside Read isn&rsquo;t a prediction or guarantee. It provides another perspective on what the current outside evidence is showing.</p>
+        <p>Sometimes the evidence reinforces management&rsquo;s thinking. Sometimes it adds context. Sometimes it surfaces something worth examining more closely.</p>
+        <p>The read informs what comes next. Leadership decides what happens next.</p>
+      </details>
+      <details>
+        <summary>How is this different from consulting or market research?</summary>
+        <p>Consulting typically helps develop or shape strategy. Market research provides information.</p>
+        <p>An Outside Read is narrower. It focuses on a specific commercial situation and independently considers the external evidence around it.</p>
+        <p>The objective isn&rsquo;t to tell management what to do. It&rsquo;s to show what supports the thinking, what&rsquo;s worth considering and what deserves a closer look.</p>
+      </details>
+      <details>
+        <summary>What information do you need from us?</summary>
+        <p>To start, I need to understand the situation, what you&rsquo;re considering or experiencing, the timeline and what&rsquo;s at stake.</p>
+        <p>From there, a short conversation helps make sure the Outside Read focuses on evidence relevant to your specific situation. No long questionnaire.</p>
+      </details>
+      <details>
+        <summary>What does an Outside Read actually include?</summary>
+        <p>A focused written Outside Read around one specific commercial situation.</p>
+        <p>You&rsquo;ll understand what supports your direction, what&rsquo;s worth considering, and what deserves a closer look.</p>
+        <p>The read includes the external evidence and reasoning behind those observations, along with an independent conclusion on where the outside picture points.</p>
+        <p>Leadership decides what happens next.</p>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <p>3-5 business days after the intake conversation.</p>
+      </details>
+      <details>
+        <summary>What information remains confidential?</summary>
+        <p>Everything you share stays between us.</p>
+        <p>Nothing is published, referenced or used as a case study without your explicit approval.</p>
+      </details>
+      <details>
+        <summary>What happens after the Outside Read?</summary>
+        <p>You receive the written Outside Read and decide what the findings mean for your situation.</p>
+        <p>There&rsquo;s no obligation to go further.</p>
+        <p>If you&rsquo;d like to talk through what the evidence may mean for your next move, we can do that separately in a Commercial Working Session.</p>
+      </details>
+    </div>
+    <p style="margin-top:2.2rem; font-weight:700; color:var(--or-encre, var(--gold))">The read informs what comes next. Leadership decides what happens next.</p>
+    <div class="boutons" style="margin-top:2.6rem">
+      <a class="cta cta--plein" href="/get-an-outside-read.html">Schedule a Conversation →</a>
+    </div>
+  </div>
+</section>
+
+<p class="pied">
+<span><b>Signal Shift</b> · <b>Before the Next Move.</b> Independent Perspective. Informed Judgment.<br>The read informs what comes next. Leadership decides what happens next.</span>
+</p>
+
+</body>
+</html>
