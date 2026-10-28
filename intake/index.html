@@ -252,10 +252,6 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
       var plein = n >= max && !el.checked;
       el.disabled = plein;
       el.closest('label').classList.toggle('inactif', plein);
-      if (el.dataset.autre) {
-        var t = document.getElementById(el.dataset.autre);
-        if (t) { t.disabled = plein; }
-      }
     });
     var mots = {2: 'two', 3: 'three'};
     var aide = fs.querySelector('.aide');
@@ -322,7 +318,11 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
     });
     var entree = document.getElementById('fichiers');
     entree.addEventListener('change', function () {
-      var liste = choisis.concat(Array.prototype.slice.call(entree.files || []));
+      var deja = choisis.map(function (fi) { return fi.name + '|' + fi.size + '|' + fi.lastModified; });
+      var nouveaux = Array.prototype.slice.call(entree.files || []).filter(function (fi) {
+        return deja.indexOf(fi.name + '|' + fi.size + '|' + fi.lastModified) === -1;
+      });
+      var liste = choisis.concat(nouveaux);
       var erreur = controlerFichiers(liste);
       if (!erreur) { choisis = liste; }
       entree.value = '';
@@ -351,8 +351,11 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
     });
     if (oublie) {
       var num = oublie.closest('section').querySelector('.num');
+      var caseAutre = f.querySelector('input[data-autre="' + oublie.id + '"]');
       dire((num ? 'Question ' + num.textContent.replace('.', '') + ': ' : '')
-        + 'tick \u201cOther\u201d to include what you typed, or clear it.', true);
+        + (caseAutre && caseAutre.disabled
+          ? 'two answers are already selected. Untick one to keep what you typed in \u201cOther\u201d, or clear it.'
+          : 'tick \u201cOther\u201d to include what you typed, or clear it.'), true);
       oublie.focus();
       return;
     }
