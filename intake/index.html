@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Client Intake Questionnaire | Signal Shift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0c1b2e;--gold:#c9a84c;--gold-soft:#d4b96e;--cream:#faf9f6;
+  --ink:#0c1b2e;--ink-2:#3a3f4b;--ink-3:#5c6175;--sur-navy-2:#9fb0c6;--bord:#e4e3df;
+  --bord-navy:rgba(201,168,76,.22);--or-encre:#7a5c0c;--erreur:#9b1c1c;
+  --t-label:.72rem;--t-note:.9375rem;--t-body:1.0625rem;--pad:clamp(1rem,6vw,7rem)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink-2);
+  font:400 var(--t-body)/1.68 "DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:"Playfair Display",Georgia,serif;color:var(--ink);font-weight:700;
+  line-height:1.15;letter-spacing:-.01em;margin:0}
+p{margin:0 0 1.15em}
+.barre{background:var(--navy);border-bottom:1px solid var(--bord-navy);padding:1rem var(--pad)}
+.barre__nom{font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:#fff;text-decoration:none}
+.barre__nom span{color:var(--gold)}
+.bande{padding:clamp(2.25rem,6vw,4.5rem) var(--pad)}
+.bande--navy{background:var(--navy);color:var(--sur-navy-2)}
+.bande--navy h1{color:#fff;font-size:clamp(2rem,5vw,3.25rem)}
+.dedans{max-width:44rem;margin:0 auto}
+.etiq{display:block;font-size:var(--t-label);font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 1.1rem}
+.etiq::before{content:"";display:inline-block;width:1.75rem;height:1px;
+  background:var(--gold);vertical-align:.28em;margin-right:.6rem}
+.sous-titre{margin:.85rem 0 0;font-size:var(--t-label);font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--sur-navy-2)}
+.intro{font-size:1.125rem;line-height:1.6;color:var(--ink);margin:0 0 2.25rem}
+.partie{border-top:2px solid var(--gold);padding:1.75rem 0 .5rem;margin-top:1.25rem}
+.partie h2{font-size:1.5rem;margin:0 0 1.25rem}
+.partie h2 .num{color:var(--or-encre)}
+.q{border:0;margin:0 0 1.75rem;padding:0;min-width:0}
+.q > label,.q legend,.q .titre-q{display:block;font-weight:600;color:var(--ink);
+  margin:0 0 .65rem;line-height:1.45;padding:0}
+.q input[type=text],.q input[type=email],.q textarea{width:100%;font:inherit;color:var(--ink);
+  background:#fff;border:2px solid var(--ink);border-radius:2px;padding:.75rem .9rem}
+.q textarea{min-height:6.5rem;resize:vertical}
+.q input:focus,.q textarea:focus{outline:2px solid var(--gold);outline-offset:2px;
+  border-color:var(--gold)}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.25rem}
+@media (max-width:640px){.duo{grid-template-columns:1fr}}
+.choix{display:flex;flex-direction:column;gap:.55rem}
+.choix label{display:flex;align-items:flex-start;gap:.7rem;cursor:pointer;color:var(--ink-2)}
+.choix input[type=checkbox]{margin-top:.38rem;accent-color:var(--gold);width:1.05rem;
+  height:1.05rem;flex:none}
+.choix label.inactif{opacity:.45;cursor:not-allowed}
+.autre__texte{margin:.1rem 0 0 1.75rem;width:calc(100% - 1.75rem) !important}
+.aide{font-size:var(--t-note);color:var(--ink-3);margin:.6rem 0 0}
+.aide:empty{display:none}
+.aide--erreur{color:var(--erreur);font-weight:600}
+input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.q > label.fichiers__bouton{display:inline-block;margin:.9rem 0 0;padding:.7rem 1.2rem;
+  border:2px solid var(--ink);border-radius:2px;background:#fff;color:var(--ink);
+  font-size:.9rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.fichiers__bouton:hover{border-color:var(--gold)}
+input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold);
+  outline-offset:2px}
+.fichiers__liste{list-style:none;margin:.75rem 0 0;padding:0}
+.fichiers__liste li{padding:.35rem 0;border-top:1px solid var(--bord);font-size:var(--t-note);
+  color:var(--ink)}
+.lien{background:none;border:0;padding:0;margin-top:.5rem;font:inherit;
+  font-size:var(--t-note);color:var(--or-encre);text-decoration:underline;cursor:pointer}
+.envoi{margin-top:2rem}
+.cta{display:block;width:100%;border:0;cursor:pointer;font:inherit;font-size:.9375rem;
+  font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:1.05rem 2rem;
+  border-radius:2px;background:var(--gold);color:var(--navy)}
+.cta:hover{background:var(--gold-soft)}
+.cta:disabled{opacity:.6;cursor:wait}
+.etat{margin:1.25rem 0 0;padding:1rem 1.15rem;border-left:2px solid var(--gold);
+  background:#fff;font-size:var(--t-note);color:var(--ink-2)}
+.etat[hidden]{display:none}
+.etat--erreur{border-left-color:var(--erreur)}
+.confirmation{font-family:"Playfair Display",Georgia,serif;font-size:1.35rem;
+  line-height:1.5;color:var(--ink);padding:1.5rem 1.6rem;border-left:3px solid var(--gold);
+  background:#fff}
+.suite{margin-top:2.75rem;padding-top:1.75rem;border-top:2px solid var(--gold)}
+.suite h2{font-size:1.5rem;margin:0 0 1rem}
+.signature{margin-top:1.5rem;font-weight:700;color:var(--ink);letter-spacing:.02em}
+[hidden]{display:none !important}
+</style>
+</head>
+<body>
+<nav class="barre"><a class="barre__nom" href="/">Tom Scally <span>Signal Shift</span></a></nav>
+<header class="bande bande--navy">
+  <div class="dedans">
+    <span class="etiq">Signal Shift | Outside Read</span>
+    <h1><span data-nom="societe"></span></h1>
+    <p class="sous-titre">Client Intake Questionnaire</p>
+  </div>
+</header>
+<main class="bande">
+  <div class="dedans">
+    <div id="chargement"><p class="aide">Loading your questionnaire...</p>
+      <noscript><p class="etat etat--erreur">This form needs JavaScript. Please enable it, or
+      contact Tom at tom@tomscally.com.</p></noscript></div>
+    <div id="invalide" hidden><p class="etat etat--erreur"></p></div>
+    <div id="contenu" hidden>
+      <p class="intro" id="intro">As discussed, I’m getting started on an independent Outside Read for <span data-nom="nom"></span>. These questions will help me understand your priorities and focus the assessment on what matters most. Brief answers or bullet points are fine; please do not create new materials for this exercise.</p>
+      <div id="fini" hidden><p class="confirmation" id="message-fini" role="status"></p></div>
+      <form id="questionnaire" novalidate>
+        <section class="partie partie--perso" id="partie-personne"><h2>Your details</h2><div class="duo"><div class="q q--court"><label for="nom">Your name</label><input type="text" id="nom" name="nom" maxlength="200" autocomplete="name" required aria-required="true"></div><div class="q q--court"><label for="email">Your email</label><input type="email" id="email" name="email" maxlength="200" autocomplete="email" required aria-required="true"></div></div></section><section class="partie" id="partie-objectif"><h2><span class="num">1.</span> Immediate objective</h2><fieldset class="q"><legend>What are your top priorities over the next 3-6 months? (Select all that apply.)</legend><div class="choix"><label><input type="checkbox" name="q1" value="Raise capital for the project"><span>Raise capital for the project</span></label><label><input type="checkbox" name="q1" value="Build awareness and attract prospective investors"><span>Build awareness and attract prospective investors</span></label><label><input type="checkbox" name="q1" value="Establish strategic or commercial partnerships"><span>Establish strategic or commercial partnerships</span></label><label><input type="checkbox" name="q1" value="Advance project development"><span>Advance project development</span></label><label class="autre"><input type="checkbox" name="q1" value="Other" data-autre="q1_autre"><span>Other:</span></label><input type="text" class="autre__texte" id="q1_autre" name="q1_autre" maxlength="200" aria-label="Other, please specify"></div></fieldset></section><section class="partie" id="partie-levee"><h2><span class="num">2.</span> Capital raise parameters</h2><div class="q"><label for="q2_montant">How much capital are you seeking to raise in this phase?</label><textarea id="q2_montant" name="q2_montant" maxlength="4000" rows="4"></textarea></div><div class="q"><label for="q2_engage">How much has been committed or raised to date, if any?</label><textarea id="q2_engage" name="q2_engage" maxlength="4000" rows="4"></textarea></div><div class="q"><label for="q2_jalons">What critical project milestones must this funding accomplish?</label><textarea id="q2_jalons" name="q2_jalons" maxlength="4000" rows="4"></textarea></div></section><section class="partie" id="partie-investisseurs"><h2><span class="num">3.</span> Target investor audience</h2><fieldset class="q"><legend>Who do you believe is the most appropriate audience? (Select all that apply.)</legend><div class="choix"><label><input type="checkbox" name="q3" value="Individual accredited investors"><span>Individual accredited investors</span></label><label><input type="checkbox" name="q3" value="Community or retail investors"><span>Community or retail investors</span></label><label><input type="checkbox" name="q3" value="Family offices / private equity"><span>Family offices / private equity</span></label><label><input type="checkbox" name="q3" value="Institutional investors"><span>Institutional investors</span></label><label><input type="checkbox" name="q3" value="Strategic industry partners"><span>Strategic industry partners</span></label><label><input type="checkbox" name="q3" value="Still determining the target audience"><span>Still determining the target audience</span></label></div></fieldset></section><section class="partie" id="partie-approche"><h2><span class="num">4.</span> Outreach and outside support</h2><fieldset class="q"><legend>What are you currently using or considering to attract investor interest? (Select all that apply.)</legend><div class="choix"><label><input type="checkbox" name="q4" value="Digital marketing / paid advertising"><span>Digital marketing / paid advertising</span></label><label><input type="checkbox" name="q4" value="Investor relations or dedicated outreach"><span>Investor relations or dedicated outreach</span></label><label><input type="checkbox" name="q4" value="Public relations / media exposure"><span>Public relations / media exposure</span></label><label><input type="checkbox" name="q4" value="Direct / personal investor introductions"><span>Direct / personal investor introductions</span></label><label><input type="checkbox" name="q4" value="Fundraising platform"><span>Fundraising platform</span></label><label><input type="checkbox" name="q4" value="Still evaluating the approach"><span>Still evaluating the approach</span></label></div></fieldset><div class="q"><label for="q4_budget">Are you planning to engage additional outside firms or commit a marketing budget within the next 90 days?</label><textarea id="q4_budget" name="q4_budget" maxlength="4000" rows="4"></textarea></div><div class="q"><label for="q4_attentes">If considering a marketing, investor relations, or outreach firm, what do you expect it to accomplish?</label><textarea id="q4_attentes" name="q4_attentes" maxlength="4000" rows="4"></textarea></div></section><section class="partie" id="partie-progres"><h2><span class="num">5.</span> Current progress and success</h2><div class="q"><label for="q5_progres">Where have you made tangible progress, and where would you like greater momentum (e.g., investor inquiries, approvals, partnerships, development milestones, awareness)?</label><textarea id="q5_progres" name="q5_progres" maxlength="4000" rows="4"></textarea></div><div class="q"><label for="q5_90j">What would meaningful progress look like for <span data-nom="court"></span> over the next 90 days?</label><textarea id="q5_90j" name="q5_90j" maxlength="4000" rows="4"></textarea></div></section><section class="partie" id="partie-inconnue"><h2><span class="num">6.</span> Biggest unknown</h2><fieldset class="q" data-max="2"><legend>What would you most like greater clarity on right now? (Select up to two.)</legend><div class="choix"><label><input type="checkbox" name="q6" value="Whether we’re reaching the right investor profile"><span>Whether we’re reaching the right investor profile</span></label><label><input type="checkbox" name="q6" value="Whether our project story and presentation are compelling"><span>Whether our project story and presentation are compelling</span></label><label><input type="checkbox" name="q6" value="Whether the current market is receptive to this opportunity"><span>Whether the current market is receptive to this opportunity</span></label><label><input type="checkbox" name="q6" value="Whether outreach methods are generating meaningful interest"><span>Whether outreach methods are generating meaningful interest</span></label><label><input type="checkbox" name="q6" value="Whether we’re making the right marketing and vendor investments"><span>Whether we’re making the right marketing and vendor investments</span></label><label><input type="checkbox" name="q6" value="Whether an important blind spot is being overlooked"><span>Whether an important blind spot is being overlooked</span></label><label class="autre"><input type="checkbox" name="q6" value="Other" data-autre="q6_autre"><span>Other:</span></label><input type="text" class="autre__texte" id="q6_autre" name="q6_autre" maxlength="200" aria-label="Other, please specify"></div><p class="aide" id="q6-aide" aria-live="polite"></p></fieldset></section><section class="partie" id="partie-documents"><h2><span class="num">7.</span> Supporting materials</h2><div class="q"><label for="q7_liens">If available, please share existing links or files: investor presentation, offering materials, project overview, website, and active outreach plans. Please do not create or rewrite anything new for this exercise.</label><textarea id="q7_liens" name="q7_liens" maxlength="4000" rows="4"></textarea></div><div class="q"><span class="titre-q">Files (optional)</span><p class="aide">PDF, PowerPoint, Word, Excel, CSV, text, images or ZIP. Up to 5 files, 10 MB in total. For larger files, please share a link above.</p><input type="file" id="fichiers" name="fichiers" multiple accept=".pdf,.ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.txt,.png,.jpg,.jpeg,.zip"><label class="fichiers__bouton" for="fichiers">Choose files</label><ul class="fichiers__liste" id="fichiers-liste"></ul><p class="aide aide--erreur" id="fichiers-erreur" aria-live="polite"></p><button type="button" class="lien" id="fichiers-vider" hidden>Remove files</button></div></section>
+        <div class="envoi"><button class="cta" type="submit" id="envoyer">Submit</button></div>
+        <p class="etat" id="etat" role="status" aria-live="polite" hidden></p>
+      </form>
+      <section class="suite">
+        <h2>What happens next</h2>
+        <p>I will examine <span data-nom="court"></span>’s external positioning through three Signal Shift lenses: Trust, Traction, and Conditions. I’ll share verified findings, their implications, and my independent assessment of what may be missing or deserves consideration as you move forward. <span id="offert" hidden>This initial Outside Read is complimentary, as discussed.</span></p>
+        <p class="signature">Tom Scally  |  Signal Shift</p>
+      </section>
+    </div>
+  </div>
+</main>
+<script>
+(function () {
+  var PORTE = "https://vps-39c10144.vps.ovh.net/formulaire/intake";
+  var ADRESSE = "tom@tomscally.com";
+  var CONFIRMATION = "Thank you. Your information has been received. Tom will review it and follow up personally.";
+  var EXTENSIONS = ["pdf", "ppt", "pptx", "doc", "docx", "xls", "xlsx", "csv", "txt", "png", "jpg", "jpeg", "zip"];
+  var MAX_FICHIERS = 5;
+  var MAX_OCTETS = 10485760;
+
+  var code = '';
+  try { code = decodeURIComponent((location.hash || '').replace(/^#/, '')).trim(); }
+  catch (err) { code = ''; }
+
+  var chargement = document.getElementById('chargement');
+  var invalide = document.getElementById('invalide');
+  var contenu = document.getElementById('contenu');
+  var f = document.getElementById('questionnaire');
+  var etat = document.getElementById('etat');
+  var bouton = document.getElementById('envoyer');
+  var fini = document.getElementById('fini');
+  var cle = 'intake-brouillon:' + code;
+  var choisis = [];
+
+  function montrer(el) { el.hidden = false; }
+  function cacher(el) { el.hidden = true; }
+
+  function dire(texte, erreur) {
+    etat.textContent = texte;
+    etat.classList.toggle('etat--erreur', !!erreur);
+    montrer(etat);
+  }
+
+  function lienInvalide(message) {
+    cacher(chargement);
+    invalide.querySelector('p').textContent = message;
+    montrer(invalide);
+  }
+
+  function poster(chemin, objet, delai) {
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var minuteur = ctrl ? setTimeout(function () { ctrl.abort(); }, delai) : null;
+    return fetch(PORTE + chemin, {
+      method: 'POST', headers: {'content-type': 'application/json'},
+      body: JSON.stringify(objet), signal: ctrl ? ctrl.signal : undefined,
+      credentials: 'omit', referrerPolicy: 'no-referrer'
+    }).then(function (r) {
+      if (minuteur) { clearTimeout(minuteur); }
+      return r.json().catch(function () { return {}; }).then(function (x) {
+        return {statut: r.status, x: x || {}};
+      });
+    }, function (err) {
+      if (minuteur) { clearTimeout(minuteur); }
+      throw err;
+    });
+  }
+
+  function poserNoms(x) {
+    ['societe', 'nom', 'court'].forEach(function (k) {
+      document.querySelectorAll('[data-nom="' + k + '"]').forEach(function (el) {
+        el.textContent = x[k] || '';
+      });
+    });
+    if (x.offert) { montrer(document.getElementById('offert')); }
+  }
+
+  function lireBrouillon() {
+    try { return JSON.parse(localStorage.getItem(cle) || 'null'); } catch (err) { return null; }
+  }
+  function ecrireBrouillon() {
+    try { localStorage.setItem(cle, JSON.stringify(reponses())); } catch (err) {}
+  }
+  function effacerBrouillon() {
+    try { localStorage.removeItem(cle); } catch (err) {}
+  }
+  function poserBrouillon(b) {
+    if (!b) { return; }
+    Object.keys(b).forEach(function (k) {
+      var v = b[k];
+      if (Array.isArray(v)) {
+        f.querySelectorAll('input[type=checkbox][name="' + k + '"]').forEach(function (el) {
+          el.checked = v.indexOf(el.value) !== -1;
+        });
+      } else {
+        var el = f.querySelector('[name="' + k + '"]');
+        if (el && el.type !== 'file' && el.type !== 'checkbox') { el.value = v; }
+      }
+    });
+  }
+
+  function reponses() {
+    var champs = {};
+    f.querySelectorAll('input[type=text],input[type=email],textarea').forEach(function (el) {
+      if (el.classList.contains('autre__texte')) { return; }
+      if (el.value.trim()) { champs[el.name] = el.value.trim(); }
+    });
+    f.querySelectorAll('fieldset.q').forEach(function (fs) {
+      var cases = fs.querySelectorAll('input[type=checkbox]');
+      if (!cases.length) { return; }
+      var nom = cases[0].name;
+      var liste = [];
+      cases.forEach(function (el) {
+        if (!el.checked) { return; }
+        liste.push(el.value);
+        if (el.dataset.autre) {
+          var t = document.getElementById(el.dataset.autre);
+          if (t && t.value.trim()) { champs[el.dataset.autre] = t.value.trim(); }
+        }
+      });
+      if (liste.length) { champs[nom] = liste; }
+    });
+    return champs;
+  }
+
+  function borner(fs) {
+    var max = parseInt(fs.dataset.max || '0', 10);
+    if (!max) { return; }
+    var cases = fs.querySelectorAll('input[type=checkbox]');
+    var n = 0;
+    cases.forEach(function (el) { if (el.checked) { n++; } });
+    cases.forEach(function (el) {
+      var plein = n >= max && !el.checked;
+      el.disabled = plein;
+      el.closest('label').classList.toggle('inactif', plein);
+    });
+    var aide = fs.querySelector('.aide');
+    if (aide) { aide.textContent = n >= max ? 'You have selected two. Untick one to change.' : ''; }
+  }
+
+  function taille(n) {
+    return n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB';
+  }
+
+  function montrerFichiers(erreur) {
+    var liste = document.getElementById('fichiers-liste');
+    liste.innerHTML = '';
+    choisis.forEach(function (fi) {
+      var li = document.createElement('li');
+      li.textContent = fi.name + ' (' + taille(fi.size) + ')';
+      liste.appendChild(li);
+    });
+    document.getElementById('fichiers-erreur').textContent = erreur || '';
+    document.getElementById('fichiers-vider').hidden = !choisis.length;
+  }
+
+  function controlerFichiers(liste) {
+    if (liste.length > MAX_FICHIERS) { return 'Please choose up to ' + MAX_FICHIERS + ' files.'; }
+    var total = 0;
+    for (var i = 0; i < liste.length; i++) {
+      var nom = liste[i].name || '';
+      var ext = nom.indexOf('.') !== -1 ? nom.split('.').pop().toLowerCase() : '';
+      if (EXTENSIONS.indexOf(ext) === -1) { return 'This file type is not accepted: ' + nom; }
+      if (!liste[i].size) { return 'This file is empty: ' + nom; }
+      total += liste[i].size;
+    }
+    if (total > MAX_OCTETS) { return 'These files are over 10 MB in total. Please share a link instead.'; }
+    return '';
+  }
+
+  function enBase64(fi) {
+    return new Promise(function (ok, ko) {
+      var r = new FileReader();
+      r.onload = function () { ok(String(r.result).split(',').pop()); };
+      r.onerror = function () { ko(new Error('lecture')); };
+      r.readAsDataURL(fi);
+    });
+  }
+
+  function brancher() {
+    f.querySelectorAll('fieldset.q[data-max]').forEach(function (fs) {
+      fs.addEventListener('change', function () { borner(fs); });
+      borner(fs);
+    });
+    f.querySelectorAll('.autre__texte').forEach(function (t) {
+      t.addEventListener('input', function () {
+        var c = f.querySelector('input[data-autre="' + t.id + '"]');
+        if (c && t.value.trim() && !c.checked && !c.disabled) {
+          c.checked = true;
+          var fs = c.closest('fieldset');
+          if (fs) { borner(fs); }
+        }
+      });
+    });
+    var entree = document.getElementById('fichiers');
+    entree.addEventListener('change', function () {
+      var liste = Array.prototype.slice.call(entree.files || []);
+      var erreur = controlerFichiers(liste);
+      choisis = erreur ? [] : liste;
+      if (erreur) { entree.value = ''; }
+      montrerFichiers(erreur);
+    });
+    document.getElementById('fichiers-vider').addEventListener('click', function () {
+      choisis = []; entree.value = ''; montrerFichiers('');
+    });
+    f.addEventListener('input', ecrireBrouillon);
+    f.addEventListener('change', ecrireBrouillon);
+    f.addEventListener('submit', envoyer);
+  }
+
+  function envoyer(ev) {
+    ev.preventDefault();
+    var champs = reponses();
+    var nom = document.getElementById('nom');
+    var mel = document.getElementById('email');
+    if (!champs.nom) { dire('Please add your name.', true); nom.focus(); return; }
+    if (!champs.email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(champs.email)) {
+      dire('Please add a valid email address.', true); mel.focus(); return;
+    }
+    bouton.disabled = true;
+    bouton.textContent = 'Sending...';
+    dire(choisis.length ? 'Sending your answers and files. This can take a moment.' : 'Sending your answers...');
+    Promise.all(choisis.map(function (fi) {
+      return enBase64(fi).then(function (b) { return {nom: fi.name, contenu: b}; });
+    })).then(function (fichiers) {
+      return poster('/envoyer', {code: code, champs: champs, fichiers: fichiers}, 180000);
+    }).then(function (r) {
+      if (r.statut === 200 && r.x.ok) {
+        effacerBrouillon();
+        cacher(f);
+        cacher(document.getElementById('intro'));
+        cacher(etat);
+        montrer(fini);
+        window.scrollTo(0, 0);
+        return;
+      }
+      rendre();
+      if (r.statut === 404) {
+        dire('This link is no longer valid. Please contact Tom at ' + ADRESSE + '.', true);
+      } else if (r.statut === 400 && r.x.erreur) {
+        dire('Please check your answers: ' + r.x.erreur + '.', true);
+      } else if (r.statut === 413) {
+        dire('These files are too large. Please share a link instead.', true);
+      } else {
+        echec();
+      }
+    }).catch(function () { rendre(); echec(); });
+  }
+
+  function rendre() { bouton.disabled = false; bouton.textContent = 'Submit'; }
+
+  function echec() {
+    dire('Your answers could not be sent just now. They are still on this page: please try '
+      + 'again in a moment. If it keeps failing, email them to ' + ADRESSE + '.', true);
+  }
+
+  document.getElementById('message-fini').textContent = CONFIRMATION;
+
+  if (!code || code.length < 16) {
+    lienInvalide('This link is not valid. Please use the exact link you received, or contact Tom at ' + ADRESSE + '.');
+    return;
+  }
+  poster('/ouvrir', {code: code}, 15000).then(function (r) {
+    if (r.statut === 200 && r.x.ok) {
+      poserNoms(r.x);
+      cacher(chargement);
+      montrer(contenu);
+      poserBrouillon(lireBrouillon());
+      brancher();
+      return;
+    }
+    if (r.statut === 404) {
+      lienInvalide('This link is not valid or is no longer active. Please contact Tom at ' + ADRESSE + '.');
+    } else {
+      lienInvalide('This page could not load just now. Please try again in a few minutes, or contact Tom at ' + ADRESSE + '.');
+    }
+  }).catch(function () {
+    lienInvalide('This page could not load just now. Please try again in a few minutes, or contact Tom at ' + ADRESSE + '.');
+  });
+})();
+</script>
+</body>
+</html>
