@@ -191,11 +191,20 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
     return n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB';
   }
 
+  // La zone grandit AVANT que le texte touche le bas: il reste toujours deux lignes vides
+  // sous ce qu'on ecrit, pour que la personne voie qu'il y a de la place (Paul, 28/10).
   function agrandir(t) {
     var y = window.scrollY;
-    t.style.height = 'auto';
-    t.style.height = Math.min(t.scrollHeight + 4, 900) + 'px';
-    t.style.overflowY = t.scrollHeight + 4 > 900 ? 'auto' : 'hidden';
+    var cs = window.getComputedStyle(t);
+    var mini = parseFloat(cs.minHeight) || 0;
+    var ligne = parseFloat(cs.lineHeight) || 27;
+    t.style.minHeight = '0px';
+    t.style.height = '0px';
+    var contenu = t.scrollHeight + 4;
+    t.style.minHeight = '';
+    var cible = Math.max(mini, contenu + 2 * ligne);
+    t.style.height = Math.min(cible, 900) + 'px';
+    t.style.overflowY = cible > 900 ? 'auto' : 'hidden';
     window.scrollTo(window.scrollX, y);
   }
   var minuterieTaille = null;
