@@ -191,8 +191,6 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
     return n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB';
   }
 
-  // La zone grandit AVANT que le texte touche le bas: il reste toujours deux lignes vides
-  // sous ce qu'on ecrit, pour que la personne voie qu'il y a de la place (Paul, 28/10).
   function agrandir(t) {
     var y = window.scrollY;
     var cs = window.getComputedStyle(t);
