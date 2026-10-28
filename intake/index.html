@@ -33,6 +33,7 @@ p{margin:0 0 1.15em}
   text-transform:uppercase;color:var(--gold);margin:0 0 1.1rem}
 .etiq::before{content:"";display:inline-block;width:1.75rem;height:1px;
   background:var(--gold);vertical-align:.28em;margin-right:.6rem}
+.etiq:empty,h1:empty,.sous-titre:empty{display:none}
 .sous-titre{margin:.85rem 0 0;font-size:var(--t-label);font-weight:700;letter-spacing:.16em;
   text-transform:uppercase;color:var(--sur-navy-2)}
 .intro{font-size:1.125rem;line-height:1.65;color:var(--ink);margin:0 0 1.1rem}
@@ -96,9 +97,9 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
 <nav class="barre"><a class="barre__nom" href="/">Tom Scally <span>Signal Shift</span></a></nav>
 <header class="bande bande--navy">
   <div class="dedans">
-    <span class="etiq" id="entete"></span>
+    <span class="etiq" id="entete">Signal Shift | Outside Read</span>
     <h1 id="societe"></h1>
-    <p class="sous-titre" id="sous-titre"></p>
+    <p class="sous-titre" id="sous-titre">Client Intake Questionnaire</p>
   </div>
 </header>
 <main class="bande">
@@ -191,10 +192,19 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
   }
 
   function agrandir(t) {
+    var y = window.scrollY;
     t.style.height = 'auto';
     t.style.height = Math.min(t.scrollHeight + 4, 900) + 'px';
     t.style.overflowY = t.scrollHeight + 4 > 900 ? 'auto' : 'hidden';
+    window.scrollTo(window.scrollX, y);
   }
+  var minuterieTaille = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(minuterieTaille);
+    minuterieTaille = setTimeout(function () {
+      document.querySelectorAll('#questionnaire textarea').forEach(agrandir);
+    }, 150);
+  });
 
   function champ(c, parent) {
     if (c.type === 'ligne' || c.type === 'email') {
@@ -254,7 +264,7 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
   function construire(x) {
     var q = x.questionnaire || {};
     document.title = (q.sous_titre || 'Client Intake Questionnaire') + ' | Signal Shift';
-    document.getElementById('entete').textContent = q.entete || '';
+    document.getElementById('entete').textContent = q.entete || 'Signal Shift | Outside Read';
     document.getElementById('societe').textContent = x.societe || '';
     document.getElementById('sous-titre').textContent = q.sous_titre || '';
     var intro = document.getElementById('intro');
