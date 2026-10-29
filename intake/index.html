@@ -131,7 +131,7 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
   var CONFIRMATION = "Thank you. Your information has been received. Tom will review it and follow up personally.";
   var EXTENSIONS = ["pdf", "ppt", "pptx", "doc", "docx", "xls", "xlsx", "csv", "txt", "png", "jpg", "jpeg", "zip"];
   var MAX_FICHIERS = 5;
-  var MAX_OCTETS = 10485760;
+  var MAX_OCTETS = 52428800;
 
   var code = '';
   try { code = decodeURIComponent((location.hash || '').replace(/^#/, '')).trim(); }
@@ -169,11 +169,13 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
     montrer(invalide);
   }
 
-  function poster(chemin, objet, delai) {
+  function poster(chemin, objet, delai, entetes) {
     var ctrl = window.AbortController ? new AbortController() : null;
     var minuteur = ctrl ? setTimeout(function () { ctrl.abort(); }, delai) : null;
+    var h = {'content-type': 'application/json'};
+    Object.keys(entetes || {}).forEach(function (k) { h[k] = entetes[k]; });
     return fetch(PORTE + chemin, {
-      method: 'POST', headers: {'content-type': 'application/json'},
+      method: 'POST', headers: h,
       body: JSON.stringify(objet), signal: ctrl ? ctrl.signal : undefined,
       credentials: 'omit', referrerPolicy: 'no-referrer'
     }).then(function (r) {
@@ -255,7 +257,7 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
       var d = el('div', {'class': 'q'});
       d.appendChild(el('span', {'class': 'titre-q'}, c.label));
       d.appendChild(el('p', {'class': 'aide'}, 'PDF, PowerPoint, Word, Excel, CSV, text, images or ZIP. Up to '
-        + MAX_FICHIERS + ' files, 10 MB in total. For larger files, please share a link above.'));
+        + MAX_FICHIERS + ' files, ' + Math.round(MAX_OCTETS / 1048576) + ' MB in total. For larger files, please share a link above.'));
       d.appendChild(el('input', {type: 'file', id: 'fichiers', name: 'fichiers', multiple: '',
         accept: EXTENSIONS.map(function (x) { return '.' + x; }).join(',')}));
       d.appendChild(el('label', {'class': 'fichiers__bouton', 'for': 'fichiers'}, 'Choose files'));
@@ -391,7 +393,7 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
       if (!liste[i].size) { return 'This file is empty: ' + nom; }
       total += liste[i].size;
     }
-    if (total > MAX_OCTETS) { return 'These files are over 10 MB in total. Please share a link instead.'; }
+    if (total > MAX_OCTETS) { return 'These files are over ' + Math.round(MAX_OCTETS / 1048576) + ' MB in total. Please share a link instead.'; }
     return '';
   }
 
@@ -466,11 +468,12 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
     }
     bouton.disabled = true;
     bouton.textContent = 'Sending...';
-    dire(choisis.length ? 'Sending your answers and files. This can take a moment.' : 'Sending your answers...');
+    dire(choisis.length ? 'Sending your answers and files. Large files can take a few minutes.' : 'Sending your answers...');
     Promise.all(choisis.map(function (fi) {
       return enBase64(fi).then(function (b) { return {nom: fi.name, contenu: b}; });
     })).then(function (fichiers) {
-      return poster('/envoyer', {code: code, champs: champs, fichiers: fichiers}, 180000);
+      return poster('/envoyer', {code: code, champs: champs, fichiers: fichiers}, 900000,
+        {'x-intake-code': code});
     }).then(function (r) {
       if (r.statut === 200 && r.x.ok) {
         effacerBrouillon();
@@ -491,6 +494,8 @@ input[type=file]:focus-visible + .fichiers__bouton{outline:2px solid var(--gold)
         dire('Too many attempts. Please try again in an hour, or email Tom at ' + ADRESSE + '.', true);
       } else if (r.statut === 413) {
         dire('These files are too large. Please share a link instead.', true);
+      } else if ((r.statut === 503 || r.statut === 507) && r.x.erreur) {
+        dire(r.x.erreur, true);
       } else {
         echec();
       }
